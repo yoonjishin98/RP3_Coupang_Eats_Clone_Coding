@@ -5,5 +5,5 @@ data class FranchaiseData (
     val franchaiseTitle : String,
     val franchaiseReview : String,
     val franchaiseDistance :String,
-    val franchaiseDeliveryFee :String
+    val franchaiseDeliveryFee :Int
     )

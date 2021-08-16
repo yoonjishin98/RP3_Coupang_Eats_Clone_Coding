@@ -12,7 +12,13 @@
     <string name="tv_login_require_login">로그인이 필요합니다.</string>
     <string name="tv_login_description">로그인 후 맛있는 음식을 즐겨보세요.</string>
     <string name="login_by_app">쿠팡 앱으로 로그인</string>
+    <string name="login_by_id">쿠팡 아이디로 로그인</string>
     <string name="login_question">아직 회원이 아니신가요?</string>
     <string name="login_question_sign_up">회원가입</string>
+    <string name="signup_name"><b>이름</b></string>
+    <string name="signup_email"><b>아이디(이메일)</b></string>
+    <string name="signup_pwd"><b>비밀번호</b></string>
+    <string name="signup_phone_num"><b>휴대폰 번호</b></string>
+    <string name="signup_copyright" ><![CDATA[©]]>Coupang Corp.All rights reserved.</string>
 
 </resources>

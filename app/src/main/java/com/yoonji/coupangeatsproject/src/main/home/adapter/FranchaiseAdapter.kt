@@ -30,7 +30,11 @@ class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<Fr
             tvHomeFranchaiseTitle.text = item.franchaiseTitle
             tvHomeFranchaiseReview.text = item.franchaiseReview
             tvHomeFranchaiseDistance.text = item.franchaiseDistance
-            tvHomeFranchaiseDeliveryFee.text =item.franchaiseDistance
+            if(item.franchaiseDeliveryFee==0){
+                tvHomeFranchaiseDeliveryFee.text = "무료배달"
+            }else{
+                tvHomeFranchaiseDeliveryFee.text = item.franchaiseDistance +"원"
+            }
         }
     }
 

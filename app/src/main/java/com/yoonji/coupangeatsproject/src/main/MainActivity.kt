@@ -1,17 +1,14 @@
 package com.yoonji.coupangeatsproject.src.main
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ActivityMainBinding
-import com.yoonji.coupangeatsproject.src.main.history.HistoryFragment
 import com.yoonji.coupangeatsproject.src.main.home.HomeFragment
 import com.yoonji.coupangeatsproject.src.main.like.LikeFragment
 import com.yoonji.coupangeatsproject.src.main.search.SearchFragment
-import com.yoonji.coupangeatsproject.src.main.setting.SettingFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -31,10 +28,37 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         changeFragment(LikeFragment())
                     }
                     R.id.menu_bottom_history ->{
-                        changeFragment(HistoryFragment())
+                        //changeFragment(HistoryFragment())
+                        val loginBtmSheetDlgFragment: LoginBtmSheetFragment = LoginBtmSheetFragment {
+                            when (it) {
+                                0 -> {
+                                    val intent = Intent(context, SignUpActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                1 -> {
+                                    val intent = Intent(context, SignUpActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                        }
+                        loginBtmSheetDlgFragment.show(supportFragmentManager, loginBtmSheetDlgFragment.tag)
                     }
                     R.id.menu_bottom_setting ->{
-                        changeFragment(SettingFragment())
+                        //changeFragment(SettingFragment())
+                        val loginBtmSheetDlgFragment: LoginBtmSheetFragment = LoginBtmSheetFragment {
+                            when (it) {
+                                0 -> {
+                                    val intent = Intent(context, SignUpActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                1 -> {
+                                    val intent = Intent(context, SignUpActivity::class.java)
+                                    startActivity(intent)
+                                }
+                            }
+                        }
+                        loginBtmSheetDlgFragment.show(supportFragmentManager, loginBtmSheetDlgFragment.tag)
+
                     }
                 }
                 true

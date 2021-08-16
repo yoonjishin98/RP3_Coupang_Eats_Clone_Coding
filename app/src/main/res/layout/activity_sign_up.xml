@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            app:srcCompat="@drawable/ic_sign_up_cancel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="회원가입"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#959BA0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_coupang_logo"
+        tools:layout_editor_absoluteY="116dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="start"
+        android:text="회원정보를 입력해주세요"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1.0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edge_grey"
+            android:padding="1.0dp"
+            android:src="@drawable/ic_email">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/tv_signup_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-5dp"
+            android:background="@drawable/edge_grey"
+            android:hint="@string/signup_email"
+            android:paddingStart="15dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1.0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edge_grey"
+            android:padding="1.0dp"
+            android:src="@drawable/ic_pwd">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/tv_signup_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-5dp"
+            android:background="@drawable/edge_grey"
+            android:hint="@string/signup_pwd"
+            android:paddingStart="15dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1.0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edge_grey"
+            android:padding="1.0dp"
+            android:src="@drawable/ic_name">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/tv_signup_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-5dp"
+            android:background="@drawable/edge_grey"
+            android:hint="@string/signup_name"
+            android:paddingStart="15dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="1.0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/edge_grey"
+            android:padding="1.0dp"
+            android:src="@drawable/ic_phone_num">
+
+        </ImageView>
+
+        <EditText
+            android:id="@+id/tv_signup_phone_num"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="-5dp"
+            android:background="@drawable/edge_grey"
+            android:hint="@string/signup_phone_num"
+            android:paddingStart="15dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="#0075E9 "
+        android:text="가입하기"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="@string/signup_copyright"
+        android:textColor="#545454" />
+
+
+</LinearLayout>

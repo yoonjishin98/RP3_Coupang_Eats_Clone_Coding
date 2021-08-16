@@ -77,7 +77,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
 
     private fun initFranchaiseRecycler() {
         franchaiseAdapter = FranchaiseAdapter(requireContext())
-        binding.rvHomeFoodType.adapter = foodTypeAdater
+        binding.rvHomeFranchise.adapter = franchaiseAdapter
 
         franchaiseDatas.apply {
             add(
@@ -86,7 +86,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                     franchaiseTitle = "가마로강정 행당역점",
                     franchaiseReview = "4.9(56)",
                     franchaiseDistance = "1.8",
-                    franchaiseDeliveryFee = "무료배달"
+                    franchaiseDeliveryFee = 0
                 )
             )
             add(
@@ -95,7 +95,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                     franchaiseTitle = "돼지게티 신당왕십리점",
                     franchaiseReview = "4.5(58)",
                     franchaiseDistance = "0.9",
-                    franchaiseDeliveryFee = "무료배달"
+                    franchaiseDeliveryFee = 1500
                 )
             )
         }
