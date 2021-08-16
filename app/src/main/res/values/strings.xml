@@ -6,7 +6,7 @@
     <string name="menu_bottom_history">주문내역</string>
     <string name="menu_bottom_setting">My 이츠</string>
 
-    <string name ="home_loca">삼성아트빌</string>
+    <string name ="home_loca">주소를 입력해주세요</string>
     <string name="home_franchise">인기 프랜차이즈</string>
     <string name="home_choose">골라먹는 맛집</string>
     <string name="tv_login_require_login">로그인이 필요합니다.</string>

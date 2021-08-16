@@ -3,30 +3,30 @@
     <item
         android:id="@+id/menu_bottom_home"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_bottom_home"
         android:title="@string/menu_bottom_home" />
 
     <item
         android:id="@+id/menu_bottom_search"
         android:enabled="true"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_bottom_search"
         android:title="@string/menu_bottom_search" />
 
     <item
         android:id="@+id/menu_bottom_like"
         android:enabled="true"
-        android:icon="@drawable/ic_like"
+        android:icon="@drawable/ic_bottom_like"
         android:title="@string/menu_bottom_like" />
 
     <item
         android:id="@+id/menu_bottom_history"
         android:enabled="true"
-        android:icon="@drawable/ic_history"
+        android:icon="@drawable/ic_bottom_history"
         android:title="@string/menu_bottom_history" />
 
     <item
         android:id="@+id/menu_bottom_setting"
         android:enabled="true"
-        android:icon="@drawable/ic_setting"
+        android:icon="@drawable/ic_bottom_setting"
         android:title="@string/menu_bottom_setting" />
 </menu>

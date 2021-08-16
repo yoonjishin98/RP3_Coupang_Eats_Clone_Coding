@@ -12,53 +12,54 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/tv_login_require_login"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/tv_login_description"
-        android:textSize="16sp"
-        android:textColor="#DCDCDC"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="40dp"/>
+        android:textColor="#858585 "
+        android:textSize="16sp" />
 
     <android.widget.Button
         android:id="@+id/btn_login_by_app"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/button_edge_round_blue"
         android:outlineProvider="none"
         android:text="@string/login_by_app"
-        android:textStyle="bold"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
 
     <android.widget.Button
         android:id="@+id/btn_login_by_id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/button_edge_round_white"
         android:outlineProvider="none"
         android:text="@string/login_by_id"
-        android:textStyle="bold"
-        android:textColor="#00AFFE" />
+        android:textColor="#00AFFE"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="40dp"
-        android:gravity="center_horizontal">
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/tv_login_sign_up1"
@@ -66,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/login_question"
-            android:textColor="#959BA0"
-            android:textSize="16sp" />
+            android:textColor="#48515A "
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_login_sign_up2"
@@ -75,7 +76,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login_question_sign_up"
             android:textColor="#00AFFE"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
 
     </LinearLayout>
