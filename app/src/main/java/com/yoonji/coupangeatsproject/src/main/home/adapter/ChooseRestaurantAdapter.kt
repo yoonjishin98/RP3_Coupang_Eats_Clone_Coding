@@ -23,7 +23,7 @@ class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ChooseRestaurantAdapter.ViewHolder, position: Int) {
         holder.bind(datas[position])
     }
-
+  
     override fun getItemCount(): Int = datas.size
 
     inner class ViewHolder(private val binding : ItemHomeChooseRestaurantBinding) : RecyclerView.ViewHolder(binding.root) {
