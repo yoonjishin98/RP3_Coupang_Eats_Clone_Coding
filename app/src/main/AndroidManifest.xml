@@ -26,6 +26,9 @@
         <activity android:name=".src.main.SignUpActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".src.main.like.LikeActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

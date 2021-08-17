@@ -77,6 +77,8 @@ dependencies {
     // Bottom Sheet Dialog
     implementation 'com.google.android.material:material:1.4.0'
 
+    //image slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
 
 }
