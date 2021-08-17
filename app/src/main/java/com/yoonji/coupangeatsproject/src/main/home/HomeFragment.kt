@@ -1,13 +1,16 @@
 package com.yoonji.coupangeatsproject.src.main.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import com.yoonji.coupangeatsproject.BaseFragment
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.FragmentHomeBinding
+import com.yoonji.coupangeatsproject.src.main.home.adapter.ChooseRestaurantAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FoodTypeAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FranchaiseAdapter
+import com.yoonji.coupangeatsproject.src.main.home.models.ChooseRestaurantData
 import com.yoonji.coupangeatsproject.src.main.home.models.FoodTypeData
 import com.yoonji.coupangeatsproject.src.main.home.models.FranchaiseData
 
@@ -21,6 +24,9 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
 
     private lateinit var franchaiseAdapter : FranchaiseAdapter
     private var franchaiseDatas = mutableListOf<FranchaiseData>()
+
+    private lateinit var restaurantAdapter : ChooseRestaurantAdapter
+    private var chooseRestaurantDatas = mutableListOf<ChooseRestaurantData>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,8 +61,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             binding.flipperAd.flipInterval = 5000
             binding.flipperAd.isAutoStart = true
         }
-
-
     }
 
     private fun initFoodTypeRecycler() {
@@ -71,7 +75,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "종류"))
             add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "종류"))
         }
-
         foodTypeAdater.datas = foodTypeDatas
     }
 
@@ -126,12 +129,79 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                 )
             )
         }
-
         franchaiseAdapter.fdatas = franchaiseDatas
     }
 
     private fun initChooseRestaurantRecycler(){
+        restaurantAdapter = ChooseRestaurantAdapter(requireContext())
+        binding.rvHomeChooseRestaurant.adapter = restaurantAdapter
 
+        chooseRestaurantDatas.apply {
+            add(
+                ChooseRestaurantData(
+                    restaurantMainImg = R.drawable.img_choose_one_o,
+                    restaurantUpImg = R.drawable.img_choose_one_t,
+                    restaurantDownImg = R.drawable.img_choose_one_th,
+                    restaurantName = "맥도날드 한양대점",
+                    restaurantReview = "4.1(1)",
+                    restaurantDistance = "1.2",
+                    restaurantDeliveryFee = "1500",
+                    restaurantDeliveryTime = "25~30분"
+                )
+            )
+            add(
+                ChooseRestaurantData(
+                    restaurantMainImg = R.drawable.img_choose_one_o,
+                    restaurantUpImg = R.drawable.img_choose_one_t,
+                    restaurantDownImg = R.drawable.img_choose_one_th,
+                    restaurantName = "맥도날드 한양대점",
+                    restaurantReview = "4.1(1)",
+                    restaurantDistance = "1.2",
+                    restaurantDeliveryFee = "1500",
+                    restaurantDeliveryTime = "25~30분"
+                )
+            )
+            add(
+                ChooseRestaurantData(
+                    restaurantMainImg = R.drawable.img_choose_one_o,
+                    restaurantUpImg = R.drawable.img_choose_one_t,
+                    restaurantDownImg = R.drawable.img_choose_one_th,
+                    restaurantName = "맥도날드 한양대점",
+                    restaurantReview = "4.1(1)",
+                    restaurantDistance = "1.2",
+                    restaurantDeliveryFee = "1500",
+                    restaurantDeliveryTime = "25~30분"
+                )
+            )
+            add(
+                ChooseRestaurantData(
+                    restaurantMainImg = R.drawable.img_choose_one_o,
+                    restaurantUpImg = R.drawable.img_choose_one_t,
+                    restaurantDownImg = R.drawable.img_choose_one_th,
+                    restaurantName = "맥도날드 한양대점",
+                    restaurantReview = "4.1(1)",
+                    restaurantDistance = "1.2",
+                    restaurantDeliveryFee = "1500",
+                    restaurantDeliveryTime = "25~30분"
+                )
+            )
+            add(
+                ChooseRestaurantData(
+                    restaurantMainImg = R.drawable.img_choose_one_o,
+                    restaurantUpImg = R.drawable.img_choose_one_t,
+                    restaurantDownImg = R.drawable.img_choose_one_th,
+                    restaurantName = "맥도날드 한양대점",
+                    restaurantReview = "4.1(1)",
+                    restaurantDistance = "1.2",
+                    restaurantDeliveryFee = "1500",
+                    restaurantDeliveryTime = "25~30분"
+                )
+            )
+
+        }
+        restaurantAdapter.datas = chooseRestaurantDatas
+
+        Log.d("TAG", "initChooseRestaurantRecycler: " + restaurantAdapter.itemCount)
     }
 
 }

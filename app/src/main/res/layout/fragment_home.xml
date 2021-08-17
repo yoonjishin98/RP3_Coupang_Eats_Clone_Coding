@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
-                android:paddingTop="20dp"
+                android:paddingTop="15dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="5dp"
                 android:weightSum="5">
@@ -130,8 +130,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:paddingStart="20dp"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:text="@string/home_choose"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -139,8 +139,7 @@
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -211,11 +210,12 @@
             </HorizontalScrollView>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_choose_restaurant"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_home_choose_restaurant">
 
             </androidx.recyclerview.widget.RecyclerView>
 
