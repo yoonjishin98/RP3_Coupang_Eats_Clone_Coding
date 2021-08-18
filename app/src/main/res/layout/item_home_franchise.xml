@@ -70,5 +70,18 @@
         android:textColor="@color/black"
         android:textSize="12sp" />
 
+<!--    <androidx.appcompat.widget.AppCompatButton-->
+<!--        android:id="@+id/btn_home_choose_franchiase_coupon"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:background="@drawable/button_edge_round_blue"-->
+<!--        android:drawableLeft="@drawable/ic_coupon_tag"-->
+<!--        android:drawablePadding="3dp"-->
+<!--        android:paddingStart="5dp"-->
+<!--        android:paddingEnd="5dp"-->
+<!--        android:text="1000원 쿠폰"-->
+<!--        android:textColor="#00A7F7"-->
+<!--        android:textSize="12sp" />-->
+
 
 </LinearLayout>

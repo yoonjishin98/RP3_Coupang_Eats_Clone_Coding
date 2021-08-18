@@ -35,7 +35,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/button_edge_round_blue"
+        android:background="@drawable/button_edge_round_bgd_blue"
         android:outlineProvider="none"
         android:text="@string/login_by_app"
         android:textColor="#ffffff"

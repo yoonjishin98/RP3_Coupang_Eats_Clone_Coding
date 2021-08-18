@@ -2,6 +2,8 @@ package com.yoonji.coupangeatsproject.src.main.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -32,10 +34,24 @@ class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adap
             Glide.with(itemView).load(item.restaurantUpImg).into(imgvHomeChooseUp)
             Glide.with(itemView).load(item.restaurantDownImg).into(imgvHomeChooseDown)
             tvHomeChooseName.text = item.restaurantName
-            tvHomeChooseReview.text = item.restaurantReview
+            if(item.restaurantReview != "0")
+                tvHomeChooseReview.text = item.restaurantReview
+            else {
+                imgvHomeChooseStar.visibility = GONE
+                imgvHomeChooseSpot.visibility = GONE
+                tvHomeChooseReview.visibility = GONE
+            }
             tvHomeChooseDistance.text = item.restaurantDistance
             tvHomeChooseDeliveryTime.text = item.restaurantDeliveryTime
-            tvHomeChosseDeliveryFee.text = item.restaurantDeliveryFee + "원"
+            tvHomeChosseDeliveryFee.text = "배달비 "+item.restaurantDeliveryFee + "원"
+            if(item.restaurantCheetahDelivery != 0)
+                Glide.with(itemView).load(item.restaurantCheetahDelivery).into(imgvHomeChooseCheetah)
+            else
+                imgvHomeChooseCheetah.visibility = INVISIBLE
+            if(item.restaurantCoupon != "0")
+                btnHomeChooseCoupon.text = item.restaurantCoupon
+            else
+                btnHomeChooseCoupon.visibility = GONE
         }
     }
 

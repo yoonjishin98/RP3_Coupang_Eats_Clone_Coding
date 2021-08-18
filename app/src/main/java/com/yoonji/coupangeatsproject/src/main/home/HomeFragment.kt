@@ -143,10 +143,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                     restaurantUpImg = R.drawable.img_choose_one_t,
                     restaurantDownImg = R.drawable.img_choose_one_th,
                     restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "4.1(1)",
+                    restaurantReview = "0",
                     restaurantDistance = "1.2",
                     restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분"
+                    restaurantDeliveryTime = "25~30분",
+                    restaurantCheetahDelivery = R.drawable.ic_cheetah_delivery,
+                    restaurantCoupon = "2,000원 쿠폰"
                 )
             )
             add(
@@ -158,7 +160,23 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                     restaurantReview = "4.1(1)",
                     restaurantDistance = "1.2",
                     restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분"
+                    restaurantDeliveryTime = "25~30분",
+                    restaurantCheetahDelivery = R.drawable.ic_cheetah_delivery,
+                    restaurantCoupon = "1,000원 쿠폰"
+                )
+            )
+            add(
+                ChooseRestaurantData(
+                    restaurantMainImg = R.drawable.img_choose_one_o,
+                    restaurantUpImg = R.drawable.img_choose_one_t,
+                    restaurantDownImg = R.drawable.img_choose_one_th,
+                    restaurantName = "맥도날드 한양대점",
+                    restaurantReview = "0",
+                    restaurantDistance = "1.2",
+                    restaurantDeliveryFee = "1,500",
+                    restaurantDeliveryTime = "25~30분",
+                    restaurantCheetahDelivery = 0,
+                    restaurantCoupon = "0"
                 )
             )
             add(
@@ -170,33 +188,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                     restaurantReview = "4.1(1)",
                     restaurantDistance = "1.2",
                     restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분"
+                    restaurantDeliveryTime = "25~30분",
+                    restaurantCheetahDelivery = 0,
+                    restaurantCoupon = "3,000원 쿠폰"
                 )
             )
-            add(
-                ChooseRestaurantData(
-                    restaurantMainImg = R.drawable.img_choose_one_o,
-                    restaurantUpImg = R.drawable.img_choose_one_t,
-                    restaurantDownImg = R.drawable.img_choose_one_th,
-                    restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "4.1(1)",
-                    restaurantDistance = "1.2",
-                    restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분"
-                )
-            )
-            add(
-                ChooseRestaurantData(
-                    restaurantMainImg = R.drawable.img_choose_one_o,
-                    restaurantUpImg = R.drawable.img_choose_one_t,
-                    restaurantDownImg = R.drawable.img_choose_one_th,
-                    restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "4.1(1)",
-                    restaurantDistance = "1.2",
-                    restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분"
-                )
-            )
+
 
         }
         restaurantAdapter.datas = chooseRestaurantDatas

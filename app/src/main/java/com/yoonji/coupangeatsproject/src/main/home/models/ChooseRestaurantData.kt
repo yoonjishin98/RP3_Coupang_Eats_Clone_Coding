@@ -8,5 +8,7 @@ data class ChooseRestaurantData(
     val restaurantReview : String,
     val restaurantDistance :String,
     val restaurantDeliveryFee :String,
-    val restaurantDeliveryTime :String
+    val restaurantDeliveryTime :String,
+    val restaurantCheetahDelivery :Int,
+    val restaurantCoupon :String,
 )
