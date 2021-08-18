@@ -11,9 +11,12 @@
     <string name="home_choose">골라먹는 맛집</string>
     <string name="tv_login_require_login">로그인이 필요합니다.</string>
     <string name="tv_login_description">로그인 후 맛있는 음식을 즐겨보세요.</string>
+    <string name="tv_login_agree">로그인하여 <u>쿠팡이츠 서비스 이용약관</u>, <u>위치기반서비스 이용약관</u>,\n
+        <u>쿠팡페이 서비스 이용약관</u>, <u>쿠팡페이 전자금융거래약관</u>, <u>쿠팡페이</u> \n
+        <u>개인정보수집이용</u>, <u>쿠팡페이 개인정보제공</u>에 동의합니다.</string>
     <string name="login_by_app">쿠팡 앱으로 로그인</string>
     <string name="login_by_id">쿠팡 아이디로 로그인</string>
-    <string name="login_question">아직 회원이 아니신가요?</string>
+    <string name="login_question">아직 회원이 아니신가요? &#160;</string>
     <string name="login_question_sign_up">회원가입</string>
     <string name="signup_name"><b>이름</b></string>
     <string name="signup_email"><b>아이디(이메일)</b></string>
@@ -25,5 +28,7 @@
     <string name="home_option_delivery_fee">배달비</string>
     <string name="home_option_minimum_order">최소주문</string>
     <string name="home_option_discount_coupon">할인쿠폰</string>
+    <string name="home_login_activity_email">쿠팡 아이디(이메일) 입력</string>
+    <string name="home_login_activity_pwd">비밀번호 입력</string>
 
 </resources>

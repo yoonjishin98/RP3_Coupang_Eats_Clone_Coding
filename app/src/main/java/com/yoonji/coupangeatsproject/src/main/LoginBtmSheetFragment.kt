@@ -25,11 +25,14 @@ class LoginBtmSheetFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFra
 
         view.tv_login_sign_up1.setOnClickListener {
             itemClick(0)
-            //dialog?.dismiss()
         }
         view.tv_login_sign_up2.setOnClickListener{
             itemClick(1)
             //dialog?.dismiss()
+        }
+
+        view.btn_login_by_id.setOnClickListener{
+            itemClick(2)
         }
 
     }

@@ -10,10 +10,19 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         binding.btnSignUp.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
+        binding.imgvSignUpFinish.setOnClickListener{
+            finish()
+        }
     }
 }
