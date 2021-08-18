@@ -19,7 +19,7 @@
             android:layout_width="18dp"
             android:layout_height="21dp"
             android:layout_marginStart="20dp"
-            app:srcCompat="@drawable/ic_loca" />
+            app:srcCompat="@drawable/ic_loca_yellow_tag" />
 
         <TextView
             android:id="@+id/tv_home_address"
