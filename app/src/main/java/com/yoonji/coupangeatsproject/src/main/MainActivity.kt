@@ -19,7 +19,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         binding.btmNaviMain.run{
             setOnNavigationItemSelectedListener {
                 when(it.itemId){
@@ -51,6 +50,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                     val intent = Intent(context, SignUpActivity::class.java)
                                     startActivity(intent)
                                 }
+                                2 -> {
+                                    val intent = Intent(context,LogInActivity::class.java )
+                                    startActivity(intent)
+                                }
                             }
                         }
                         loginBtmSheetDlgFragment.show(supportFragmentManager, loginBtmSheetDlgFragment.tag)
@@ -66,6 +69,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                 }
                                 1 -> {
                                     val intent = Intent(context, SignUpActivity::class.java)
+                                    startActivity(intent)
+                                }
+                                2 -> {
+                                    val intent = Intent(context,LogInActivity::class.java )
                                     startActivity(intent)
                                 }
                             }

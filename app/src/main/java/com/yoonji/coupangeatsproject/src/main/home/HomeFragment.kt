@@ -201,4 +201,17 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         Log.d("TAG", "initChooseRestaurantRecycler: " + restaurantAdapter.itemCount)
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.imgvHomeLoca.setOnClickListener{
+
+        }
+        binding.imgvHomeAddressArrow.setOnClickListener{
+
+        }
+        binding.tvHomeAddress.setOnClickListener{
+
+        }
+    }
+
 }
