@@ -71,7 +71,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -80,26 +80,79 @@
                 android:padding="1.0dp">
 
                 <ImageView
+                    android:id="@+id/imgv_sign_up_one"
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:background="@drawable/edge_grey"
                     android:padding="1.0dp"
-                    android:src="@drawable/ic_email">
-
-                </ImageView>
+                    android:src="@drawable/ic_email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/tv_signup_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
                     android:layout_marginStart="-5dp"
-                    android:background="@drawable/edge_grey"
+                    android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_email"
+                    android:maxLines="1"
                     android:paddingStart="15dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgv_sign_up_one"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0" />
 
-            <LinearLayout
+                <View
+                    android:id="@+id/v_sign_up_email_red"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_one" />
+
+                <View
+                    android:id="@+id/v_sign_up_email_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#3C6EF7"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_one" />
+
+                <TextView
+                    android:id="@+id/tv_sign_up_warn_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="이메일을 입력하세요"
+                    android:textColor="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_one" />
+
+                <ImageView
+                    android:id="@+id/imgv_sign_up_check_email"
+                    android:layout_width="30dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_check" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -109,26 +162,149 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
+                    android:id="@+id/imgv_sign_up_two"
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:background="@drawable/edge_grey"
                     android:padding="1.0dp"
-                    android:src="@drawable/ic_pwd">
-
-                </ImageView>
+                    android:src="@drawable/ic_pwd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
                     android:id="@+id/tv_signup_pwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
                     android:layout_marginStart="-5dp"
-                    android:background="@drawable/edge_grey"
+                    android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_pwd"
+                    android:inputType="textVisiblePassword"
+                    android:maxLines="1"
                     android:paddingStart="15dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgv_sign_up_two"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0" />
 
-            <LinearLayout
+                <View
+                    android:id="@+id/v_sign_up_pwd_red"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_two" />
+
+                <View
+                    android:id="@+id/v_sign_up_pwd_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#3C6EF7"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_two" />
+
+                <ImageView
+                    android:id="@+id/imgv_sign_up_check_pwd"
+                    android:layout_width="30dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_check" />
+
+                <ImageView
+                    android:id="@+id/x_one"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_finish_sign__up"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_sign_up_warn_pwd_o"
+                    app:layout_constraintHorizontal_bias="0.761"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_two" />
+
+                <TextView
+                    android:id="@+id/tv_sign_up_warn_pwd_o"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingStart="7dp"
+                    android:text="영문/숫자/특수문자 2가지 이상 조합"
+                    android:textColor="#CCCCCC"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@id/x_one"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_two" />
+
+                <ImageView
+                    android:id="@+id/x_two"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_finish_sign__up"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_sign_up_warn_pwd_t"
+                    app:layout_constraintHorizontal_bias="0.761"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_warn_pwd_o" />
+
+                <TextView
+                    android:id="@+id/tv_sign_up_warn_pwd_t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:paddingStart="7dp"
+                    android:text="3개 이상 연속되거나 동일한 문자/숫자 제외"
+                    android:textColor="#CCCCCC"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/x_two"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_warn_pwd_o" />
+
+                <ImageView
+                    android:id="@+id/x_three"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_finish_sign__up"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_sign_up_warn_pwd_th"
+                    app:layout_constraintHorizontal_bias="0.761"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_warn_pwd_t" />
+
+                <TextView
+                    android:id="@+id/tv_sign_up_warn_pwd_th"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:paddingStart="7dp"
+                    android:text="아이디(이메일) 제외"
+                    android:textColor="#CCCCCC"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/x_three"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sign_up_warn_pwd_t" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -138,26 +314,78 @@
                 android:layout_marginTop="10dp">
 
                 <ImageView
+                    android:id="@+id/imgv_sign_up_three"
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:background="@drawable/edge_grey"
                     android:padding="1.0dp"
-                    android:src="@drawable/ic_name">
-
-                </ImageView>
+                    android:src="@drawable/ic_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
                     android:id="@+id/tv_signup_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="-5dp"
-                    android:background="@drawable/edge_grey"
+                    android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_name"
+                    android:maxLines="1"
                     android:paddingStart="15dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgv_sign_up_three"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1" />
 
-            <LinearLayout
+                <TextView
+                    android:id="@+id/tv_sign_up_warn_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="이름을 정확히 입력하세요"
+                    android:textColor="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_three" />
+
+                <ImageView
+                    android:id="@+id/imgv_sign_up_check_name"
+                    android:layout_width="30dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_check" />
+
+                <View
+                    android:id="@+id/v_sign_up_name_red"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_three" />
+
+
+                <View
+                    android:id="@+id/v_sign_up_name_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#3C6EF7"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_three" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
@@ -168,24 +396,78 @@
                 android:padding="1.0dp">
 
                 <ImageView
+                    android:id="@+id/imgv_sign_up_four"
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:background="@drawable/edge_grey"
                     android:padding="1.0dp"
-                    android:src="@drawable/ic_phone_num">
-
-                </ImageView>
+                    android:paddingTop="4.0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_phone_num"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
                     android:id="@+id/tv_signup_phone_num"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="-5dp"
-                    android:background="@drawable/edge_grey"
+                    android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_phone_num"
+                    android:maxLines="1"
                     android:paddingStart="15dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgv_sign_up_four"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1" />
+
+                <TextView
+                    android:id="@+id/tv_sign_up_warn_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="휴대폰 번호를 정확하게 입력하세요"
+                    android:textColor="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_four" />
+
+                <ImageView
+                    android:id="@+id/imgv_sign_up_check_num"
+                    android:layout_width="30dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_check" />
+
+                <View
+                    android:id="@+id/v_sign_up_num_red"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#CA2339"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_four" />
+
+
+                <View
+                    android:id="@+id/v_sign_up_num_blue"
+                    android:layout_width="match_parent"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="#3C6EF7"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_four" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -213,8 +495,8 @@
 
                 <CheckBox
                     android:id="@+id/checkbox1"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/checkbox_custom"
                     android:button="@null"
