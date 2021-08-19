@@ -14,10 +14,10 @@ https://docs.google.com/document/d/1ZiZ-dS6TAD0s0TRd5OT57eVi-V1-0yXg/edit <br/><
 🟩 -즐겨찾기 화면<br/>
 🔳 -주문내역 화면<br/>
 🔳 -마이이츠 화면 + 설정의 로그아웃 화면<br/>
-🔳 배달지 주소 설정 화면<br/>
-🔳 현재 위치로 주소 설정 by 네이버 지도 api 화면<br/>
+✅ 배달지 주소 설정 화면<br/>
+🟩 현재 위치로 주소 설정 by 네이버 지도 api 화면<br/>
 🔳 세부 주소 설정 화면<br/>
-🔳 음식점 상세 화면<br/>
+✅ 음식점 상세 화면<br/>
 🔳 카트에 담기 화면<br/>
 🔳 카트(결제) 화면<br/>
 🔳 검색 화면<br/>
@@ -26,6 +26,8 @@ https://docs.google.com/document/d/1ZiZ-dS6TAD0s0TRd5OT57eVi-V1-0yXg/edit <br/><
 
 
 ### 💫개발일지<br/>
+_여기에 적는 이슈는 미해결만 기록_
+
 #### 8/14/토
 - 프로젝트 생성
 - 깃허브 사용법 숙지<br/><br/>
@@ -71,8 +73,10 @@ https://docs.google.com/document/d/1ZiZ-dS6TAD0s0TRd5OT57eVi-V1-0yXg/edit <br/><
 - 배달지 주소 설정 화면<br/><br/>
 
 #### 8/19/목 (예정)
-- 즐겨찾기 화면 이슈 해결
+- 현재 위치로 주소 찾기 화면 by 네이버 지도 API
+    - 이슈: 1(네이버 지도 SDK 사용 중 마커가 지도에 뜨지 않음)
 - 핃백받은 화면들 퍼블리싱 세부 수정<br/>
     : 회원가입 validation 경고 처리
-- 현재 위치로 주소 찾기 화면 by 네이버 지도 API
+- 음식점 상세 화면
+- 즐겨찾기 화면 이슈 해결
 - 주문내역 화면
