@@ -10,6 +10,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ActivityMainBinding
+import com.yoonji.coupangeatsproject.src.LogInActivity
+import com.yoonji.coupangeatsproject.src.SignUpActivity
 import com.yoonji.coupangeatsproject.src.main.home.HomeFragment
 import com.yoonji.coupangeatsproject.src.main.like.LikeActivity
 import com.yoonji.coupangeatsproject.src.main.search.SearchFragment
@@ -51,7 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                     startActivity(intent)
                                 }
                                 2 -> {
-                                    val intent = Intent(context,LogInActivity::class.java )
+                                    val intent = Intent(context, LogInActivity::class.java )
                                     startActivity(intent)
                                 }
                             }
@@ -72,7 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                                     startActivity(intent)
                                 }
                                 2 -> {
-                                    val intent = Intent(context,LogInActivity::class.java )
+                                    val intent = Intent(context, LogInActivity::class.java )
                                     startActivity(intent)
                                 }
                             }

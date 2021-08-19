@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import com.naver.maps.map.NaverMapSdk
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -44,10 +45,11 @@ class ApplicationClass : Application() {
     // 앱이 처음 생성되는 순간,
     override fun onCreate() {
         super.onCreate()
-        // SP 새로 만들어주고
+
         sSharedPreferences = applicationContext.getSharedPreferences("SOFTSQUARED_TEMPLATE_APP", MODE_PRIVATE)
-        // 레트로핏 인스턴스 생성
+
         initRetrofitInstance()
+
     }
 
     // 레트로핏 인스턴스를 생성하고, 레트로핏에 각종 설정값들을 지정해줍니다.

@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject.src.main
+package com.yoonji.coupangeatsproject.src
 
 import android.content.Intent
 import android.os.Bundle
