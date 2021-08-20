@@ -85,6 +85,7 @@
                 android:background="#F8F8F8" />
 
             <ImageView
+                android:id="@+id/temporary"
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
                 android:scaleType="centerCrop"

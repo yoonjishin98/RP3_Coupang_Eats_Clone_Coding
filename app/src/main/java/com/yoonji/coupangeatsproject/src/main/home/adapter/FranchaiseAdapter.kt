@@ -35,6 +35,8 @@ class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<Fr
             }else{
                 tvHomeFranchaiseDeliveryFee.text = item.franchaiseDeliveryFee.toString() + "원"
             }
+
+
         }
     }
 
