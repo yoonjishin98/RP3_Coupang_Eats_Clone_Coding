@@ -11,7 +11,6 @@ import com.yoonji.coupangeatsproject.src.main.home.models.FranchaiseData
 
 class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<FranchaiseAdapter.ViewHolder>(){
 
-
     var fdatas = mutableListOf<FranchaiseData>()
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int): FranchaiseAdapter.ViewHolder

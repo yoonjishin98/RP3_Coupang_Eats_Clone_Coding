@@ -21,4 +21,5 @@
     <color name="redline">#CA2339</color>
     <color name="blueline">#3C6EF7</color>
     <color name="greencheck">#13882A</color>
+    <color name="greyForReview">#A4ACB5</color>
 </resources>

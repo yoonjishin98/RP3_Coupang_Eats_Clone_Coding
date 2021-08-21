@@ -8,248 +8,293 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:fitsSystemWindows="true"
-        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/white"
             app:expandedTitleTextAppearance="@style/CollapsingToolbar.TitleText"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="나나">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_restaurant_two" />
+            app:statusBarScrim="@color/colorPrimary"
+            app:title="KFC 왕십리역사점">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="130dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@color/white"
-                android:elevation="10dp">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tv_restaurant_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="KFC 왕십리역사점"
-                    android:textColor="@color/black"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgv_restaurant_ad"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:paddingBottom="130dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_restaurant_two"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imgv_restaurant_star"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="80dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_restaurant_title"
-                    app:srcCompat="@drawable/ic_star_big" />
-
                 <TextView
-                    android:id="@+id/tv_restaurant_review_score"
+                    android:id="@+id/tv_restaurant_delivery_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="8dp"
-                    android:text="4.5"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:drawableStart="@drawable/ic_delivery_time"
+                    android:drawablePadding="7dp"
+                    android:text="24~34분"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/imgv_restaurant_star"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_title" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="리뷰 "
-                    android:textColor="#00AFFE "
-                    android:textSize="14sp"
-                    app:layout_constraintRight_toLeftOf="@id/tv_restaurant_review_total"
-                    app:layout_constraintTop_toBottomOf="@id/tv_restaurant_title" />
-
-                <TextView
-                    android:id="@+id/tv_restaurant_review_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="1,300"
-                    android:textColor="#00AFFE "
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_restaurant_review_arrow"
-                    app:layout_constraintTop_toBottomOf="@id/tv_restaurant_title" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
+
+                <ImageView
+                    android:id="@+id/imgv_restaurant_cheetah"
+                    android:layout_width="70dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/tv_restaurant_delivery_time"
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad"
+                    app:srcCompat="@drawable/ic_cheetah_delivery" />
 
                 <TextView
-                    android:id="@+id/tv_restaurant_review_arrow"
+                    android:id="@+id/tv_restaurant_info"
+                    android:layout_width="127dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:drawableEnd="@drawable/ic_arrow_right_blue"
+                    android:text="매장 / 원산지 정보"
+                    android:textColor="#00AFFE"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
+
+                <TextView
+                    android:id="@+id/textView23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="90dp"
-                    android:drawableEnd="@drawable/ic_arrow_right_blue"
-                    android:drawablePadding="8dp"
-                    android:text="개"
-                    android:textColor="#00AFFE "
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="25dp"
+                    android:text="배달비"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_title" />
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_time" />
 
+                <TextView
+                    android:id="@+id/tv_restaurant_delivery_fee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="25dp"
+                    android:text="무료배달"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textView23"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_time" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="최소주문"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+                <TextView
+                    android:id="@+id/tv_restaurant_minimum_order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="10dp"
+                    android:text="5,000원"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/textView24"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_fee" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="25dp"
+                    android:text="자세히"
+                    app:layout_constraintStart_toEndOf="@+id/tv_restaurant_delivery_fee"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_time" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_restaurant_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24"
+                    tools:listitem="@layout/item_restaurant_review" />
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/constraintLayout2"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    android:animateLayoutChanges="true"-->
+<!--                    app:layout_collapseMode="pin"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad">-->
+
+
+<!--                    -->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="128dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/white"
+                    android:elevation="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imgv_restaurant_ad">
+
+                    <TextView
+                        android:id="@+id/tv_restaurant_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="KFC 왕십리역사점"
+                        android:textColor="@color/black"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.497"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imgv_restaurant_star"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="80dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_restaurant_title"
+                        app:srcCompat="@drawable/ic_star_big" />
+
+                    <TextView
+                        android:id="@+id/tv_restaurant_review_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="8dp"
+                        android:text="4.5"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@+id/imgv_restaurant_star"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_title" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="리뷰 "
+                        android:textColor="#00AFFE "
+                        android:textSize="14sp"
+                        app:layout_constraintRight_toLeftOf="@id/tv_restaurant_review_total"
+                        app:layout_constraintTop_toBottomOf="@id/tv_restaurant_title" />
+
+                    <TextView
+                        android:id="@+id/tv_restaurant_review_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="1,300"
+                        android:textColor="#00AFFE "
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_restaurant_review_arrow"
+                        app:layout_constraintTop_toBottomOf="@id/tv_restaurant_title" />
+
+                    <TextView
+                        android:id="@+id/tv_restaurant_review_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="90dp"
+                        android:drawableEnd="@drawable/ic_arrow_right_blue"
+                        android:drawablePadding="8dp"
+                        android:text="개"
+                        android:textColor="#00AFFE "
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_restaurant"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:gravity="top"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_restaurant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="?attr/actionBarSize"
-            android:animateLayoutChanges="true">
+            android:layout_gravity="bottom"
+            android:fillViewport="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_restaurant_review"
+            app:tabIndicatorColor="#000000"
+            app:tabMode="scrollable"
+            app:tabTextColor="@color/black" />
 
-
-            <TextView
-                android:id="@+id/tv_restaurant_delivery_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:drawableStart="@drawable/ic_delivery_time"
-                android:drawablePadding="7dp"
-                android:text="24~34분"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imgv_restaurant_cheetah"
-                android:layout_width="70dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="10dp"
-                android:visibility="invisible"
-                app:layout_constraintStart_toEndOf="@+id/tv_restaurant_delivery_time"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_cheetah_delivery" />
-
-            <TextView
-                android:id="@+id/tv_restaurant_info"
-                android:layout_width="127dp"
-                android:layout_height="16dp"
-                android:layout_marginEnd="30dp"
-                android:drawableEnd="@drawable/ic_arrow_right_blue"
-                android:text="매장 / 원산지 정보"
-                android:textColor="#00AFFE"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="25dp"
-                android:text="배달비"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_time" />
-
-            <TextView
-                android:id="@+id/tv_restaurant_delivery_fee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
-                android:text="무료배달"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/textView23"
-                app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_time" />
-
-            <TextView
-                android:id="@+id/textView24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:text="최소주문"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-            <TextView
-                android:id="@+id/tv_restaurant_minimum_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="10dp"
-                android:text="5,000원"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toEndOf="@+id/textView24"
-                app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_fee" />
-
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="25dp"
-                android:text="자세히"
-                app:layout_constraintStart_toEndOf="@+id/tv_restaurant_delivery_fee"
-                app:layout_constraintTop_toBottomOf="@+id/tv_restaurant_delivery_time" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="30dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView24"
-                tools:listitem="@layout/item_restaurant_review" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
