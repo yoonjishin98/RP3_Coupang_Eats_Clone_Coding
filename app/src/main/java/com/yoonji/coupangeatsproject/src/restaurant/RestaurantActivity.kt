@@ -1,7 +1,6 @@
 package com.yoonji.coupangeatsproject.src.restaurant
 
 import android.content.Intent
-import android.graphics.Movie
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,7 +12,7 @@ import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ActivityRestaurantBinding
-import com.yoonji.coupangeatsproject.src.OrderCartActivity
+import com.yoonji.coupangeatsproject.src.order.OrderCartActivity
 import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantMenuAdapter
 import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantReviewAdapter
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
@@ -158,7 +157,7 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
                 binding.layoutRestaurantCart.visibility = VISIBLE
 
                 binding.layoutRestaurantCart.setOnClickListener{
-                        val intent = Intent(this,OrderCartActivity::class.java)
+                        val intent = Intent(this, OrderCartActivity::class.java)
                         startActivity(intent)
                 }
             }

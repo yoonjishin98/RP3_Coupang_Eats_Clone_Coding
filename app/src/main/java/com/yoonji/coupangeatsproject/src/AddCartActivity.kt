@@ -63,7 +63,7 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
     override fun onResume() {
         super.onResume()
 
-        binding.btnAddCart.setOnClickListener{
+        binding.tvAddCart.setOnClickListener{
             val intent = Intent(this,RestaurantActivity::class.java)
             intent.putExtra("showOrderCartActivityBtn","1000")
             startActivity(intent)

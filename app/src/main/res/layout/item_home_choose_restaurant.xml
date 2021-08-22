@@ -169,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button_edge_round_blue"
+        android:background="@drawable/edge_round_blue_bgd_white"
         android:drawableLeft="@drawable/ic_coupon_tag"
         android:drawablePadding="3dp"
         android:paddingStart="5dp"

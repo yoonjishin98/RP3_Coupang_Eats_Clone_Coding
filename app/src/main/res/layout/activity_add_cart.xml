@@ -198,11 +198,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/btn_add_cart"
+        android:id="@+id/tv_add_cart"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom"
-        android:background="#00AFFE"
+        android:background="@color/signatureBlue"
         android:gravity="center"
         android:text="카트에 담기"
         android:textColor="@color/white"
