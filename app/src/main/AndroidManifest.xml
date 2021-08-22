@@ -50,6 +50,12 @@
         <activity android:name=".src.restaurant.RestaurantActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".src.AddCartActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.OrderCartActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

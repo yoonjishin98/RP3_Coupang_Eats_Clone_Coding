@@ -18,7 +18,7 @@
 
     </style>
 
-    <style name="CollapsingToolbar.TitleText" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+    <style name="CollapsingToolbar.TitleText.expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
         <item name="android:textColor">@android:color/transparent</item>
     </style>
 

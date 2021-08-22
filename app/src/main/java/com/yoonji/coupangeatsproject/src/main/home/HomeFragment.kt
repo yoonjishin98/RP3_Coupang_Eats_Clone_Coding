@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.viewpager.widget.ViewPager
 import com.yoonji.coupangeatsproject.BaseFragment
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.FragmentHomeBinding
+import com.yoonji.coupangeatsproject.src.AddCartActivity
 import com.yoonji.coupangeatsproject.src.AddressActivity
 import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
 import com.yoonji.coupangeatsproject.src.main.home.adapter.ChooseRestaurantAdapter
@@ -220,7 +222,11 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         }
 
         binding.temporary.setOnClickListener {
-            val intent = Intent(requireContext(), RestaurantActivity::class.java)
+            //임시
+//            val intent = Intent(requireContext(), RestaurantActivity::class.java)
+//            startActivity(intent)
+
+            val intent = Intent(requireContext(), AddCartActivity::class.java)
             startActivity(intent)
         }
 
