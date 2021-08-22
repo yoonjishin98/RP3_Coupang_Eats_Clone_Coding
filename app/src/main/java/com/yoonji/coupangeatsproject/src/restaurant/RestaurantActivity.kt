@@ -1,16 +1,19 @@
 package com.yoonji.coupangeatsproject.src.restaurant
 
+import android.content.Intent
 import android.graphics.Movie
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.VISIBLE
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ActivityRestaurantBinding
+import com.yoonji.coupangeatsproject.src.OrderCartActivity
 import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantMenuAdapter
 import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantReviewAdapter
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
@@ -148,6 +151,19 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+        var showOrNot = intent.getStringExtra("showOrderCartActivityBtn")
+        if (showOrNot != null) {
+            if(showOrNot == "1000" ) {
+                binding.layoutRestaurantCart.visibility = VISIBLE
+
+                binding.layoutRestaurantCart.setOnClickListener{
+                        val intent = Intent(this,OrderCartActivity::class.java)
+                        startActivity(intent)
+                }
+            }
+        }
+
 
 
     }

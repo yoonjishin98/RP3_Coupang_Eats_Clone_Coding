@@ -65,6 +65,7 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
 
         binding.btnAddCart.setOnClickListener{
             val intent = Intent(this,RestaurantActivity::class.java)
+            intent.putExtra("showOrderCartActivityBtn","1000")
             startActivity(intent)
         }
 
@@ -75,6 +76,19 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
                 binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus)
             else
                 binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
+        }
+
+        binding.imgvAddCartMinus.setOnClickListener {
+            if(binding.tvAddCartCount.text.toString().toInt() > 1){
+                count--
+                binding.tvAddCartCount.text = count.toString()
+            }else{
+                binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
+            }
+        }
+
+        if( binding.tvAddCartCount.text.toString().toInt() < 1){
+            binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
         }
 
     }
