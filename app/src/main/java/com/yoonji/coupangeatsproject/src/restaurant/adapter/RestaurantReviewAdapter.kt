@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject.src
+package com.yoonji.coupangeatsproject.src.restaurant.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ItemRestaurantReviewBinding
+import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantReviewData
 
 class RestaurantReviewAdapter (private val context: Context) : RecyclerView.Adapter<RestaurantReviewAdapter.ViewHolder>(){
     var datas = mutableListOf<RestaurantReviewData>()
@@ -14,10 +15,10 @@ class RestaurantReviewAdapter (private val context: Context) : RecyclerView.Adap
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RestaurantReviewAdapter.ViewHolder
+    ): ViewHolder
             = ViewHolder(ItemRestaurantReviewBinding.inflate(LayoutInflater.from(parent.context), parent,false))
 
-    override fun onBindViewHolder(holder: RestaurantReviewAdapter.ViewHolder, position: Int)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int)
         = holder.bind(datas[position])
 
     override fun getItemCount(): Int = datas.size

@@ -47,7 +47,7 @@
         <activity android:name=".src.AddressByMapActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.RestaurantActivity"
+        <activity android:name=".src.restaurant.RestaurantActivity"
             android:screenOrientation="portrait">
         </activity>
 

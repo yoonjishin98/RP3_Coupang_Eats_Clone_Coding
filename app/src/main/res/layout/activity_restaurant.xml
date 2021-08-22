@@ -155,21 +155,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView24"
                     tools:listitem="@layout/item_restaurant_review" />
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:id="@+id/constraintLayout2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="30dp"-->
-<!--                    android:animateLayoutChanges="true"-->
-<!--                    app:layout_collapseMode="pin"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad">-->
-
-
-<!--                    -->
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
                     android:layout_width="match_parent"
@@ -291,6 +276,16 @@
             android:layout_width="match_parent"
             android:layout_height="500dp">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_restaurant_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_restaurant_menu" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
