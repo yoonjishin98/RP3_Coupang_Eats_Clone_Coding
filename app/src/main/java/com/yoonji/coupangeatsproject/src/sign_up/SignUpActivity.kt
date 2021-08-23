@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject.src
+package com.yoonji.coupangeatsproject.src.sign_up
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,11 +9,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.View.*
 import androidx.core.content.ContextCompat
-import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivitySignUpBinding
 import com.yoonji.coupangeatsproject.src.main.MainActivity
-import java.util.regex.Pattern
 
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding::inflate) {

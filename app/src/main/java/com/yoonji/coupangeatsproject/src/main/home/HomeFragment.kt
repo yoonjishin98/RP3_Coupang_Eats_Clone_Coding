@@ -5,19 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import androidx.viewpager.widget.ViewPager
 import com.yoonji.coupangeatsproject.BaseFragment
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.FragmentHomeBinding
-import com.yoonji.coupangeatsproject.src.AddCartActivity
-import com.yoonji.coupangeatsproject.src.AddressActivity
-import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
+import com.yoonji.coupangeatsproject.src.add_cart.AddCartActivity
+import com.yoonji.coupangeatsproject.src.address.AddressActivity
 import com.yoonji.coupangeatsproject.src.main.home.adapter.ChooseRestaurantAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FoodTypeAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FranchaiseAdapter
-import com.yoonji.coupangeatsproject.src.main.home.models.ChooseRestaurantData
-import com.yoonji.coupangeatsproject.src.main.home.models.FoodTypeData
-import com.yoonji.coupangeatsproject.src.main.home.models.FranchaiseData
+import com.yoonji.coupangeatsproject.src.main.home.data.ChooseRestaurantData
+import com.yoonji.coupangeatsproject.src.main.home.data.FoodTypeData
+import com.yoonji.coupangeatsproject.src.main.home.data.FranchaiseData
 
 class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home),
     HomeFragmentView {
@@ -231,5 +229,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         }
 
     }
+
 
 }

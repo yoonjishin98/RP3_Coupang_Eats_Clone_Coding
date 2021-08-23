@@ -115,8 +115,9 @@ o2f6mv
 - 결제 화면
 
 #### 8/23/월 예정
-- 음식점 상세 화면 이슈(Recycler View inside recycler view) 해결
+- 음식점 상세 화면 이슈(Recycler View inside recycler view) 해결 및 divider 추가
+
 - 로그인 API 및 회원가입 API 엮기
 - 핃백받은 화면들 퍼블리싱 세부 수정 완료 <br/>
     : 회원가입 validation 경고 처리
-- 화면 디테일 
+- 화면간 Interaction 및 로그인, 주문 여부 등에 따른 분기처리 

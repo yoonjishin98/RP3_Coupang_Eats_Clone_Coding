@@ -47,7 +47,7 @@
             android:textColor="@color/black" />
 
         <EditText
-            android:id="@+id/tv_login_email"
+            android:id="@+id/edt_login_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
@@ -81,7 +81,7 @@
         </TextView>
 
         <EditText
-            android:id="@+id/tv_login_pwd"
+            android:id="@+id/edt_login_pwd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"

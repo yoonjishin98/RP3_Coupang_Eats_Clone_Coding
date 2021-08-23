@@ -7,11 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.yoonji.coupangeatsproject.BaseActivity
+import com.yoonji.coupangeatsproject.ApplicationClass
 import com.yoonji.coupangeatsproject.R
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityMainBinding
-import com.yoonji.coupangeatsproject.src.LogInActivity
-import com.yoonji.coupangeatsproject.src.SignUpActivity
 import com.yoonji.coupangeatsproject.src.main.home.HomeFragment
 import com.yoonji.coupangeatsproject.src.main.like.LikeActivity
 import com.yoonji.coupangeatsproject.src.main.search.SearchFragment
@@ -20,6 +19,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val TAG = "**MainActivity--->"
 
         binding.btmNaviMain.run{
             setOnNavigationItemSelectedListener {
@@ -42,44 +43,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     R.id.menu_bottom_history ->{
                         //supportFragmentManager.popBackStackImmediate("home", FragmentManager.POP_BACK_STACK_INCLUSIVE)
                         //changeFragment(HistoryFragment(),"history")
-                        val loginBtmSheetDlgFragment: LoginBtmSheetFragment = LoginBtmSheetFragment {
-                            when (it) {
-                                0 -> {
-                                    val intent = Intent(context, SignUpActivity::class.java)
-                                    startActivity(intent)
-                                }
-                                1 -> {
-                                    val intent = Intent(context, SignUpActivity::class.java)
-                                    startActivity(intent)
-                                }
-                                2 -> {
-                                    val intent = Intent(context, LogInActivity::class.java )
-                                    startActivity(intent)
-                                }
-                            }
-                        }
-                        loginBtmSheetDlgFragment.show(supportFragmentManager, loginBtmSheetDlgFragment.tag)
+//                        val jwt = ApplicationClass.sSharedPreferences.getString("jwt", "")
+//                        Log.d(TAG, "onCreate: $jwt" )
+
+
+                        val bottomSheet = LoginBtmSheetFragment()
+                        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
                     }
                     R.id.menu_bottom_setting ->{
                         //supportFragmentManager.popBackStackImmediate("home", FragmentManager.POP_BACK_STACK_INCLUSIVE)
                         //changeFragment(SettingFragment(),"setting")
-                        val loginBtmSheetDlgFragment: LoginBtmSheetFragment = LoginBtmSheetFragment {
-                            when (it) {
-                                0 -> {
-                                    val intent = Intent(context, SignUpActivity::class.java)
-                                    startActivity(intent)
-                                }
-                                1 -> {
-                                    val intent = Intent(context, SignUpActivity::class.java)
-                                    startActivity(intent)
-                                }
-                                2 -> {
-                                    val intent = Intent(context, LogInActivity::class.java )
-                                    startActivity(intent)
-                                }
-                            }
-                        }
-                        loginBtmSheetDlgFragment.show(supportFragmentManager, loginBtmSheetDlgFragment.tag)
+
+                        val bottomSheet = LoginBtmSheetFragment()
+                        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
                     }
                 }
 
@@ -133,6 +109,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
 
     }
+
 
 
 }

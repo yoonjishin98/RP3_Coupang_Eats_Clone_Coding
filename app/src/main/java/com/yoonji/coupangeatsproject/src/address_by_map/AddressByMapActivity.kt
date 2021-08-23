@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject.src
+package com.yoonji.coupangeatsproject.src.address_by_map
 
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -13,12 +13,9 @@ import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
-import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddressByMapBinding
-import java.security.Permission
-import java.util.*
-import java.util.jar.Manifest
 
 class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityAddressByMapBinding::inflate),
     OnMapReadyCallback {
@@ -69,7 +66,7 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
         mNaverMap = p0
         mNaverMap.locationSource = locationSourece
 
-        ActivityCompat.requestPermissions(this,PERMISSIONS,100)
+        ActivityCompat.requestPermissions(this, PERMISSIONS,100)
     }
 
     override fun onRequestPermissionsResult(

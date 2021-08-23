@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject
+package com.yoonji.coupangeatsproject.config
 
 import android.content.Context
 import android.os.Bundle

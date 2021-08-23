@@ -3,9 +3,9 @@ package com.yoonji.coupangeatsproject.src.main.like
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.BaseFragment
 import com.yoonji.coupangeatsproject.R
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityLikeBinding
 import com.yoonji.coupangeatsproject.databinding.ActivityMainBinding
 import com.yoonji.coupangeatsproject.src.main.MainActivity

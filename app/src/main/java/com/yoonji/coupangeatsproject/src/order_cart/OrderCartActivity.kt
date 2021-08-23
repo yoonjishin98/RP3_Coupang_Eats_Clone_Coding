@@ -1,15 +1,10 @@
-package com.yoonji.coupangeatsproject.src.order
+package com.yoonji.coupangeatsproject.src.order_cart
 
 import android.os.Bundle
-import com.yoonji.coupangeatsproject.BaseActivity
-import com.yoonji.coupangeatsproject.R
-import com.yoonji.coupangeatsproject.databinding.ActivityAddCartBinding
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityOrderCartBinding
-import com.yoonji.coupangeatsproject.src.order.adapter.OrderAdapter
-import com.yoonji.coupangeatsproject.src.order.model.OrderData
-import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantMenuAdapter
-import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantReviewAdapter
-import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
+import com.yoonji.coupangeatsproject.src.order_cart.adapter.OrderAdapter
+import com.yoonji.coupangeatsproject.src.order_cart.model.OrderData
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantReviewData
 
 class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCartBinding::inflate) {

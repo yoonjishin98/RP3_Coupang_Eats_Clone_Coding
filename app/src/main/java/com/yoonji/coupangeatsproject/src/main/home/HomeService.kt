@@ -1,4 +1,5 @@
 package com.yoonji.coupangeatsproject.src.main.home
 
-class HomeService {
+class HomeService(val view: HomeFragmentView)  {
+
 }

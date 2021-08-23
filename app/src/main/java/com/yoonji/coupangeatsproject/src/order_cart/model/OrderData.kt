@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject.src.order.model
+package com.yoonji.coupangeatsproject.src.order_cart.model
 
 data class OrderData (
     val orderTitle:String,

@@ -1,16 +1,11 @@
-package com.yoonji.coupangeatsproject.src
+package com.yoonji.coupangeatsproject.src.add_cart
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.core.view.ViewCompat
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
-import com.yoonji.coupangeatsproject.BaseActivity
 import com.yoonji.coupangeatsproject.R
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddCartBinding
 import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
 

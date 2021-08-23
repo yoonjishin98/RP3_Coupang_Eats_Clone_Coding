@@ -1,5 +1,6 @@
 package com.yoonji.coupangeatsproject.src.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.yoonji.coupangeatsproject.R
+import com.yoonji.coupangeatsproject.src.log_in.LogInActivity
+import com.yoonji.coupangeatsproject.src.sign_up.SignUpActivity
 import kotlinx.android.synthetic.main.fragment_login_btm_sheet.view.*
 
 
-class LoginBtmSheetFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFragment() {
+class LoginBtmSheetFragment() : BottomSheetDialogFragment() {
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,15 +28,18 @@ class LoginBtmSheetFragment(val itemClick: (Int) -> Unit) : BottomSheetDialogFra
         super.onViewCreated(view, savedInstanceState)
 
         view.tv_login_sign_up1.setOnClickListener {
-            itemClick(0)
+            val intent = Intent(context, SignUpActivity::class.java)
+            startActivity(intent)
         }
         view.tv_login_sign_up2.setOnClickListener{
-            itemClick(1)
-            //dialog?.dismiss()
+            val intent = Intent(context, SignUpActivity::class.java)
+            startActivity(intent)
+
         }
 
         view.btn_login_by_id.setOnClickListener{
-            itemClick(2)
+            val intent = Intent(context, LogInActivity::class.java )
+            startActivity(intent)
         }
 
     }

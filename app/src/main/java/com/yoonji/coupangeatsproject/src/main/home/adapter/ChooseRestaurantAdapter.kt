@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.databinding.ItemHomeChooseRestaurantBinding
-import com.yoonji.coupangeatsproject.databinding.ItemHomeFoodTypeBinding
-import com.yoonji.coupangeatsproject.src.main.home.models.ChooseRestaurantData
-import com.yoonji.coupangeatsproject.src.main.home.models.FoodTypeData
+import com.yoonji.coupangeatsproject.src.main.home.data.ChooseRestaurantData
 
 class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adapter<ChooseRestaurantAdapter.ViewHolder>(){
 

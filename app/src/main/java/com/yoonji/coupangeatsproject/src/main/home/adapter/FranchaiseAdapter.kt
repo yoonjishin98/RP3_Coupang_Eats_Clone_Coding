@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.databinding.ItemHomeFranchiseBinding
-import com.yoonji.coupangeatsproject.src.main.home.models.FoodTypeData
-import com.yoonji.coupangeatsproject.src.main.home.models.FranchaiseData
+import com.yoonji.coupangeatsproject.src.main.home.data.FranchaiseData
 
 class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<FranchaiseAdapter.ViewHolder>(){
 

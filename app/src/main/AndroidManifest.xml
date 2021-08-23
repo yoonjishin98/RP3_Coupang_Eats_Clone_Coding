@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.yoonji.coupangeatsproject">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoupangEatsProject"
         tools:replace="android:appComponentFactory"
-        android:appComponentFactory="whateverString">
+        android:appComponentFactory="whateverString"
+        tools:targetApi="p">
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="fyrgrvfmye" />
@@ -32,28 +33,28 @@
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.SignUpActivity"
+        <activity android:name=".src.sign_up.SignUpActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".src.main.like.LikeActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.LogInActivity"
+        <activity android:name=".src.log_in.LogInActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.AddressActivity"
+        <activity android:name=".src.address.AddressActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.AddressByMapActivity"
+        <activity android:name=".src.address_by_map.AddressByMapActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".src.restaurant.RestaurantActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.AddCartActivity"
+        <activity android:name=".src.add_cart.AddCartActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.order.OrderCartActivity"
+        <activity android:name=".src.order_cart.OrderCartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
         </activity>

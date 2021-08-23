@@ -1,12 +1,11 @@
-package com.yoonji.coupangeatsproject.src.order.adapter
+package com.yoonji.coupangeatsproject.src.order_cart.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yoonji.coupangeatsproject.databinding.ItemOrderCartBinding
-import com.yoonji.coupangeatsproject.databinding.ItemRestaurantMenuDetailBinding
-import com.yoonji.coupangeatsproject.src.order.model.OrderData
+import com.yoonji.coupangeatsproject.src.order_cart.model.OrderData
 
 class OrderAdapter (private val context: Context) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
     var datas = mutableListOf<OrderData>()

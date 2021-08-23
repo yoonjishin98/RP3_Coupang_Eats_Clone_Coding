@@ -1,9 +1,10 @@
-package com.yoonji.coupangeatsproject.src
+package com.yoonji.coupangeatsproject.src.address
 
 import android.content.Intent
 import android.os.Bundle
-import com.yoonji.coupangeatsproject.BaseActivity
+import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddressBinding
+import com.yoonji.coupangeatsproject.src.address_by_map.AddressByMapActivity
 
 class AddressActivity  : BaseActivity<ActivityAddressBinding>(ActivityAddressBinding::inflate) {
 
@@ -20,7 +21,7 @@ class AddressActivity  : BaseActivity<ActivityAddressBinding>(ActivityAddressBin
         }
 
         binding.linearFindByCurrentLoca.setOnClickListener {
-            val intent = Intent(this,AddressByMapActivity::class.java )
+            val intent = Intent(this, AddressByMapActivity::class.java )
             startActivity(intent)
         }
 
