@@ -1,11 +1,16 @@
 package com.yoonji.coupangeatsproject.src.restaurant
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.VISIBLE
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -26,8 +31,8 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
     val reviewDatas = mutableListOf<RestaurantReviewData>()
 
     lateinit var menuAdapter : RestaurantMenuAdapter
-    val menuDatas = mutableListOf<RestaurantMenuData>()
-//    private val menuDatas: ArrayList<ArrayList<RestaurantDetailData>> = ArrayList()
+    var menuDatas = mutableListOf<RestaurantMenuData>()
+    var menuDetailDatas = mutableListOf<RestaurantDetailData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,18 +106,20 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
         menuAdapter = RestaurantMenuAdapter(this)
         binding.rvRestaurantMenu.adapter = menuAdapter
 
-        menuDatas.apply {
-            (RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
+        menuDetailDatas.apply{
+            add(RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
+                restaurantDetailPrice = "30000",restaurantDetailTitle = "어쩌구 저쩌구 피자"))
+            add(RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
                 restaurantDetailPrice = "29000",restaurantDetailTitle = "어쩌구 저쩌구 피자"))
-            RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
-                restaurantDetailPrice = "30000",restaurantDetailTitle = "어쩌구 저쩌구 피자")
-            RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
-                restaurantDetailPrice = "29000",restaurantDetailTitle = "어쩌구 저쩌구 피자")
         }
 
+        menuDatas.apply {
+            add(RestaurantMenuData(restaurantMenuTitle = "베스트메뉴", menuDetailArrayList = menuDetailDatas))
+            add(RestaurantMenuData(restaurantMenuTitle = "추천메뉴", menuDetailArrayList = menuDetailDatas))
+            add(RestaurantMenuData(restaurantMenuTitle = "사이드", menuDetailArrayList = menuDetailDatas ))
+        }
         menuAdapter.datas = menuDatas
     }
-
 
 
     override fun onResume() {

@@ -6,7 +6,7 @@ https://docs.google.com/document/d/1ZiZ-dS6TAD0s0TRd5OT57eVi-V1-0yXg/edit <br/><
 ### 🔆API 명세서
 https://docs.google.com/spreadsheets/d/1JKFmjpYTZhbPsENecoaEtXpK1FR2MtOpF20U2DJs75A/edit?usp=drive_web&ouid=105173417440198977948 <br/><br/>
 
-### 🔱API 명세서
+### 🔱ERD 다이어그램 by AQuery Tool
 https://aquerytool.com/aquerymain/index/?rurl=902b68bb-c0a3-46f8-970f-f0f85abb9672& 
 o2f6mv
 
@@ -115,8 +115,8 @@ o2f6mv
 - 결제 화면
 
 #### 8/23/월 예정
-- 로그인 API 및 회원가입 API 엮기
 - 음식점 상세 화면 이슈(Recycler View inside recycler view) 해결
+- 로그인 API 및 회원가입 API 엮기
 - 핃백받은 화면들 퍼블리싱 세부 수정 완료 <br/>
     : 회원가입 validation 경고 처리
 - 화면 디테일 

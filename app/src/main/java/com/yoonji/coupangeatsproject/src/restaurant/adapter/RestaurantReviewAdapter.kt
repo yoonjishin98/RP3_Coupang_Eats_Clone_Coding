@@ -1,6 +1,9 @@
 package com.yoonji.coupangeatsproject.src.restaurant.adapter
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,19 +33,19 @@ class RestaurantReviewAdapter (private val context: Context) : RecyclerView.Adap
             tvItemReview.text = item.reviewTitle
 
             if(item.reviewStarScore == 1){
-                binding.imgvItemReviewScoreT.setColorFilter(R.color.greyForReview)
-                binding.imgvItemReviewScoreTh.setColorFilter(R.color.greyForReview)
-                binding.imgvItemReviewScoreF.setColorFilter(R.color.greyForReview)
-                binding.imgvItemReviewScoreFi.setColorFilter(R.color.greyForReview)
+                binding.imgvItemReviewScoreT.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
+                binding.imgvItemReviewScoreTh.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
+                binding.imgvItemReviewScoreF.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
+                binding.imgvItemReviewScoreFi.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
             }else if(item.reviewStarScore == 2){
-                binding.imgvItemReviewScoreTh.setColorFilter(R.color.greyForReview)
-                binding.imgvItemReviewScoreF.setColorFilter(R.color.greyForReview)
-                binding.imgvItemReviewScoreFi.setColorFilter(R.color.greyForReview)
+                binding.imgvItemReviewScoreTh.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
+                binding.imgvItemReviewScoreF.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
+                binding.imgvItemReviewScoreFi.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
             } else if(item.reviewStarScore == 3){
-                binding.imgvItemReviewScoreF.setColorFilter(R.color.greyForReview)
-                binding.imgvItemReviewScoreFi.setColorFilter(R.color.greyForReview)
+                binding.imgvItemReviewScoreF.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
+                binding.imgvItemReviewScoreFi.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
             }else if(item.reviewStarScore == 4){
-                binding.imgvItemReviewScoreFi.setColorFilter(R.color.greyForReview)
+                binding.imgvItemReviewScoreFi.imageTintList = ColorStateList.valueOf(context.getColor(R.color.greyForReview))
             }
 
         }

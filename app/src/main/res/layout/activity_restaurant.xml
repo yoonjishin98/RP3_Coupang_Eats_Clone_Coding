@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_restaurant"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:fitsSystemWindows="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -263,27 +263,28 @@
             android:layout_gravity="bottom"
             android:fillViewport="true"
             app:tabIndicatorColor="#000000"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="3dp"
             app:tabMode="scrollable"
             app:tabTextColor="@color/black" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="500dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_restaurant_menu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/item_restaurant_menu" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_restaurant_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginBottom="40dp"
+        android:clipToPadding="false"
+        android:paddingTop="20dp"
+        android:paddingBottom="40dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_restaurant_menu" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_restaurant_cart"
@@ -291,21 +292,21 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom"
         android:background="#00AFFE"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/edge_circular_bgd_white"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="2dp"
+            android:text="1"
             android:textColor="#00AFFE"
             android:textSize="14sp"
-            android:text="1"
-            android:background="@drawable/edge_circular_bgd_white"
-            android:paddingEnd="7dp"
-            android:paddingStart="6dp"
-            android:paddingBottom="2dp"
-            android:paddingTop="2dp"
-            android:layout_marginEnd="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_restaurant_text"
             app:layout_constraintHorizontal_chainStyle="packed"

@@ -9,7 +9,7 @@ import com.yoonji.coupangeatsproject.databinding.ItemRestaurantMenuDetailBinding
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
 
 class RestaurantDetailAdapter (private val context: Context) : RecyclerView.Adapter<RestaurantDetailAdapter.ViewHolder>(){
-    val datas = mutableListOf<RestaurantDetailData>()
+    var datas = mutableListOf<RestaurantDetailData>()
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,6 +30,7 @@ class RestaurantDetailAdapter (private val context: Context) : RecyclerView.Adap
             tvItemRestaurantDetailDescrip.text = item.restaurantDetailDescrip
             tvItemRestaurantDetailPrice.text = item.restaurantDetailPrice
             Glide.with(itemView).load(item.restaurantDetailImg).into(imgvItemRestaurantDetail)
+
         }
     }
 

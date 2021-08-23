@@ -23,6 +23,7 @@
     <color name="greencheck">#13882A</color>
     <color name="greyForReview">#A4ACB5</color>
     <color name="signatureBlue">#00AFFE</color>
+    <color name="greyForThinDivider">#E7E8EA</color>
     <color name="greyForDivider">#F5F6F8</color>
     <color name="darkgrey">#48515A</color>
 </resources>

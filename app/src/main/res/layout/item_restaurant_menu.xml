@@ -32,6 +32,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <View
+        android:id="@+id/view_menu"
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:background="#F5F6F8"
