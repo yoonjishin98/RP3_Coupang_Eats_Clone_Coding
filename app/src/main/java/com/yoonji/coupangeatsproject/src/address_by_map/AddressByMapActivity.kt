@@ -1,28 +1,33 @@
 package com.yoonji.coupangeatsproject.src.address_by_map
 
+import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.content.Context
 import android.content.pm.PackageManager
+import android.location.*
 import android.os.Bundle
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.LocationTrackingMode
-import com.naver.maps.map.MapFragment
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddressByMapBinding
+import java.io.IOException
+import java.util.*
+
 
 class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityAddressByMapBinding::inflate),
     OnMapReadyCallback {
 
     companion object{
-        lateinit var mNaverMap:NaverMap
-        lateinit var locationSourece :FusedLocationSource
+        lateinit var locationSource :FusedLocationSource
+        val LOCATION_PERMISSION_REQUEST_CODE = 1000
 
         var PERMISSIONS = arrayOf<String>(
             ACCESS_FINE_LOCATION,
@@ -33,54 +38,52 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        locationSource = FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
+        var option:NaverMapOptions = NaverMapOptions().scaleBarEnabled(false)
+
         //지도 객체 생성
-        var mapFragment = supportFragmentManager.findFragmentById(R.id.fragment_map)
+        var mapFragment:MapFragment = supportFragmentManager.findFragmentById(R.id.fragment_map) as MapFragment
         if(mapFragment == null){
-            Log.d("TAG", "null값")
             mapFragment = MapFragment.newInstance()
             supportFragmentManager.beginTransaction().add(R.id.fragment_map, mapFragment).commit()
         }
-
-        //getMapAsync 호출해 비동기로 onMapReady 콜백 메서드 호출. onMapReady에서 NaverMap 객체 받음
-        MapFragment.newInstance().getMapAsync(this)
-
-        locationSourece = FusedLocationSource(this,100)
+        mapFragment.getMapAsync(this)
 
     }
 
     override fun onResume() {
         super.onResume()
 
-        binding.imgvMapBack.setOnClickListener{
-            finish()
-        }
+        binding.imgvMapBack.setOnClickListener{ finish() }
+
     }
 
-    override fun onMapReady(p0: NaverMap){
-        Log.d( "TAG", "onMapReady");
 
-        val addressMarker = Marker()
-        addressMarker.position = LatLng(37.5670135,37.5670135)
-        addressMarker.map = p0
-
-        mNaverMap = p0
-        mNaverMap.locationSource = locationSourece
-
-        ActivityCompat.requestPermissions(this, PERMISSIONS,100)
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        // request code와 권한획득 여부 확인
-        if (requestCode == 100) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                mNaverMap.locationTrackingMode = LocationTrackingMode.Follow;
-            }
+        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            return
         }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
+    override fun onMapReady(naverMap: NaverMap){
+
+        naverMap.locationSource = locationSource
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+
+        val uiSettings: UiSettings = naverMap.uiSettings
+        uiSettings.isLocationButtonEnabled = true
+
+        val marker = Marker()
+        marker.position = LatLng(36.763695,127.281796)
+        marker.map = naverMap
+        marker.icon = OverlayImage.fromResource(R.drawable.ic_marker);
+        marker.width = 50
+        marker.height = 50
+    }
+
+
+
 }

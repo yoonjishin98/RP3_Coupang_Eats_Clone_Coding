@@ -21,6 +21,9 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="fyrgrvfmye" />
+        <meta-data
+            android:name="com.google.android.geo.API-KEY"
+            android:value="AIzaSyBBwtlJ04Qqf2XfVBM2ENscSZRxue6cbvw"/>
 
         <activity android:name=".src.main.MainActivity">
             <intent-filter>
@@ -57,6 +60,9 @@
         <activity android:name=".src.order_cart.OrderCartActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".src.address_by_search.AddressBySearchActivity"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

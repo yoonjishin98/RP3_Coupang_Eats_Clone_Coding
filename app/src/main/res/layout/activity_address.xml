@@ -40,16 +40,17 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="22dp"
             app:srcCompat="@drawable/ic_search_black" />
 
-        <EditText
-            android:id="@+id/tv_address_search"
+        <TextView
+            android:id="@+id/tv_address_serach"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="@null"
+            android:gravity="center_vertical"
             android:hint="도로명, 건물명 또는 지번으로 검색"
             android:inputType="text"
             android:maxLines="1"
@@ -77,8 +78,8 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_loca_by_map" />
 
         <TextView
