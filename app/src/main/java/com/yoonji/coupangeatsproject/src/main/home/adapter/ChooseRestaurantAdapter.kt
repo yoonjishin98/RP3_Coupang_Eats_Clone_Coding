@@ -1,6 +1,7 @@
 package com.yoonji.coupangeatsproject.src.main.home.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.INVISIBLE
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.databinding.ItemHomeChooseRestaurantBinding
 import com.yoonji.coupangeatsproject.src.main.home.data.ChooseRestaurantData
+import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
 
 class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adapter<ChooseRestaurantAdapter.ViewHolder>(){
 
@@ -50,6 +52,19 @@ class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adap
                 btnHomeChooseCoupon.text = item.restaurantCoupon
             else
                 btnHomeChooseCoupon.visibility = GONE
+
+            itemView.setOnClickListener{
+                Intent(context, RestaurantActivity::class.java).apply {
+                    putExtra("title", item.restaurantName)
+//                    putExtra("distance",item.restaurantDistance)
+//                    putExtra("reviewScore", item.restaurantReview)
+//                    putExtra("deliveryFee",item.restaurantDeliveryFee)
+//                    putExtra("deliveryTime",item.restaurantDeliveryTime)
+
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }.run { context.startActivity(this) }
+            }
+
         }
     }
 

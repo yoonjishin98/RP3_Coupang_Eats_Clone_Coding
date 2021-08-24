@@ -52,6 +52,7 @@
             android:layout_height="30dp"
             android:background="@null"
             android:hint="도로명, 건물명 또는 지번으로 검색"
+            android:imeOptions="actionDone|actionSearch"
             android:inputType="text"
             android:maxLines="1"
             android:paddingStart="20dp"

@@ -1,11 +1,13 @@
 package com.yoonji.coupangeatsproject.src.restaurant.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.databinding.ItemRestaurantMenuDetailBinding
+import com.yoonji.coupangeatsproject.src.add_cart.AddCartActivity
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
 
 class RestaurantDetailAdapter (private val context: Context) : RecyclerView.Adapter<RestaurantDetailAdapter.ViewHolder>(){
@@ -30,6 +32,13 @@ class RestaurantDetailAdapter (private val context: Context) : RecyclerView.Adap
             tvItemRestaurantDetailDescrip.text = item.restaurantDetailDescrip
             tvItemRestaurantDetailPrice.text = item.restaurantDetailPrice
             Glide.with(itemView).load(item.restaurantDetailImg).into(imgvItemRestaurantDetail)
+
+            itemView.setOnClickListener{
+                Intent(context, AddCartActivity::class.java).apply {
+//                    putExtra("data", item)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }.run { context.startActivity(this) }
+            }
 
         }
     }

@@ -1,7 +1,9 @@
 package com.yoonji.coupangeatsproject.src.restaurant
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -9,6 +11,7 @@ import android.view.View.VISIBLE
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.yoonji.coupangeatsproject.ApplicationClass
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityRestaurantBinding
@@ -29,6 +32,12 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
     var menuDatas = mutableListOf<RestaurantMenuData>()
     var menuDetailDatas = mutableListOf<RestaurantDetailData>()
 
+    var totalCount = ApplicationClass.sSharedPreferences.getInt("RestaurantCount",0)
+    var totalPrice = ApplicationClass.sSharedPreferences.getInt("RestaurantPrice",0)
+
+    val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,6 +53,29 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
         initReviewRecycler()
         initMenuRecycler()
 
+        // 카트에 담은 후 넘어오면 + 이미 카트에 담아놓은 메뉴들이 있으면 최하단 버튼 보이도록
+        val count = intent.getIntExtra("cartCount", 0)
+        val price = intent.getIntExtra("cartPrice", 0)
+        val check = intent.getStringExtra("cartCheck")
+        totalCount += count
+        totalPrice += price
+        editor.putInt("RestaurantCount", totalCount)
+        editor.putInt("RestaurantPrice", totalPrice)
+        editor.apply()
+
+        Log.d("TAG", "totalCount: $totalCount")
+        Log.d("TAG", "totalPrice: $totalPrice")
+
+        if(check == "1000" || totalCount>0){
+            binding.layoutRestaurantCart.visibility = VISIBLE
+            binding.tvRestaurantTotalCount.text = totalCount.toString()
+            binding.tvRestaurantTotalPrice.text = totalPrice.toString() + "원"
+
+            binding.layoutRestaurantCart.setOnClickListener{
+                val intent = Intent(this, OrderCartActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
     }
 
@@ -152,18 +184,6 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
             override fun onTabUnselected(tab: TabLayout.Tab) {}
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
-
-        var showOrNot = intent.getStringExtra("showOrderCartActivityBtn")
-        if (showOrNot != null) {
-            if(showOrNot == "1000" ) {
-                binding.layoutRestaurantCart.visibility = VISIBLE
-
-                binding.layoutRestaurantCart.setOnClickListener{
-                        val intent = Intent(this, OrderCartActivity::class.java)
-                        startActivity(intent)
-                }
-            }
-        }
 
 
 

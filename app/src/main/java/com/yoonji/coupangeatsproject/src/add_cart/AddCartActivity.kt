@@ -12,8 +12,6 @@ import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
 
 class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBinding::inflate) {
 
-    var count= 1
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,33 +56,52 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
     override fun onResume() {
         super.onResume()
 
+        var count= 1
+        var priceTotal = 0
+        var price = binding.tvAddCartPrice.text.toString()
+        price = price
+            .replace("원","")
+            .replace(",","")
+        val priceInt = price.toInt()
+        priceTotal = priceInt
+
         binding.tvAddCart.setOnClickListener{
             val intent = Intent(this,RestaurantActivity::class.java)
-            intent.putExtra("showOrderCartActivityBtn","1000")
+            intent.putExtra("cartCount",count)
+            intent.putExtra("cartPrice", priceTotal)
+            intent.putExtra("cartCheck","1000")
             startActivity(intent)
         }
 
         binding.imgvAddCartPlus.setOnClickListener {
             count++
             binding.tvAddCartCount.text = count.toString()
-            if(binding.tvAddCartCount.text.toString().toInt() >= 2)
+
+            if(count > 1) {
                 binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus)
-            else
+                priceTotal = priceInt * count
+                binding.tvAddCartPrice.text = priceTotal.toString() + "원"
+            }
+
+            if(count < 2)
                 binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
         }
 
         binding.imgvAddCartMinus.setOnClickListener {
-            if(binding.tvAddCartCount.text.toString().toInt() > 1){
+            if(count > 1) {
+                priceTotal -= priceInt
                 count--
                 binding.tvAddCartCount.text = count.toString()
+                binding.tvAddCartPrice.text = priceTotal.toString() + "원"
             }else{
                 binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
             }
+
+            if(count == 1)
+                binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
+
         }
 
-        if( binding.tvAddCartCount.text.toString().toInt() < 1){
-            binding.imgvAddCartMinus.setImageResource(R.drawable.ic_minus_grey)
-        }
 
     }
 }

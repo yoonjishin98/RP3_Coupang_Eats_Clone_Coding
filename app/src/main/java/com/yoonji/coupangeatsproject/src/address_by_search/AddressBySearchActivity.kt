@@ -6,6 +6,9 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.MutableLiveData
 import com.yoonji.coupangeatsproject.config.BaseActivity
@@ -30,14 +33,6 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //getHashKey()
-
-        val keyword = binding.edtAddressSearch.text.toString()
-
-        val searchAdapter = SearchAddressAdapter(this)
-        binding.rvAddressSearch.adapter = searchAdapter
-        searchAddressByKakao(keyword)
-
-        searchAdapter.datas = addresssDatas
 
         //주소 -> 좌표 by Geocoder
 //        thread(start = true){
@@ -77,6 +72,7 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
                     if(kakao.value != null){
                         for (i in 0 until 20){
                             Log.i("도로명 주소 검색 값: ", kakao.value!!.documents[i].road_address_name)
+                            Log.i("주소 검색 값: ", kakao.value!!.documents[i].address_name)
 
                             addresssDatas.apply {
                                 add(SearchAddressData(
@@ -109,6 +105,30 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
             val latlng = geocoder.getFromLocationName("서울특별시 영등포구 문래로 137 (문래동금호어울림아파트)",1)
             Log.d("TAG ", "AddressToLatLng 결과: 위도) " + latlng[0].latitude + ", 경도) " + latlng[0].longitude)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        var keyword = ""
+
+        binding.edtAddressSearch.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                keyword = binding.edtAddressSearch.text.toString()
+                Log.d("TAG ", "keyword 값:" + keyword)
+                handled = true
+            }
+            handled
+        }
+
+        val searchAdapter = SearchAddressAdapter(this)
+        binding.rvAddressSearch.adapter = searchAdapter
+        searchAddressByKakao(keyword)
+
+        searchAdapter.datas = addresssDatas
+
     }
 
 }

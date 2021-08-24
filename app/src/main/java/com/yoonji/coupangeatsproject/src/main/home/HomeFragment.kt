@@ -219,14 +219,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             startActivity(intent)
         }
 
-        binding.temporary.setOnClickListener {
-            //임시
-//            val intent = Intent(requireContext(), RestaurantActivity::class.java)
-//            startActivity(intent)
-
-            val intent = Intent(requireContext(), AddCartActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 
