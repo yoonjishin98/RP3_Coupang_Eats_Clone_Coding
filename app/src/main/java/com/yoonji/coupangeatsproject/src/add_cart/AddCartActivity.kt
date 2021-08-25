@@ -1,9 +1,12 @@
 package com.yoonji.coupangeatsproject.src.add_cart
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
+import android.view.View.*
+import com.google.android.material.appbar.AppBarLayout
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddCartBinding
@@ -15,43 +18,41 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //툴바에 뒤로 가기
-        setSupportActionBar(binding.toolbarAddCart)
-        if (supportActionBar != null)
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        val toolbar = findViewById<View>(R.id.toolbar_add_cart) as androidx.appcompat.widget.Toolbar
+        setSupportActionBar(toolbar)
 
-//        binding.appBarAddCart.addOnOffsetChangedListener( AppBarLayout.OnOffsetChangedListener {appBarLayout, verticalOffset ->
-//            if ( (binding.appBarAddCart.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(binding.appBarAddCart) ) ) {
-//                binding.toolbarAddCart.navigationIcon?.setColorFilter(resources.getColor(R.color.white),PorterDuff.Mode.SRC_ATOP)
-//            } else {
-//
-//            }
-//        } )
+        //상태바 투명
+        window?.decorView?.systemUiVisibility =
+            SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        window.statusBarColor = Color.TRANSPARENT
+
+        // 툴바 접혀졌을 때 여부에 따른 아이콘 및 타이틀 변화
+        var isShow = true
+        var scrollRange = -1
+        binding.appBarAddCart.addOnOffsetChangedListener( AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (scrollRange == -1){
+                scrollRange = appBarLayout.totalScrollRange
+            }
+
+            if (scrollRange + verticalOffset == 0) {     //appbar가 접혔을 때, 툴바에 보이도록
+                binding.tvAddCartToolbarTitle.visibility = View.VISIBLE
+                binding.tvAddCartToolbarTitle.text = "베스트 치킨 버킷백"        //careful there should a space between double quote otherwise it wont work
+                binding.imgvAddCartBack.imageTintList = ColorStateList.valueOf(this.getColor(R.color.black))
+                binding.imgvAddCartShare.imageTintList = ColorStateList.valueOf(this.getColor(R.color.black))
+
+                isShow = true
+
+            }else if (isShow){      //appbar가 펼쳐졌을 때
+                binding.tvAddCartToolbarTitle.visibility = View.INVISIBLE
+                binding.imgvAddCartBack.imageTintList = ColorStateList.valueOf(this.getColor(R.color.white))
+                binding.imgvAddCartShare.imageTintList = ColorStateList.valueOf(this.getColor(R.color.white))
+
+                isShow = false
+            }
+        } )
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.add_cart_toolbar_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {      //뒤로 가기
-                finish()
-                true
-            }
-            R.id.add_cart_menu_share -> {
-
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     override fun onResume() {
         super.onResume()
@@ -102,6 +103,9 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
 
         }
 
+        binding.imgvAddCartBack.setOnClickListener {
+            finish()
+        }
 
     }
 }

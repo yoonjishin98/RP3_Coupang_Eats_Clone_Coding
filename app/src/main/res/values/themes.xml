@@ -22,4 +22,7 @@
         <item name="android:textColor">@android:color/transparent</item>
     </style>
 
+    <style name="OptionMenuStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:paddingEnd">10dp</item>
+    </style>
 </resources>

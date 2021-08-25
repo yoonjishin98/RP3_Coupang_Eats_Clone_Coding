@@ -26,4 +26,5 @@
     <color name="greyForThinDivider">#E7E8EA</color>
     <color name="greyForDivider">#F5F6F8</color>
     <color name="darkgrey">#48515A</color>
+    <color name="pinkForLike">#F63973</color>
 </resources>

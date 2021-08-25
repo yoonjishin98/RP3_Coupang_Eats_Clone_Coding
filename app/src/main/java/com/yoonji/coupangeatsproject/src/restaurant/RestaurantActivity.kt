@@ -2,12 +2,15 @@ package com.yoonji.coupangeatsproject.src.restaurant
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.View.VISIBLE
+import android.view.View.*
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -21,6 +24,7 @@ import com.yoonji.coupangeatsproject.src.restaurant.adapter.RestaurantReviewAdap
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantMenuData
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantReviewData
+import kotlin.math.abs
 
 
 class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityRestaurantBinding::inflate) {
@@ -42,18 +46,14 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
         super.onCreate(savedInstanceState)
 
         val toolbar = findViewById<View>(R.id.toolbar_restaurant) as androidx.appcompat.widget.Toolbar
-        toolbar.title = "KFC 왕십리역사점"
         setSupportActionBar(toolbar)
 
-        //툴바에 뒤로 가기
-        setSupportActionBar(binding.toolbarRestaurant)
-        if (supportActionBar != null)
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        //상태바 투명
+        window?.decorView?.systemUiVisibility =
+            SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        window.statusBarColor = Color.TRANSPARENT
 
-        initReviewRecycler()
-        initMenuRecycler()
-
-        // 카트에 담은 후 넘어오면 + 이미 카트에 담아놓은 메뉴들이 있으면 최하단 버튼 보이도록
+        // 카트에 담은 후 넘어오면 or 이미 카트에 이미 담아놓은 메뉴들이 있으면 최하단 버튼 보이도록
         val count = intent.getIntExtra("cartCount", 0)
         val price = intent.getIntExtra("cartPrice", 0)
         val check = intent.getStringExtra("cartCheck")
@@ -62,9 +62,6 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
         editor.putInt("RestaurantCount", totalCount)
         editor.putInt("RestaurantPrice", totalPrice)
         editor.apply()
-
-        Log.d("TAG", "totalCount: $totalCount")
-        Log.d("TAG", "totalPrice: $totalPrice")
 
         if(check == "1000" || totalCount>0){
             binding.layoutRestaurantCart.visibility = VISIBLE
@@ -77,36 +74,39 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
             }
         }
 
+        // 툴바 접혀졌을 때 여부에 따른 아이콘 및 타이틀 변화
+        var isShow = true
+        var scrollRange = -1
+
+        binding.appBarRestaurant.addOnOffsetChangedListener( AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (scrollRange == -1){
+                scrollRange = appBarLayout.totalScrollRange
+            }
+
+            if (scrollRange + verticalOffset == 0){     //appbar가 접혔을 때, 툴바에 보이도록
+                binding.tvRestaurantToolbarTitle.visibility = VISIBLE
+                binding.tvRestaurantToolbarTitle.text = "KFC 왕십리역사점"        //careful there should a space between double quote otherwise it wont work
+                binding.imgvRestaurantBack.imageTintList = ColorStateList.valueOf(this.getColor(R.color.black))
+                binding.imgvRestaurantHeart.imageTintList = ColorStateList.valueOf(this.getColor(R.color.pinkForLike))
+                binding.imgvRestaurantShare.imageTintList = ColorStateList.valueOf(this.getColor(R.color.black))
+                //binding.imgvRestaurantShare.setColorFilter(Color.parseColor("#000000"))
+
+                isShow = true
+
+            } else if (isShow){     //appbar가 펼쳐졌을 때
+                binding.tvRestaurantToolbarTitle.visibility = INVISIBLE
+                binding.imgvRestaurantBack.imageTintList = ColorStateList.valueOf(this.getColor(R.color.white))
+                binding.imgvRestaurantHeart.imageTintList = ColorStateList.valueOf(this.getColor(R.color.white))
+                binding.imgvRestaurantShare.imageTintList = ColorStateList.valueOf(this.getColor(R.color.white))
+
+                isShow = false
+            }
+        } )
+
+        initReviewRecycler()
+        initMenuRecycler()
+
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.restaurant_toolbar_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {      //뒤로 가기
-                finish()
-                true
-            }
-            R.id.restaurant_menu_heart -> {
-
-                true
-            }
-            R.id.restaurant_menu_share -> {
-
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
 
     fun initReviewRecycler(){
         reviewAdapter = RestaurantReviewAdapter(this)
@@ -185,6 +185,9 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
+        binding.imgvRestaurantBack.setOnClickListener {
+            finish()
+        }
 
 
     }
