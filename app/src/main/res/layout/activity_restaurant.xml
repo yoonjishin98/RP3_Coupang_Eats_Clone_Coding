@@ -72,15 +72,24 @@
 
                 <TextView
                     android:id="@+id/tv_restaurant_info"
-                    android:layout_width="127dp"
-                    android:layout_height="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:layout_marginEnd="20dp"
-                    android:drawableEnd="@drawable/ic_arrow_right_blue"
+                    android:layout_marginEnd="5dp"
                     android:text="매장 / 원산지 정보"
                     android:textColor="#00AFFE"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/imgv_restaurant"
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
+
+                <ImageView
+                    android:id="@+id/imgv_restaurant"
+                    android:layout_width="11dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:src="@drawable/ic_arrow_right_blue"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
 
@@ -237,7 +246,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="90dp"
                         android:drawableEnd="@drawable/ic_arrow_right_blue"
-                        android:drawablePadding="8dp"
+                        android:drawablePadding="5dp"
                         android:text="개"
                         android:textColor="#00AFFE "
                         android:textSize="14sp"

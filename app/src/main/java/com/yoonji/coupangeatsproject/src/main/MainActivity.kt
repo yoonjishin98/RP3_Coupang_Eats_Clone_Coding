@@ -8,12 +8,15 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yoonji.coupangeatsproject.ApplicationClass
+import com.yoonji.coupangeatsproject.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityMainBinding
+import com.yoonji.coupangeatsproject.src.main.history.HistoryFragment
 import com.yoonji.coupangeatsproject.src.main.home.HomeFragment
 import com.yoonji.coupangeatsproject.src.main.like.LikeActivity
 import com.yoonji.coupangeatsproject.src.main.search.SearchFragment
+import com.yoonji.coupangeatsproject.src.main.setting.SettingFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -21,6 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         super.onCreate(savedInstanceState)
 
         val TAG = "**MainActivity--->"
+        val token = ApplicationClass.sSharedPreferences.getString(X_ACCESS_TOKEN, "")
 
         binding.btmNaviMain.run{
             setOnNavigationItemSelectedListener {
@@ -36,18 +40,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         startActivity(intent)
                     }
                     R.id.menu_bottom_history ->{
-                        //changeFragment(HistoryFragment(),"history")
-//                        val jwt = ApplicationClass.sSharedPreferences.getString("jwt", "")
-//                        Log.d(TAG, "onCreate: $jwt" )
+                        Log.d(TAG, "token 값: $token")
 
-                        val bottomSheet = LoginBtmSheetFragment()
-                        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                        if(token == ""){
+                            val bottomSheet = LoginBtmSheetFragment()
+                            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                        }else
+                            changeFragment(HistoryFragment())
                     }
                     R.id.menu_bottom_setting ->{
-                        //changeFragment(SettingFragment(),"setting")
-
-                        val bottomSheet = LoginBtmSheetFragment()
-                        bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                        if(token == ""){
+                            val bottomSheet = LoginBtmSheetFragment()
+                            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+                        }else
+                            changeFragment(SettingFragment())
                     }
                 }
 

@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import com.yoonji.coupangeatsproject.ApplicationClass
+import com.yoonji.coupangeatsproject.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityLoginBinding
 import com.yoonji.coupangeatsproject.src.log_in.models.LogInResponse
@@ -19,7 +20,6 @@ class LogInActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
     }
 
@@ -48,13 +48,11 @@ class LogInActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
 
     override fun onPostLogInSuccess(response: LogInResponse) {
-        response.message?.let { Log.d(TAG, "onPostLogInSuccess: $it") }
-        Log.d(TAG, "jwt: " + response.result.jwt)
+        response.message?.let { Log.d(TAG, "onPostLogInSuccess: $it , " +  response.result.jwt) }
 
-//        val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
-//        editor.putString("jwt",response.result.jwt )        // key,value 형식으로 저장
-//        editor.apply() //최종 커밋. 커밋을 해야 저장이 된다.
-
+        val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
+        editor.putString(X_ACCESS_TOKEN,response.result.jwt )
+        editor.apply()      //커밋을 해야 저장
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
