@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.yoonji.coupangeatsproject.ApplicationClass
 import com.yoonji.coupangeatsproject.BaseFragment
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.FragmentHomeBinding
-import com.yoonji.coupangeatsproject.src.add_cart.AddCartActivity
 import com.yoonji.coupangeatsproject.src.address.AddressActivity
 import com.yoonji.coupangeatsproject.src.main.home.adapter.ChooseRestaurantAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FoodTypeAdapter
@@ -16,11 +17,16 @@ import com.yoonji.coupangeatsproject.src.main.home.adapter.FranchaiseAdapter
 import com.yoonji.coupangeatsproject.src.main.home.data.ChooseRestaurantData
 import com.yoonji.coupangeatsproject.src.main.home.data.FoodTypeData
 import com.yoonji.coupangeatsproject.src.main.home.data.FranchaiseData
+import com.yoonji.coupangeatsproject.src.main.home.models.MainResponse
+
 
 class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home),
     HomeFragmentView {
 
-    private var images:Array<Int> = arrayOf(R.drawable.img_ad_one,R.drawable.img_ad_two)
+    private var TAG = "**HomeFragment--->"
+    val token = ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "")
+
+    private var images = mutableListOf<Int>()
 
     private lateinit var foodTypeAdater : FoodTypeAdapter
     private var foodTypeDatas = mutableListOf<FoodTypeData>()
@@ -48,36 +54,33 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             }
         }
 
-        initAdSlider()
-        initFoodTypeRecycler()
-        initFranchaiseRecycler()
-        initChooseRestaurantRecycler()
+
+        HomeService(this).getNotLoginMain()
+
+//        if(token == "")
+//            HomeService(this).getNotLoginMain()
+//        else {
+//            //HomeService(this).getLoginMain()
+//        }
 
     }
 
     private fun initAdSlider(){
-        for (i in images){
-            val image:ImageView = ImageView(requireContext())
-            image.setBackgroundResource(i)
+        for ((index, value) in images.withIndex()){
+            val image = ImageView(requireContext())
+            Glide.with(this).load(value).into(image)
 
             binding.flipperAd.addView(image)
-            binding.flipperAd.flipInterval = 5000
+            binding.flipperAd.flipInterval = 2000
             binding.flipperAd.isAutoStart = true
         }
+
     }
 
     private fun initFoodTypeRecycler() {
         foodTypeAdater = FoodTypeAdapter(requireContext())
         binding.rvHomeFoodType.adapter = foodTypeAdater
 
-        foodTypeDatas.apply {
-            add (FoodTypeData(typeImg = R.drawable.img_food_type_two, typeTitle = "1인분"))
-            add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "한식"))
-            add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "종류"))
-            add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "종류"))
-            add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "종류"))
-            add (FoodTypeData(typeImg = R.drawable.img_food_type_one, typeTitle = "종류"))
-        }
         foodTypeAdater.datas = foodTypeDatas
     }
 
@@ -85,53 +88,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         franchaiseAdapter = FranchaiseAdapter(requireContext())
         binding.rvHomeFranchise.adapter = franchaiseAdapter
 
-        franchaiseDatas.apply {
-            add(
-                FranchaiseData(
-                    franchaiseImg = R.drawable.img_franchaise_one,
-                    franchaiseTitle = "가마로강정 행당역점",
-                    franchaiseReview = "4.9(56)",
-                    franchaiseDistance = "1.8",
-                    franchaiseDeliveryFee = 0
-                )
-            )
-            add(
-                FranchaiseData(
-                    franchaiseImg = R.drawable.img_franchaise_two,
-                    franchaiseTitle = "돼지게티 신당왕십리점",
-                    franchaiseReview = "4.5(58)",
-                    franchaiseDistance = "0.9",
-                    franchaiseDeliveryFee = 1500
-                )
-            )
-            add(
-                FranchaiseData(
-                    franchaiseImg = R.drawable.img_franchaise_two,
-                    franchaiseTitle = "돼지게티 신당왕십리점",
-                    franchaiseReview = "4.5(58)",
-                    franchaiseDistance = "0.9",
-                    franchaiseDeliveryFee = 1500
-                )
-            )
-            add(
-                FranchaiseData(
-                    franchaiseImg = R.drawable.img_franchaise_two,
-                    franchaiseTitle = "돼지게티 신당왕십리점",
-                    franchaiseReview = "4.5(58)",
-                    franchaiseDistance = "0.9",
-                    franchaiseDeliveryFee = 1500
-                )
-            )
-            add(
-                FranchaiseData(
-                    franchaiseImg = R.drawable.img_franchaise_two,
-                    franchaiseTitle = "돼지게티 신당왕십리점",
-                    franchaiseReview = "4.5(58)",
-                    franchaiseDistance = "0.9",
-                    franchaiseDeliveryFee = 1500
-                )
-            )
-        }
         franchaiseAdapter.fdatas = franchaiseDatas
     }
 
@@ -139,69 +95,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         restaurantAdapter = ChooseRestaurantAdapter(requireContext())
         binding.rvHomeChooseRestaurant.adapter = restaurantAdapter
 
-        chooseRestaurantDatas.apply {
-            add(
-                ChooseRestaurantData(
-                    restaurantMainImg = R.drawable.img_choose_one_o,
-                    restaurantUpImg = R.drawable.img_choose_one_t,
-                    restaurantDownImg = R.drawable.img_choose_one_th,
-                    restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "0",
-                    restaurantDistance = "1.2",
-                    restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분",
-                    restaurantCheetahDelivery = R.drawable.ic_cheetah_delivery,
-                    restaurantCoupon = "2,000원 쿠폰"
-                )
-            )
-            add(
-                ChooseRestaurantData(
-                    restaurantMainImg = R.drawable.img_choose_one_o,
-                    restaurantUpImg = R.drawable.img_choose_one_t,
-                    restaurantDownImg = R.drawable.img_choose_one_th,
-                    restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "4.1(1)",
-                    restaurantDistance = "1.2",
-                    restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분",
-                    restaurantCheetahDelivery = R.drawable.ic_cheetah_delivery,
-                    restaurantCoupon = "1,000원 쿠폰"
-                )
-            )
-            add(
-                ChooseRestaurantData(
-                    restaurantMainImg = R.drawable.img_choose_one_o,
-                    restaurantUpImg = R.drawable.img_choose_one_t,
-                    restaurantDownImg = R.drawable.img_choose_one_th,
-                    restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "0",
-                    restaurantDistance = "1.2",
-                    restaurantDeliveryFee = "1,500",
-                    restaurantDeliveryTime = "25~30분",
-                    restaurantCheetahDelivery = 0,
-                    restaurantCoupon = "0"
-                )
-            )
-            add(
-                ChooseRestaurantData(
-                    restaurantMainImg = R.drawable.img_choose_one_o,
-                    restaurantUpImg = R.drawable.img_choose_one_t,
-                    restaurantDownImg = R.drawable.img_choose_one_th,
-                    restaurantName = "맥도날드 한양대점",
-                    restaurantReview = "4.1(1)",
-                    restaurantDistance = "1.2",
-                    restaurantDeliveryFee = "1500",
-                    restaurantDeliveryTime = "25~30분",
-                    restaurantCheetahDelivery = 0,
-                    restaurantCoupon = "3,000원 쿠폰"
-                )
-            )
-
-
-        }
         restaurantAdapter.datas = chooseRestaurantDatas
-
-        Log.d("TAG", "initChooseRestaurantRecycler: " + restaurantAdapter.itemCount)
     }
 
     override fun onResume() {
@@ -219,8 +113,143 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             startActivity(intent)
         }
 
+    }
 
+    override fun onGetMainSuccess(response: MainResponse) {
+        Log.d(TAG, "onGetMainSuccess: $response")
+
+        // 배너광고
+        images.apply {
+            //add(value.bannerImg)
+            add(R.drawable.img_ad_one)
+            add(R.drawable.img_ad_two)
+        }
+//        for ((index, value) in response.result.bannerResult.withIndex()){
+//
+//        }
+
+        // 카테고리
+        for ((index,value) in response.result.categoryResult.withIndex()){
+            foodTypeDatas.apply {
+                add(FoodTypeData(typeImg = value.categoryImg,typeTitle = value.categoryName))
+            }
+        }
+
+        //프랜차이즈
+        for ((index,value) in response.result.franchiseResult.withIndex()) {
+            if(value.starRating == null){
+                franchaiseDatas.apply {
+                    add(
+                        FranchaiseData(
+                            franchaiseImg = value.storeImg,
+                            franchaiseTitle = value.name,
+                            franchaiseReview = "",
+                            franchaiseDistance = "",
+                            franchaiseDeliveryFee = value.coupon_or_deliveryFee
+                        )
+                    )
+                }
+            }else {
+                franchaiseDatas.apply {
+                    add(
+                        FranchaiseData(
+                            franchaiseImg = value.storeImg,
+                            franchaiseTitle = value.name,
+                            franchaiseReview = value.starRating + " (" + value.reviewCount.toString() + ")",
+                            franchaiseDistance = "",
+                            franchaiseDeliveryFee = value.coupon_or_deliveryFee
+                        )
+                    )
+                }
+            }
+        }
+
+        // 골라먹는 맛집
+        for ((index,value) in response.result.storeListResult.withIndex()) {
+            if(value.starRating == null && value.coupon == null ){
+                chooseRestaurantDatas.apply {
+                    add(
+                        ChooseRestaurantData(
+                            restaurantMainImg = value.storeImg,
+                            restaurantUpImg = value.storeImg,      //temporary
+                            restaurantDownImg = value.storeImg,       //temporary
+                            restaurantName = value.name,
+                            restaurantReview = "",
+                            restaurantDistance = "",
+                            restaurantDeliveryFee = value.deliveryFee,
+                            restaurantDeliveryTime = value.deliveryTime,
+                            restaurantCheetahDelivery = value.fastDelivery,
+                            restaurantCoupon = ""
+                        )
+                    )
+                }
+            } else if(value.starRating == null){
+                chooseRestaurantDatas.apply {
+                    add(
+                        ChooseRestaurantData(
+                            restaurantMainImg = value.storeImg,
+                            restaurantUpImg = value.storeImg,      //temporary
+                            restaurantDownImg = value.storeImg,       //temporary
+                            restaurantName = value.name,
+                            restaurantReview = "",
+                            restaurantDistance = "",
+                            restaurantDeliveryFee = value.deliveryFee,
+                            restaurantDeliveryTime = value.deliveryTime,
+                            restaurantCheetahDelivery = value.fastDelivery,
+                            restaurantCoupon = value.coupon
+                        )
+                    )
+                }
+            } else if(value.coupon == null) {
+                chooseRestaurantDatas.apply {
+                    add(
+                        ChooseRestaurantData(
+                            restaurantMainImg = value.storeImg,
+                            restaurantUpImg = value.storeImg,      //temporary
+                            restaurantDownImg = value.storeImg,       //temporary
+                            restaurantName = value.name,
+                            restaurantReview = value.starRating + " (" + value.reviewCount.toString() + ")",
+                            restaurantDistance = "",
+                            restaurantDeliveryFee = value.deliveryFee,
+                            restaurantDeliveryTime = value.deliveryTime,
+                            restaurantCheetahDelivery = value.fastDelivery,
+                            restaurantCoupon = ""
+                        )
+                    )
+                }
+            } else {
+                chooseRestaurantDatas.apply {
+                    add(
+                        ChooseRestaurantData(
+                            restaurantMainImg = value.storeImg,
+                            restaurantUpImg = value.storeImg,      //temporary
+                            restaurantDownImg = value.storeImg,       //temporary
+                            restaurantName = value.name,
+                            restaurantReview = value.starRating + " (" + value.reviewCount.toString() + ")",
+                            restaurantDistance = "",
+                            restaurantDeliveryFee = value.deliveryFee,
+                            restaurantDeliveryTime = value.deliveryTime,
+                            restaurantCheetahDelivery = value.fastDelivery,
+                            restaurantCoupon = value.coupon
+                        )
+                    )
+                }
+            }
+
+
+        }
+
+
+        initFoodTypeRecycler()
+        initAdSlider()
+        initFranchaiseRecycler()
+        initChooseRestaurantRecycler()
+    }
+
+    override fun onGetMainFailure(message: String) {
+        Log.d(TAG, "onGetMainFailure: $message")
     }
 
 
 }
+

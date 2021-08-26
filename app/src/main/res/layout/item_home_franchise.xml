@@ -9,6 +9,7 @@
         android:id="@+id/imgv_home_franchaise"
         android:layout_width="110dp"
         android:layout_height="110dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/img_franchaise_one" />
 
     <TextView
@@ -19,7 +20,8 @@
         android:maxLines="1"
         android:text="tv"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +29,8 @@
         android:layout_marginBottom="5dp">
 
         <ImageView
-            android:layout_width="10dp"
+            android:id="@+id/imgv_item_franchaise_star"
+            android:layout_width="15dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="2dp"
             android:src="@drawable/ic_review_star" />
@@ -41,6 +44,7 @@
             android:textSize="12sp" />
 
         <ImageView
+            android:id="@+id/imgv_item_franchaise_spot"
             android:layout_width="10dp"
             android:layout_height="match_parent"
             android:src="@drawable/ic_middle_spot" />
@@ -54,6 +58,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_item_franchaise_km"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="km"
@@ -68,20 +73,23 @@
         android:layout_gravity="left"
         android:text="tv"
         android:textColor="@color/black"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:visibility="gone"/>
 
-<!--    <androidx.appcompat.widget.AppCompatButton-->
-<!--        android:id="@+id/btn_home_choose_franchiase_coupon"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:background="@drawable/button_edge_round_blue"-->
-<!--        android:drawableLeft="@drawable/ic_coupon_tag"-->
-<!--        android:drawablePadding="3dp"-->
-<!--        android:paddingStart="5dp"-->
-<!--        android:paddingEnd="5dp"-->
-<!--        android:text="1000원 쿠폰"-->
-<!--        android:textColor="#00A7F7"-->
-<!--        android:textSize="12sp" />-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_home_choose_franchiase_coupon"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:background="@drawable/edge_round_blue"
+        android:drawableLeft="@drawable/ic_coupon_tag"
+        android:drawablePadding="3dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="1000원 쿠폰"
+        android:textColor="#00A7F7"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
 
 </LinearLayout>

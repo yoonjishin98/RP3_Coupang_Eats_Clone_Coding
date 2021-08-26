@@ -3,8 +3,7 @@ package com.yoonji.coupangeatsproject.src.main.home.adapter
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View.GONE
-import android.view.View.INVISIBLE
+import android.view.View.*
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -34,21 +33,37 @@ class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adap
             Glide.with(itemView).load(item.restaurantUpImg).into(imgvHomeChooseUp)
             Glide.with(itemView).load(item.restaurantDownImg).into(imgvHomeChooseDown)
             tvHomeChooseName.text = item.restaurantName
-            if(item.restaurantReview != "0")
+
+            if(item.restaurantReview != "") {
                 tvHomeChooseReview.text = item.restaurantReview
+                imgvHomeChooseStar.visibility = VISIBLE
+                imgvHomeChooseSpot.visibility = VISIBLE
+            }
             else {
+                imgvHomeChooseSpot.visibility = GONE
                 imgvHomeChooseStar.visibility = GONE
                 imgvHomeChooseSpot.visibility = GONE
                 tvHomeChooseReview.visibility = GONE
             }
-            tvHomeChooseDistance.text = item.restaurantDistance
+
+            if(item.restaurantDistance != ""){
+                tvHomeChooseDistance.text = item.restaurantDistance
+                tvItemChooseKm.visibility = VISIBLE
+            }else{
+                tvHomeChooseDistance.visibility = GONE
+                tvItemChooseKm.visibility = GONE
+                imgvHomeChooseSpotTwo.visibility = GONE
+            }
+
             tvHomeChooseDeliveryTime.text = item.restaurantDeliveryTime
-            tvHomeChosseDeliveryFee.text = "배달비 "+item.restaurantDeliveryFee + "원"
-            if(item.restaurantCheetahDelivery != 0)
-                Glide.with(itemView).load(item.restaurantCheetahDelivery).into(imgvHomeChooseCheetah)
+            tvHomeChosseDeliveryFee.text = item.restaurantDeliveryFee
+
+            if(item.restaurantCheetahDelivery == "Y")
+                imgvHomeChooseCheetah.visibility = VISIBLE
             else
-                imgvHomeChooseCheetah.visibility = INVISIBLE
-            if(item.restaurantCoupon != "0")
+                imgvHomeChooseCheetah.visibility = GONE
+
+            if(item.restaurantCoupon != "")
                 btnHomeChooseCoupon.text = item.restaurantCoupon
             else
                 btnHomeChooseCoupon.visibility = GONE
