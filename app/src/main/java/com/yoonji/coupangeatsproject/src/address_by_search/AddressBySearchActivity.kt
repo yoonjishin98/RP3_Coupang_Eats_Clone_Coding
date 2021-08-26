@@ -7,17 +7,19 @@ import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.view.inputmethod.InputMethodManager
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.MutableLiveData
+import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddressBySearchBinding
 import com.yoonji.coupangeatsproject.src.address_by_map.KakaoApi
 import com.yoonji.coupangeatsproject.src.address_by_map.KakaoApiRetrofitClient
 import com.yoonji.coupangeatsproject.src.address_by_map.data.RoadAddress
-import com.yoonji.coupangeatsproject.src.main.home.adapter.FoodTypeAdapter
-import com.yoonji.coupangeatsproject.src.main.home.data.FoodTypeData
+import com.yoonji.coupangeatsproject.src.restaurant.RestaurantRecyclerViewDivider
 import retrofit2.Call
 import retrofit2.Response
 import java.security.MessageDigest
@@ -60,39 +62,6 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
         }
     }
 
-    fun searchAddressByKakao(address:String){
-        val kakao = MutableLiveData<RoadAddress>()
-
-        kakaoApi.getKakaoAddress(KakaoApi.API_KEY, address = address)
-            .enqueue(object :retrofit2.Callback<RoadAddress>{
-
-                override fun onResponse(call: Call<RoadAddress>, response: Response<RoadAddress>) {
-                    kakao.value = response.body()
-
-                    if(kakao.value != null){
-                        for (i in 0 until 20){
-                            Log.i("도로명 주소 검색 값: ", kakao.value!!.documents[i].road_address_name)
-                            Log.i("주소 검색 값: ", kakao.value!!.documents[i].address_name)
-
-                            addresssDatas.apply {
-                                add(SearchAddressData(
-                                    searchRoadAddress = kakao.value!!.documents[i].road_address_name,
-                                    searchAddress = kakao.value!!.documents[i].address_name) )
-                            }
-                        }
-                        //result = kakao.value!!.documents[0].road_address_name
-                    }
-                    else {
-                        //원래는 이미지뷰로 처리
-                        showCustomToast("검색 결과가 없습니다. 지번, 도로명, 건물명을 입력해주세요.")
-                    }
-                }
-
-                override fun onFailure(call: Call<RoadAddress>, t: Throwable) {
-                    t.printStackTrace()
-                }
-            })
-    }
 
     fun AddressToLatLng(){
         //var fusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -112,23 +81,73 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
 
         var keyword = ""
 
-        binding.edtAddressSearch.setOnEditorActionListener { v, actionId, event ->
-            var handled = false
+        binding.edtAddressSearch.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
 
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                keyword = binding.edtAddressSearch.text.toString()
-                Log.d("TAG ", "keyword 값:" + keyword)
-                handled = true
+                // 엔터키로 검색
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    //키패드 내리기
+                    val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(binding.edtAddressSearch.windowToken, 0)
+
+                    binding.tvAddrressSearchText.visibility = GONE
+                    binding.tvAddrressSearchText2.visibility = GONE
+                    binding.tvAddrressSearchText3.visibility = GONE
+                    binding.tvAddrressSearchText4.visibility = GONE
+                    binding.tvAddrressSearchText5.visibility = GONE
+                    binding.tvAddrressSearchText6.visibility = GONE
+                    binding.tvAddrressSearchText7.visibility = GONE
+
+                    keyword = binding.edtAddressSearch.text.toString()
+                    searchAddressByKakao(keyword)
+
+                    return true
+                }
+                return false
             }
-            handled
-        }
+        })
 
-        val searchAdapter = SearchAddressAdapter(this)
-        binding.rvAddressSearch.adapter = searchAdapter
-        searchAddressByKakao(keyword)
 
-        searchAdapter.datas = addresssDatas
+    }
 
+    fun searchAddressByKakao(address:String){
+        val kakao = MutableLiveData<RoadAddress>()
+
+        kakaoApi.getKakaoAddress(KakaoApi.API_KEY, address = address)
+            .enqueue(object :retrofit2.Callback<RoadAddress>{
+
+                override fun onResponse(call: Call<RoadAddress>, response: Response<RoadAddress>) {
+                    kakao.value = response.body()
+
+                    if(kakao.value != null){
+                        for (i in 0 until 10){
+
+                            val searchAdapter = SearchAddressAdapter(this@AddressBySearchActivity)
+                            binding.rvAddressSearch.adapter = searchAdapter
+
+                            // detail menu에 얇은 divider 추가
+                            val color = applicationContext.getColor(R.color.greyForReview)
+                            binding.rvAddressSearch.addItemDecoration(RestaurantRecyclerViewDivider(1f,0f, color))
+
+                            addresssDatas.apply {
+                                add(SearchAddressData(
+                                    searchAddress = kakao.value!!.documents[i].place_name,
+                                    searchRoadAddress = kakao.value!!.documents[i].road_address_name) )
+                            }
+
+                            searchAdapter.datas = addresssDatas
+                            binding.rvAddressSearch.visibility = VISIBLE
+                        }
+                    }
+                    else {
+                        showCustomToast("검색 결과가 없습니다. 지번, 도로명, 건물명을 입력해주세요.")
+                    }
+                }
+
+                override fun onFailure(call: Call<RoadAddress>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
     }
 
 }

@@ -1,10 +1,15 @@
 package com.yoonji.coupangeatsproject.src.address_by_search
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ItemAddressBySearchBinding
+import com.yoonji.coupangeatsproject.src.AddressDetailActivity
+import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
+import com.yoonji.coupangeatsproject.src.restaurant.RestaurantRecyclerViewDivider
 
 class SearchAddressAdapter  (private val context: Context) : RecyclerView.Adapter<SearchAddressAdapter.ViewHolder>(){
     var datas = mutableListOf<SearchAddressData>()
@@ -21,7 +26,13 @@ class SearchAddressAdapter  (private val context: Context) : RecyclerView.Adapte
     inner class ViewHolder(private val binding : ItemAddressBySearchBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: SearchAddressData) = with(binding) {
             tvItemSearchAddress.text = item.searchAddress
-            tvItemSearchAddress.text = item.searchRoadAddress
+            tvItemSearchRoad.text = item.searchRoadAddress
+
+            itemView.setOnClickListener{
+                Intent(context, AddressDetailActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }.run { context.startActivity(this) }
+            }
 
         }
     }

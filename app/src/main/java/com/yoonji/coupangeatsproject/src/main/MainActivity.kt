@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.yoonji.coupangeatsproject.ApplicationClass
 import com.yoonji.coupangeatsproject.ApplicationClass.Companion.X_ACCESS_TOKEN
 import com.yoonji.coupangeatsproject.R
@@ -65,6 +66,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             selectedItemId = R.id.menu_bottom_home
         }
 
+        var check = intent.getIntExtra("changeAddress",0)
+
+        if(check == 111) {
+            var snackBar:Snackbar = Snackbar.make(binding.btmNaviMain, "주소 변경", 5000)
+            snackBar.anchorView = binding.btmNaviMain
+            snackBar.show()
+
+        }
     }
 
     private fun changeFragment(fragment: Fragment) {

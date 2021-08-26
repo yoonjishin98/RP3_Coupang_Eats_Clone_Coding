@@ -51,6 +51,8 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +79,7 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_home_food_type"/>
+                tools:listitem="@layout/item_home_food_type" />
 
             <View
                 android:layout_width="match_parent"
@@ -89,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_ad_fixed"/>
+                android:src="@drawable/img_ad_fixed" />
 
             <LinearLayout
                 android:layout_width="match_parent"

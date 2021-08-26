@@ -54,7 +54,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             }
         }
 
-
         HomeService(this).getNotLoginMain()
 
 //        if(token == "")

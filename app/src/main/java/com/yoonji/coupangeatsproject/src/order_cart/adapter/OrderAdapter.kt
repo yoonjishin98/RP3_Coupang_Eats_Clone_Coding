@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yoonji.coupangeatsproject.databinding.ItemOrderCartBinding
 import com.yoonji.coupangeatsproject.src.order_cart.model.OrderData
+import kotlinx.android.synthetic.main.activity_order_cart.view.*
 
 class OrderAdapter (private val context: Context) : RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
     var datas = mutableListOf<OrderData>()
@@ -26,6 +27,11 @@ class OrderAdapter (private val context: Context) : RecyclerView.Adapter<OrderAd
             tvItemOrderDescrip.text = item.orderDescription
             tvItemOrderPrice.text = item.orderPrice
             tvItemOrderCount.text = item.orderCount.toString()
+
+            imgvItemOrderFinish.setOnClickListener {
+                datas.remove(datas[adapterPosition])
+                notifyDataSetChanged()
+            }
         }
     }
 

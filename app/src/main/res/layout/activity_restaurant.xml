@@ -328,6 +328,8 @@
         android:layout_gravity="top"
         android:layout_marginBottom="40dp"
         android:clipToPadding="false"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp"
         android:paddingTop="20dp"
         android:paddingBottom="40dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

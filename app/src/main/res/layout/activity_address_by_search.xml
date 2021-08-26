@@ -52,12 +52,12 @@
             android:layout_height="30dp"
             android:background="@null"
             android:hint="도로명, 건물명 또는 지번으로 검색"
-            android:imeOptions="actionDone|actionSearch"
+            android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
             android:paddingStart="20dp"
             android:paddingEnd="70dp"
-            android:textColor="#A4ACB5 "
+            android:textColor="@color/darkgrey"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -68,12 +68,81 @@
         android:background="#F8F8F8" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_address_by_search"
         android:id="@+id/rv_address_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp" />
+        android:layout_marginEnd="22dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_address_by_search" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="15dp"
+        android:text="검색 Tip"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/address_search_text1"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="@string/address_search_text2"
+        android:textColor="@color/greyForReview"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/address_search_text3"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="@string/address_search_text4"
+        android:textColor="@color/greyForReview"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/address_search_text5"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_addrress_search_text7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="@string/address_search_text6"
+        android:textColor="@color/greyForReview"
+        android:textSize="16sp" />
 
 </LinearLayout>

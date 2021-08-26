@@ -28,6 +28,7 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
     companion object{
         lateinit var locationSource :FusedLocationSource
         val LOCATION_PERMISSION_REQUEST_CODE = 1000
+        val marker = Marker()
 
         var PERMISSIONS = arrayOf<String>(
             ACCESS_FINE_LOCATION,
@@ -41,7 +42,11 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
         locationSource = FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
         var option:NaverMapOptions = NaverMapOptions().scaleBarEnabled(false)
 
+        NaverMapSdk.getInstance(this).client =
+            NaverMapSdk.NaverCloudPlatformClient("fyrgrvfmye")
+
         //지도 객체 생성
+
         var mapFragment:MapFragment = supportFragmentManager.findFragmentById(R.id.fragment_map) as MapFragment
         if(mapFragment == null){
             mapFragment = MapFragment.newInstance()
@@ -76,10 +81,9 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
         val uiSettings: UiSettings = naverMap.uiSettings
         uiSettings.isLocationButtonEnabled = true
 
-        val marker = Marker()
         marker.position = LatLng(36.763695,127.281796)
         marker.map = naverMap
-        marker.icon = OverlayImage.fromResource(R.drawable.ic_marker);
+        marker.icon = OverlayImage.fromResource(R.drawable.ic_marker)
         marker.width = 50
         marker.height = 50
     }

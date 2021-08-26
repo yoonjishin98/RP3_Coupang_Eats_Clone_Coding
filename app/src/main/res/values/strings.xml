@@ -9,6 +9,8 @@
     <string name ="home_loca">주소를 입력해주세요</string>
     <string name="home_franchise">인기 프랜차이즈</string>
     <string name="home_choose">골라먹는 맛집</string>
+
+
     <string name="tv_login_require_login">로그인이 필요합니다.</string>
     <string name="tv_login_description">로그인 후 맛있는 음식을 즐겨보세요.</string>
     <string name="tv_login_agree">로그인하여 <u>쿠팡이츠 서비스 이용약관</u>, <u>위치기반서비스 이용약관</u>,\n
@@ -18,11 +20,15 @@
     <string name="login_by_id">쿠팡 아이디로 로그인</string>
     <string name="login_question">아직 회원이 아니신가요? &#160;</string>
     <string name="login_question_sign_up">회원가입</string>
+
+
     <string name="signup_name"><b>이름</b></string>
     <string name="signup_email"><b>아이디(이메일)</b></string>
     <string name="signup_pwd"><b>비밀번호</b></string>
     <string name="signup_phone_num"><b>휴대폰 번호</b></string>
     <string name="signup_copyright" ><![CDATA[©]]>Coupang Corp.All rights reserved.</string>
+
+
     <string name="home_option_sort">추천순</string>
     <string name="home_option_cheetah">치타배달</string>
     <string name="home_option_delivery_fee">배달비</string>
@@ -30,6 +36,14 @@
     <string name="home_option_discount_coupon">할인쿠폰</string>
     <string name="home_login_activity_email">쿠팡 아이디(이메일) 입력</string>
     <string name="home_login_activity_pwd">비밀번호 입력</string>
+
+
     <string name="add_cart_app_bar_title"><b>베스트 치킨 버킷백</b></string>
+    <string name="address_search_text1">* 도로명 <b>+ 건물번호</b></string>
+    <string name="address_search_text2">&#160;&#160;(예: 송파대로 570)</string>
+    <string name="address_search_text3">* 동/읍/면/리 <b>+ 번지</b></string>
+    <string name="address_search_text4">&#160;&#160;(예: 신천동 7-30)</string>
+    <string name="address_search_text5">* 건물명, 아파트명</string>
+    <string name="address_search_text6">&#160;&#160;(예: 반포자이아파트)</string>
 
 </resources>

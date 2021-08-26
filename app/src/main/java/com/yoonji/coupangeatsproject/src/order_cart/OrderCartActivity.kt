@@ -1,15 +1,18 @@
 package com.yoonji.coupangeatsproject.src.order_cart
 
+import android.content.Intent
 import android.os.Bundle
+import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityOrderCartBinding
 import com.yoonji.coupangeatsproject.src.order_cart.adapter.OrderAdapter
 import com.yoonji.coupangeatsproject.src.order_cart.model.OrderData
+import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
 import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantReviewData
 
 class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCartBinding::inflate) {
 
-    lateinit var orderAdapter : OrderAdapter
+    private var orderAdapter = OrderAdapter(this)
     val orderDatas = mutableListOf<OrderData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +22,26 @@ class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCa
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        binding.imgvOrderCartFinish.setOnClickListener {
+            finish()
+        }
+
+        binding.tvOrderAddMenu.setOnClickListener {
+            val intent = Intent(this,RestaurantActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.checkOrder.setOnClickListener {
+            binding.checkOrder.setImageResource(R.drawable.checkbox_custom)
+        }
+
+    }
+
     fun initOrderRecycler(){
-        orderAdapter = OrderAdapter(this)
+       // orderAdapter = OrderAdapter(this)
         binding.rvOrderMenuDetail.adapter = orderAdapter
 
         orderDatas.apply {
