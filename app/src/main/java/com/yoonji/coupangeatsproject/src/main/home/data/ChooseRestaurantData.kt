@@ -10,5 +10,5 @@ data class ChooseRestaurantData(
     val restaurantDeliveryFee :String,
     val restaurantDeliveryTime :String,
     val restaurantCheetahDelivery :String,
-    val restaurantCoupon :String,
+    val restaurantCoupon :String
 )

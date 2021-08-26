@@ -69,9 +69,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         var check = intent.getIntExtra("changeAddress",0)
 
         if(check == 111) {
-            var snackBar:Snackbar = Snackbar.make(binding.btmNaviMain, "주소 변경", 5000)
-            snackBar.anchorView = binding.btmNaviMain
-            snackBar.show()
+            //var snackBar:Snackbar = Snackbar.make(binding.btmNaviMain, "주소 변경", 5000)
+//            snackBar.anchorView = binding.btmNaviMain
+//            snackBar.show()
+
+            showCustomToast("배달 주소가 변경되었습니다.")
 
         }
     }
