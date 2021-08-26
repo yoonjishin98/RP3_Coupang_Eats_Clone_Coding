@@ -90,7 +90,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/tv_signup_email"
+                    android:id="@+id/edt_signup_email"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="-5dp"
@@ -98,7 +98,9 @@
                     android:hint="@string/signup_email"
                     android:maxLines="1"
                     android:paddingStart="15dp"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgv_sign_up_one"
@@ -147,7 +149,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_check" />
+                    app:srcCompat="@drawable/ic_check_blue_sign_up" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -172,7 +174,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
-                    android:id="@+id/tv_signup_pwd"
+                    android:id="@+id/edt_signup_pwd"
                     android:layout_width="0dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="-5dp"
@@ -181,7 +183,9 @@
                     android:inputType="textVisiblePassword"
                     android:maxLines="1"
                     android:paddingStart="15dp"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgv_sign_up_two"
@@ -324,7 +328,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
-                    android:id="@+id/tv_signup_name"
+                    android:id="@+id/edt_signup_name"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="-5dp"
@@ -332,7 +336,9 @@
                     android:hint="@string/signup_name"
                     android:maxLines="1"
                     android:paddingStart="15dp"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgv_sign_up_three"
@@ -352,14 +358,14 @@
 
                 <ImageView
                     android:id="@+id/imgv_sign_up_check_name"
-                    android:layout_width="30dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_width="35dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="10dp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_check" />
+                    app:srcCompat="@drawable/ic_check_blue_sign_up" />
 
                 <View
                     android:id="@+id/v_sign_up_name_red"
@@ -408,7 +414,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
-                    android:id="@+id/tv_signup_phone_num"
+                    android:id="@+id/edt_signup_phone_num"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="-5dp"
@@ -416,7 +422,9 @@
                     android:hint="@string/signup_phone_num"
                     android:maxLines="1"
                     android:paddingStart="15dp"
+                    android:textColor="@color/black"
                     android:textSize="14sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgv_sign_up_four"
@@ -467,6 +475,17 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imgv_sign_up_four" />
+
+                <ImageView
+                    android:id="@+id/imgv_sign_up_check_phone_num"
+                    android:layout_width="35dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_check_blue_sign_up" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
@@ -494,7 +513,7 @@
                 android:layout_height="match_parent">
 
                 <CheckBox
-                    android:id="@+id/checkbox1"
+                    android:id="@+id/check_sign_up_all"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="10dp"
@@ -515,7 +534,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@id/checkbox1"
+                    app:layout_constraintStart_toEndOf="@id/check_sign_up_all"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
@@ -528,7 +547,7 @@
                     android:background="#CBCBCB "
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/checkbox1" />
+                    app:layout_constraintTop_toBottomOf="@id/check_sign_up_all" />
 
                 <View
                     android:id="@+id/view"

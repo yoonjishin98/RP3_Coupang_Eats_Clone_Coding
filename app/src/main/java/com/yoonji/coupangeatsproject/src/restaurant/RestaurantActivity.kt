@@ -89,7 +89,6 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
                 binding.imgvRestaurantBack.imageTintList = ColorStateList.valueOf(this.getColor(R.color.black))
                 binding.imgvRestaurantHeart.imageTintList = ColorStateList.valueOf(this.getColor(R.color.pinkForLike))
                 binding.imgvRestaurantShare.imageTintList = ColorStateList.valueOf(this.getColor(R.color.black))
-                //binding.imgvRestaurantShare.setColorFilter(Color.parseColor("#000000"))
 
                 isShow = true
 
