@@ -277,7 +277,7 @@
                         android:src="@drawable/ic_arrow_left" />
 
                     <TextView
-                        android:id="@+id/tv_category_toolbar_title"
+                        android:id="@+id/tv_restaurant_toolbar_title"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

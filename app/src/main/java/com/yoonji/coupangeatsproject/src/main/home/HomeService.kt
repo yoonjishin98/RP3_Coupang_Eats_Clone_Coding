@@ -7,6 +7,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeService(val view: HomeFragmentView)  {
+
     fun getNotLoginMain(){
         val homeRetrofitInterface = ApplicationClass.sRetrofit.create(HomeRetrofitInterface::class.java)
         homeRetrofitInterface.getMain().enqueue(object : Callback<MainResponse>{

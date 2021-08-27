@@ -64,6 +64,9 @@
         <activity android:name=".src.AddressDetailActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".src.CategoryActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

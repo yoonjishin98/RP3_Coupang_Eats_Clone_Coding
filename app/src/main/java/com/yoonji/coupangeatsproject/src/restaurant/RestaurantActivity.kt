@@ -104,7 +104,6 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
 
         initReviewRecycler()
         initMenuRecycler()
-
     }
 
     fun initReviewRecycler(){

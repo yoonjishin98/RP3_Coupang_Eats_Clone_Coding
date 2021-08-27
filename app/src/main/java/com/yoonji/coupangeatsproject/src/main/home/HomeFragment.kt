@@ -123,9 +123,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             add(R.drawable.img_ad_one)
             add(R.drawable.img_ad_two)
         }
-//        for ((index, value) in response.result.bannerResult.withIndex()){
-//
-//        }
 
         // 카테고리
         for ((index,value) in response.result.categoryResult.withIndex()){
@@ -134,7 +131,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             }
         }
 
-        //프랜차이즈
+        // 프랜차이즈
         for ((index,value) in response.result.franchiseResult.withIndex()) {
             if(value.starRating == null){
                 franchaiseDatas.apply {
