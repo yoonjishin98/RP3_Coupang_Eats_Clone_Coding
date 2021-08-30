@@ -66,7 +66,23 @@
             <ViewFlipper
                 android:id="@+id/flipper_ad"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="150dp" >
+
+                <ImageView
+                    android:id="@+id/imgv_home_ad_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_ad_one"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:id="@+id/imgv_home_ad_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/img_ad_two"
+                    android:scaleType="centerCrop"/>
+
+            </ViewFlipper>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_home_food_type"

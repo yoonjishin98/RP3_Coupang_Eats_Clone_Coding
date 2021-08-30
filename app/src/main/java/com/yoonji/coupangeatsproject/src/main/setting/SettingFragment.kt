@@ -22,6 +22,7 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>(FragmentSettingBindi
             editor.putString(ApplicationClass.X_ACCESS_TOKEN, "")
             editor.apply()      //커밋을 해야 저장
 
+
             Log.d("TAG", "onViewCreated: " +
                     ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "") )
         }

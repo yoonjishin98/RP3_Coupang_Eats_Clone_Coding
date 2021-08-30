@@ -11,6 +11,7 @@ import com.yoonji.coupangeatsproject.databinding.ActivityLoginBinding
 import com.yoonji.coupangeatsproject.src.log_in.models.LogInResponse
 import com.yoonji.coupangeatsproject.src.log_in.models.PostLogInRequest
 import com.yoonji.coupangeatsproject.src.main.MainActivity
+import com.yoonji.coupangeatsproject.src.main.home.HomeFragment
 import com.yoonji.coupangeatsproject.src.sign_up.SignUpActivity
 
 
@@ -48,21 +49,30 @@ class LogInActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
 
     override fun onPostLogInSuccess(response: LogInResponse) {
-        response.message?.let { Log.d(TAG, "onPostLogInSuccess: $it , " +  response.result.jwt) }
+        //response.message?.let { Log.d(TAG, "onPostLogInSuccess: $it , " +  response.result.jwt) }
 
-        val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
-        editor.putString(X_ACCESS_TOKEN,response.result.jwt )
-        editor.apply()      //커밋을 해야 저장
+        if(response.isSuccess){
+            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
+            editor.putString(X_ACCESS_TOKEN,response.result.jwt )
+            editor.apply()      //커밋을 해야 저장
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+            val userIdx = response.result.userIdx
+            Log.d(TAG, "userIdx 값: $userIdx")
+
+            val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("userIdx",userIdx)
+            startActivity(intent)
+        }
+        else{
+            //이 부분은 원래 다이얼로그가 나와야 함
+            showCustomToast("아이디 혹은 비밀번호가 일치하지 않습니다")
+        }
     }
 
     override fun onPostLogInFailure(message: String) {
         Log.d(TAG, "onPostLogInFailure: $message")
 
-        //이 부분은 원래 다이얼로그가 나와야 함
-        showCustomToast("아이디 혹은 비밀번호가 일치하지 않습니다")
+
     }
 
 }

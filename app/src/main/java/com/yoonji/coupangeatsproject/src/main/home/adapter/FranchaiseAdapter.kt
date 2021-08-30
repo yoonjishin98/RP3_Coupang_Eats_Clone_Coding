@@ -29,6 +29,7 @@ class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<Fr
             Glide.with(itemView).load(item.franchaiseImg).into(imgvHomeFranchaise)
             tvHomeFranchaiseTitle.text = item.franchaiseTitle
 
+            // 리뷰 null or not
             if(item.franchaiseReview == ""){
                 tvHomeFranchaiseReview.visibility = GONE
                 imgvItemFranchaiseStar.visibility = GONE
@@ -40,6 +41,7 @@ class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<Fr
                 imgvItemFranchaiseStar.visibility = VISIBLE
             }
 
+            //distance null or not
             if(item.franchaiseDistance == "") {
                 tvHomeFranchaiseDistance.visibility = INVISIBLE
                 tvItemFranchaiseKm.visibility = INVISIBLE
@@ -49,6 +51,7 @@ class FranchaiseAdapter (private val context: Context) : RecyclerView.Adapter<Fr
                 tvHomeFranchaiseDistance.text = item.franchaiseDistance
             }
 
+            //deliveryFee 무료배달 or 쿠폰 or 배달비 얼마
             when {
                 item.franchaiseDeliveryFee== "무료배달" -> {
                     tvHomeFranchaiseDeliveryFee.visibility = VISIBLE

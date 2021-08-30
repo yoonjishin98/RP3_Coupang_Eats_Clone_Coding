@@ -71,10 +71,6 @@ class ChooseRestaurantAdapter (private val context: Context) : RecyclerView.Adap
             itemView.setOnClickListener{
                 Intent(context, RestaurantActivity::class.java).apply {
                     putExtra("title", item.restaurantName)
-//                    putExtra("distance",item.restaurantDistance)
-//                    putExtra("reviewScore", item.restaurantReview)
-//                    putExtra("deliveryFee",item.restaurantDeliveryFee)
-//                    putExtra("deliveryTime",item.restaurantDeliveryTime)
 
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }.run { context.startActivity(this) }

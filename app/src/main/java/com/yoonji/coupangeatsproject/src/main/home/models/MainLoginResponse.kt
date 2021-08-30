@@ -1,8 +1,8 @@
 package com.yoonji.coupangeatsproject.src.main.home.models
 
-data class MainResponse(
+data class MainLoginResponse(
     val code: Int,
     val isSuccess: Boolean,
     val message: String,
-    val result: NotLoginResult
+    val result: LoginResult
 )
