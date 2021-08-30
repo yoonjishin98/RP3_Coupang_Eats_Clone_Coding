@@ -19,7 +19,7 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>(FragmentSettingBindi
 
         binding.end.setOnClickListener{
             val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
-            editor.putString(ApplicationClass.X_ACCESS_TOKEN, null )
+            editor.putString(ApplicationClass.X_ACCESS_TOKEN, "")
             editor.apply()      //커밋을 해야 저장
 
             Log.d("TAG", "onViewCreated: " +

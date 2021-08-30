@@ -4,6 +4,7 @@ import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.*
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.naver.maps.map.util.FusedLocationSource
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddressByMapBinding
+import com.yoonji.coupangeatsproject.src.AddressDetailActivity
 import java.io.IOException
 import java.util.*
 
@@ -53,6 +55,11 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
             supportFragmentManager.beginTransaction().add(R.id.fragment_map, mapFragment).commit()
         }
         mapFragment.getMapAsync(this)
+
+        binding.btnMapDeliver.setOnClickListener{
+            val intent = Intent(this,AddressDetailActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

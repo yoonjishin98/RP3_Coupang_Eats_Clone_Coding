@@ -245,7 +245,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     }
 
     override fun onPostSignUpSuccess(response: SignUpResponse) {
-        Log.d(TAG , "성공: " + response.message)
+        Log.d(TAG , "성공: " + response.result)
 
         if(response.isSuccess){
             val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언

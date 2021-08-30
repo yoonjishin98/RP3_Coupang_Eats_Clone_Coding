@@ -53,6 +53,7 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
             SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         window.statusBarColor = Color.TRANSPARENT
 
+
         // 카트에 담은 후 넘어오면 or 이미 카트에 이미 담아놓은 메뉴들이 있으면 최하단 버튼 보이도록
         val count = intent.getIntExtra("cartCount", 0)
         val price = intent.getIntExtra("cartPrice", 0)

@@ -1,6 +1,8 @@
 package com.yoonji.coupangeatsproject.src.main.home
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +13,7 @@ import com.yoonji.coupangeatsproject.BaseFragment
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.FragmentHomeBinding
 import com.yoonji.coupangeatsproject.src.address.AddressActivity
+import com.yoonji.coupangeatsproject.src.main.MainActivity
 import com.yoonji.coupangeatsproject.src.main.home.adapter.ChooseRestaurantAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FoodTypeAdapter
 import com.yoonji.coupangeatsproject.src.main.home.adapter.FranchaiseAdapter
@@ -25,6 +28,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
 
     private var TAG = "**HomeFragment--->"
     val token = ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "")
+    lateinit var mContext: Context
 
     private var images = mutableListOf<Int>()
 
@@ -54,13 +58,11 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             }
         }
 
-        HomeService(this).getNotLoginMain()
-
-//        if(token == "")
-//            HomeService(this).getNotLoginMain()
-//        else {
-//            //HomeService(this).getLoginMain()
-//        }
+        if(token == "")
+            HomeService(this).getNotLoginMain()
+        else {
+            //HomeService(this).getLoginMain()
+        }
 
     }
 
@@ -73,11 +75,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             binding.flipperAd.flipInterval = 2000
             binding.flipperAd.isAutoStart = true
         }
-
     }
 
     private fun initFoodTypeRecycler() {
-        foodTypeAdater = FoodTypeAdapter(requireContext())
+        foodTypeAdater = FoodTypeAdapter(ApplicationClass.applicationContext())
         binding.rvHomeFoodType.adapter = foodTypeAdater
 
         foodTypeAdater.datas = foodTypeDatas
@@ -97,6 +98,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         restaurantAdapter.datas = chooseRestaurantDatas
     }
 
+    override fun onAttach(context: Context) {       //프래그먼트가 액티비티와 연결되어 있었던 경우 액티비티는 여기로 호출
+        super.onAttach(context)
+        mContext = context
+    }
+
+
     override fun onResume() {
         super.onResume()
         binding.imgvHomeLoca.setOnClickListener{
@@ -110,6 +117,13 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         binding.tvHomeAddress.setOnClickListener{
             val intent = Intent(requireContext(), AddressActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.temporary.setOnClickListener {
+            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putInt("RestaurantCount", 0)
+            editor.putInt("RestaurantPrice", 0)
+            editor.apply()
         }
 
     }
@@ -231,8 +245,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
                     )
                 }
             }
-
-
         }
 
 

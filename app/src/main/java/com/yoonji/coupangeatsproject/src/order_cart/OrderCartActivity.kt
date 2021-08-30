@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityOrderCartBinding
+import com.yoonji.coupangeatsproject.src.main.MainActivity
 import com.yoonji.coupangeatsproject.src.order_cart.adapter.OrderAdapter
 import com.yoonji.coupangeatsproject.src.order_cart.model.OrderData
 import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
@@ -31,6 +32,12 @@ class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCa
 
         binding.tvOrderAddMenu.setOnClickListener {
             val intent = Intent(this,RestaurantActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.layoutOrderCart.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("total", "ㅇㅇ")
             startActivity(intent)
         }
 

@@ -23,6 +23,12 @@ class LikeActivity : BaseActivity<ActivityLikeBinding>(ActivityLikeBinding::infl
         binding.imgvLikeBefore.setOnClickListener{
            finish()
         }
+    }
 
+    override fun onPause() {
+        super.onPause()
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

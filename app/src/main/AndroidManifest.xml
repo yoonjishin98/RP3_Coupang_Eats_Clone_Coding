@@ -23,15 +23,16 @@
             android:value="AIzaSyBBwtlJ04Qqf2XfVBM2ENscSZRxue6cbvw"/>
 
         <activity android:name=".src.main.MainActivity">
+
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".SplashActivity"
-            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".src.sign_up.SignUpActivity"
             android:screenOrientation="portrait">
