@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ItemRestaurantMenuBinding
 import com.yoonji.coupangeatsproject.src.restaurant.RestaurantRecyclerViewDivider
-import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantMenuData
+import com.yoonji.coupangeatsproject.src.restaurant.data.RestaurantMenuData
 import kotlinx.android.synthetic.main.item_restaurant_menu.view.*
 
 class RestaurantMenuAdapter (private val context: Context) : RecyclerView.Adapter<RestaurantMenuAdapter.ViewHolder>(){

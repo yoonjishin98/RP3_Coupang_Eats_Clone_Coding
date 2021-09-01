@@ -1,4 +1,4 @@
-package com.yoonji.coupangeatsproject.src.restaurant.model
+package com.yoonji.coupangeatsproject.src.restaurant.data
 
 data class RestaurantDetailData(
     val restaurantDetailImg :Int,

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.databinding.ItemRestaurantMenuDetailBinding
 import com.yoonji.coupangeatsproject.src.add_cart.AddCartActivity
-import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantDetailData
+import com.yoonji.coupangeatsproject.src.restaurant.data.RestaurantDetailData
 
 class RestaurantDetailAdapter (private val context: Context) : RecyclerView.Adapter<RestaurantDetailAdapter.ViewHolder>(){
     var datas = mutableListOf<RestaurantDetailData>()

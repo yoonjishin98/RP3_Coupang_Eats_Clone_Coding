@@ -76,18 +76,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
 
         val check = intent.getIntExtra("changeAddress",0)
-        val total = intent.getStringExtra("total")
+        val orderDone = intent.getIntExtra("orderDone",0)
 
         if(check == 111) {
-            //var snackBar:Snackbar = Snackbar.make(binding.btmNaviMain, "주소 변경", 5000)
-//            snackBar.anchorView = binding.btmNaviMain
-//            snackBar.show()
-
             showCustomToast("배달 주소가 변경되었습니다.")
-
         }
 
-        if(total == "ㅇㅇ"){
+        if(orderDone == 222){
             showCustomToast("주문이 완료되었습니다.")
         }
     }

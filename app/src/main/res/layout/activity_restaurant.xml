@@ -32,7 +32,7 @@
                 app:layout_collapseMode="none">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imgv_restaurant_ad"
+                    android:id="@+id/imgv_restaurant_main"
                     android:layout_width="match_parent"
                     android:layout_height="280dp"
                     android:adjustViewBounds="true"
@@ -57,7 +57,7 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_main" />
 
                 <ImageView
                     android:id="@+id/imgv_restaurant_cheetah"
@@ -67,7 +67,7 @@
                     android:layout_marginTop="30dp"
                     android:visibility="invisible"
                     app:layout_constraintStart_toEndOf="@+id/tv_restaurant_delivery_time"
-                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad"
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_main"
                     app:srcCompat="@drawable/ic_cheetah_delivery" />
 
                 <TextView
@@ -81,7 +81,7 @@
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/imgv_restaurant"
-                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_main" />
 
                 <ImageView
                     android:id="@+id/imgv_restaurant"
@@ -91,7 +91,7 @@
                     android:layout_marginEnd="30dp"
                     android:src="@drawable/ic_arrow_right_blue"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_ad" />
+                    app:layout_constraintTop_toBottomOf="@+id/imgv_restaurant_main" />
 
                 <TextView
                     android:id="@+id/textView23"
@@ -177,7 +177,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imgv_restaurant_ad">
+                    app:layout_constraintTop_toTopOf="@+id/imgv_restaurant_main">
 
                     <TextView
                         android:id="@+id/tv_restaurant_title"

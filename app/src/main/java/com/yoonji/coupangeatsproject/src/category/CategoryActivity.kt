@@ -1,6 +1,7 @@
 package com.yoonji.coupangeatsproject.src
 
 import android.os.Bundle
+import android.util.Log
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityCategoryBinding
 import com.yoonji.coupangeatsproject.databinding.ActivityMainBinding
@@ -142,7 +143,7 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
     }
 
     override fun onGetCategoryFailure(message: String) {
-
+        Log.d(TAG, "onGetCategoryFailure: $message")
     }
 
 }

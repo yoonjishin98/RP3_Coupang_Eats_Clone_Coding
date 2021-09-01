@@ -70,7 +70,7 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
             val intent = Intent(this,RestaurantActivity::class.java)
             intent.putExtra("cartCount",count)
             intent.putExtra("cartPrice", priceTotal)
-            intent.putExtra("cartCheck","1000")
+            intent.putExtra("cartCheck","letsOrder")
             startActivity(intent)
         }
 

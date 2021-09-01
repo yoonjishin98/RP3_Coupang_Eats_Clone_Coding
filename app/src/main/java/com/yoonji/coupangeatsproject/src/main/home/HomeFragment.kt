@@ -258,7 +258,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
     }
 
     override fun onGetMainLoginSuccess(response: MainLoginResponse) {
-        Log.d(TAG, "onGetMainSuccess: $response")
+        Log.d(TAG, "onGetMainLoginSuccess: $response")
 
         if(response.isSuccess){
             // 배너광고

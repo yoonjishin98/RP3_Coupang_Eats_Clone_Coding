@@ -2,15 +2,13 @@ package com.yoonji.coupangeatsproject.src.restaurant.adapter
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.databinding.ItemRestaurantReviewBinding
-import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantReviewData
+import com.yoonji.coupangeatsproject.src.restaurant.data.RestaurantReviewData
 
 class RestaurantReviewAdapter (private val context: Context) : RecyclerView.Adapter<RestaurantReviewAdapter.ViewHolder>(){
     var datas = mutableListOf<RestaurantReviewData>()

@@ -1,7 +1,9 @@
 package com.yoonji.coupangeatsproject.src.order_cart
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import com.yoonji.coupangeatsproject.ApplicationClass
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityOrderCartBinding
@@ -9,7 +11,7 @@ import com.yoonji.coupangeatsproject.src.main.MainActivity
 import com.yoonji.coupangeatsproject.src.order_cart.adapter.OrderAdapter
 import com.yoonji.coupangeatsproject.src.order_cart.model.OrderData
 import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
-import com.yoonji.coupangeatsproject.src.restaurant.model.RestaurantReviewData
+import java.text.DecimalFormat
 
 class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCartBinding::inflate) {
 
@@ -18,6 +20,13 @@ class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCa
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val sharedPreferences = getSharedPreferences("COUPANG EATS", MODE_PRIVATE)
+        val totalPrice = sharedPreferences.getInt("RestaurantPrice", 0)
+        val myFormatter : DecimalFormat = DecimalFormat("###,###")
+        var formattedStringPrice :String = myFormatter.format(totalPrice.toString())
+
+        binding.tvOrderCartTotalPrice.text = formattedStringPrice
 
         initOrderRecycler()
 
@@ -37,7 +46,7 @@ class OrderCartActivity : BaseActivity<ActivityOrderCartBinding>(ActivityOrderCa
 
         binding.layoutOrderCart.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
-            intent.putExtra("total", "ㅇㅇ")
+            intent.putExtra("orderDone", 222)
             startActivity(intent)
         }
 

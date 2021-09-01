@@ -62,7 +62,7 @@
         <activity android:name=".src.address_by_search.AddressBySearchActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".src.AddressDetailActivity"
+        <activity android:name=".src.address_detail.AddressDetailActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".src.CategoryActivity"
