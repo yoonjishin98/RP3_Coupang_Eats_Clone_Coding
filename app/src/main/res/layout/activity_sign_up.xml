@@ -180,7 +180,7 @@
                     android:layout_marginStart="-5dp"
                     android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_pwd"
-                    android:inputType="textVisiblePassword"
+                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:paddingStart="15dp"
                     android:textColor="@color/black"

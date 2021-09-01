@@ -33,6 +33,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         //이메일
         binding.edtSignupEmail.setOnTouchListener { v, event ->
             when (event?.action) {
@@ -226,6 +227,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
     override fun onResume() {
         super.onResume()
+        var check = 0
+        var check2 = 0
 
         binding.btnSignUp.setOnClickListener{
             val email = binding.edtSignupEmail.text.toString()
@@ -242,13 +245,81 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         }
 
 
+        binding.checkSignUpAll.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+                binding.checkBox2.isChecked = true
+                binding.checkBox3.isChecked = true
+                binding.checkBox4.isChecked = true
+                binding.checkBox5.isChecked = true
+                binding.checkBox6.isChecked = true
+                check = 0
+            }else if(!isChecked && check==0){
+                binding.checkBox2.isChecked = false
+                binding.checkBox3.isChecked = false
+                binding.checkBox4.isChecked = false
+                binding.checkBox5.isChecked = false
+                binding.checkBox6.isChecked = false
+            }
+        }
+
+        binding.checkBox2.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(!isChecked) {
+                check = 100
+                check2 = 0
+                binding.checkSignUpAll.isChecked = false
+            }else{
+                check2 = -100
+            }
+
+        }
+        binding.checkBox3.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(!isChecked){
+                check = 100
+                check2 = 0
+                binding.checkSignUpAll.isChecked = false
+            }else{
+                check2 = -100
+            }
+
+        }
+        binding.checkBox4.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(!isChecked){
+                check = 100
+                check2 = 0
+                binding.checkSignUpAll.isChecked = false
+            }else{
+                check2 = -100
+            }
+
+        }
+        binding.checkBox5.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(!isChecked){
+                check = 100
+                check2 = 0
+                binding.checkSignUpAll.isChecked = false
+            }else{
+                check2 = -100
+            }
+
+        }
+        binding.checkBox6.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(!isChecked){
+                check = 100
+                check2 = 0
+                binding.checkSignUpAll.isChecked = false
+            }else{
+                check2 = -100
+            }
+        }
+
+
     }
 
     override fun onPostSignUpSuccess(response: SignUpResponse) {
         Log.d(TAG , "성공: " + response.result)
 
         if(response.isSuccess){
-            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
+            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(ApplicationClass.X_ACCESS_TOKEN,response.result.jwt )
             editor.apply()      //커밋을 해야 저장
 
