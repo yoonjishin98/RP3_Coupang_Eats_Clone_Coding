@@ -3,6 +3,7 @@ package com.yoonji.coupangeatsproject.src.restaurant.adapter
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
+import android.view.View.*
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -27,7 +28,13 @@ class RestaurantReviewAdapter (private val context: Context) : RecyclerView.Adap
     inner class ViewHolder(private val binding: ItemRestaurantReviewBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: RestaurantReviewData) = with(binding) {
-            Glide.with(itemView).load(item.reviewImg).into(imgvItemReview)
+            if(item.reviewImg == null || item.reviewImg == ""){
+                imgvItemReview.visibility = INVISIBLE
+            }else{
+                imgvItemReview.visibility = VISIBLE
+                Glide.with(itemView).load(item.reviewImg).into(imgvItemReview)
+            }
+
             tvItemReview.text = item.reviewTitle
 
             if(item.reviewStarScore == 1){

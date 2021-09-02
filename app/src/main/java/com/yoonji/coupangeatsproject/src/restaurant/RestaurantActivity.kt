@@ -160,13 +160,14 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
 
 
             //탭 레이아웃
-            for(i in response.result.storeMenuCateResult){
+            for(i in response.result.storeMenuByCate){
                 binding.tabRestaurant.addTab( binding.tabRestaurant.newTab().setText(i.menuCategory))
                 Log.d(TAG, "tab 생성")
             }
             binding.tabRestaurant.tabMode = MODE_SCROLLABLE
             binding.tabRestaurant.addOnTabSelectedListener(object : OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab) {
+                    TODO("스크롤")
 //                    if(binding.tabRestaurant.selectedTabPosition == )
                 }
                 override fun onTabUnselected(tab: TabLayout.Tab) {}
@@ -175,48 +176,81 @@ class RestaurantActivity : BaseActivity<ActivityRestaurantBinding>(ActivityResta
 
 
             //리뷰
-//            for((index,value) in response.result.storePtReviewResult.withIndex()){
-//                reviewDatas.add(RestaurantReviewData(
-//                            reviewImg = value.reviewImg,
-//                            reviewTitle = value.content,
-//                            reviewStarScore = value.starRating))
-//            }
+            for((index,value) in response.result.storePtReviewResult.withIndex()){
+                if(value.reviewImg == null){
+                    reviewDatas.add( RestaurantReviewData(
+                        reviewImg = "",
+                        reviewTitle = value.content,
+                        reviewStarScore = value.starRating) )
+                }else{
+                    reviewDatas.add( RestaurantReviewData(
+                        reviewImg = value.reviewImg,
+                        reviewTitle = value.content,
+                        reviewStarScore = value.starRating) )
+                }
 
-            reviewDatas.apply{
-                add(RestaurantReviewData(
-                    reviewImg = R.drawable.img_restaurant_review,
-                    reviewTitle = "너무너무 맛있어요~ 감사합니다 히히히히",
-                    reviewStarScore = 3))
-                add(RestaurantReviewData(
-                    reviewImg = R.drawable.img_restaurant_review,
-                    reviewTitle = "너무너무 맛있어요~ 감사합니다 히히히히dfdasfasfsfsfasfsdfsdfsf",
-                    reviewStarScore = 5))
-                add(RestaurantReviewData(
-                    reviewImg = R.drawable.img_restaurant_review,
-                    reviewTitle = "너무너무 맛있어요~ 감사합니다 히히히히",
-                    reviewStarScore = 1))
             }
+
+//            reviewDatas.apply{
+//                add(RestaurantReviewData(
+//                    reviewImg = R.drawable.img_restaurant_review,
+//                    reviewTitle = "너무너무 맛있어요~ 감사합니다 히히히히",
+//                    reviewStarScore = 3))
+//                add(RestaurantReviewData(
+//                    reviewImg = R.drawable.img_restaurant_review,
+//                    reviewTitle = "너무너무 맛있어요~ 감사합니다 히히히히dfdasfasfsfsfasfsdfsdfsf",
+//                    reviewStarScore = 5))
+//                add(RestaurantReviewData(
+//                    reviewImg = R.drawable.img_restaurant_review,
+//                    reviewTitle = "너무너무 맛있어요~ 감사합니다 히히히히",
+//                    reviewStarScore = 1))
+//            }
 
             //메뉴
             var storeMenu = response.result.storeMenuByCate
-//            Log.d(TAG, "response.result.storeMenuByCate 값: " + storeMenu[0].toString()[5])
-//            Log.d(TAG, "response.result.storeMenuByCate 값: " + storeMenu[0].toString().substring(5,6))
 
-                menuDetailDatas.apply{
-                    add(RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,
-                            restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
-                            restaurantDetailPrice = "30000",
-                            restaurantDetailTitle = "어쩌구 저쩌구 피자"))
-                    add(RestaurantDetailData(restaurantDetailImg = R.drawable.img_restaurant_menu,
-                            restaurantDetailDescrip = "고구마무스와 모짜렐라 치즈와의 완벽한 조합",
-                            restaurantDetailPrice = "29000",
-                            restaurantDetailTitle = "어쩌구 저쩌구 피자"))
+            for((index,value) in storeMenu.withIndex()){
+                var menu = storeMenu[index].menu
+
+                for(i in menu){
+                    if(i.menuImg == null && i.menuInfo == null){
+                        menuDetailDatas.apply {
+                            add( RestaurantDetailData(
+                                restaurantDetailImg = "",
+                                restaurantDetailDescrip = "",
+                                restaurantDetailPrice = i.price,
+                                restaurantDetailTitle = i.name) )
+                        }
+                    }else if(i.menuImg == null){
+                        menuDetailDatas.apply {
+                            add( RestaurantDetailData(
+                                restaurantDetailImg = "",
+                                restaurantDetailDescrip = i.menuInfo,
+                                restaurantDetailPrice = i.price,
+                                restaurantDetailTitle = i.name) )
+                        }
+                    }else if(i.menuInfo == null){
+                        menuDetailDatas.apply {
+                            add( RestaurantDetailData(
+                                restaurantDetailImg = i.menuImg,
+                                restaurantDetailDescrip = "",
+                                restaurantDetailPrice = i.price,
+                                restaurantDetailTitle = i.name) )
+                        }
+                    }else{
+                        menuDetailDatas.apply {
+                            add( RestaurantDetailData(
+                                restaurantDetailImg = i.menuImg,
+                                restaurantDetailDescrip = i.menuInfo,
+                                restaurantDetailPrice = i.price,
+                                restaurantDetailTitle = i.name) )
+                        }
+                    }
                 }
 
-            menuDatas.apply {
-                add(RestaurantMenuData(restaurantMenuTitle = "베스트메뉴", menuDetailArrayList = menuDetailDatas))
-                add(RestaurantMenuData(restaurantMenuTitle = "추천메뉴", menuDetailArrayList = menuDetailDatas))
-                add(RestaurantMenuData(restaurantMenuTitle = "사이드", menuDetailArrayList = menuDetailDatas ))
+                menuDatas.apply{
+                    add(RestaurantMenuData(restaurantMenuTitle = value.menuCategory, menuDetailArrayList = menuDetailDatas))
+                }
             }
 
             initReviewRecycler()

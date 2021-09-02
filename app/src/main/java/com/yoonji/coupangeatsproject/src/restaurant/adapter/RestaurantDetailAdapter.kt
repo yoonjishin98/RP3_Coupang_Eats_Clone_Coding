@@ -3,6 +3,8 @@ package com.yoonji.coupangeatsproject.src.restaurant.adapter
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -29,13 +31,24 @@ class RestaurantDetailAdapter (private val context: Context) : RecyclerView.Adap
 
         fun bind(item: RestaurantDetailData) = with(binding) {
             tvItemRestaurantDetailTitle.text = item.restaurantDetailTitle
-            tvItemRestaurantDetailDescrip.text = item.restaurantDetailDescrip
             tvItemRestaurantDetailPrice.text = item.restaurantDetailPrice
-            Glide.with(itemView).load(item.restaurantDetailImg).into(imgvItemRestaurantDetail)
+
+            if(item.restaurantDetailImg == null || item.restaurantDetailImg == "")
+                imgvItemRestaurantDetail.visibility = GONE
+            else {
+                imgvItemRestaurantDetail.visibility = VISIBLE
+                Glide.with(itemView).load(item.restaurantDetailImg).into(imgvItemRestaurantDetail)
+            }
+
+            if(item.restaurantDetailDescrip == null || item.restaurantDetailDescrip == "")
+                tvItemRestaurantDetailDescrip.visibility = GONE
+            else {
+                tvItemRestaurantDetailDescrip.visibility = VISIBLE
+                tvItemRestaurantDetailDescrip.text = item.restaurantDetailDescrip
+            }
 
             itemView.setOnClickListener{
                 Intent(context, AddCartActivity::class.java).apply {
-//                    putExtra("data", item)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }.run { context.startActivity(this) }
             }

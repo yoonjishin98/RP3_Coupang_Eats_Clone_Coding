@@ -13,7 +13,7 @@ import com.yoonji.coupangeatsproject.databinding.ActivityAddCartBinding
 import com.yoonji.coupangeatsproject.src.restaurant.RestaurantActivity
 
 
-class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBinding::inflate) {
+class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBinding::inflate), AddCartActivityView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +50,6 @@ class AddCartActivity : BaseActivity<ActivityAddCartBinding>(ActivityAddCartBind
                 isShow = false
             }
         } )
-
     }
 
 
