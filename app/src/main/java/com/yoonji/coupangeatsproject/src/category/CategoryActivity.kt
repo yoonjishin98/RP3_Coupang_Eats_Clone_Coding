@@ -32,7 +32,7 @@ class CategoryActivity : BaseActivity<ActivityCategoryBinding>(ActivityCategoryB
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        CategoryService(this).getCategory(5,3)
+        CategoryService(this).getCategory(5,3)      //임시로 userIdx 넣어놓음
 
     }
 

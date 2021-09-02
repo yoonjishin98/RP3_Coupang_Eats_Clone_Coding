@@ -95,8 +95,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         val orderDone = intent.getIntExtra("orderDone",0)
 
         if(check == 111) {
-            newAddress = intent.getStringExtra("newAddress").toString()
-            Log.d(TAG, "건너온 newAddress 값: $newAddress")
+            //newAddress = intent.getStringExtra("newAddress").toString()
+            //Log.d(TAG, "건너온 newAddress 값: $newAddress")
 
             showCustomToast("배달 주소가 변경되었습니다.")
         }

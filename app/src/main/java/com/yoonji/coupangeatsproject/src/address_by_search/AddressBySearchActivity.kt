@@ -24,6 +24,7 @@ import retrofit2.Call
 import retrofit2.Response
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import kotlin.concurrent.thread
 
 
 class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(ActivityAddressBySearchBinding::inflate) {
@@ -36,10 +37,6 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
         super.onCreate(savedInstanceState)
         //getHashKey()
 
-        //주소 -> 좌표 by Geocoder
-//        thread(start = true){
-//            AddressToLatLng()
-//        }
 
     }
 
@@ -62,19 +59,6 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
         }
     }
 
-
-    fun AddressToLatLng(){
-        //var fusedLocationClient: FusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
-        if(ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            showCustomToast("위치 권한을 설정해주세요")
-        }else{
-            val geocoder = Geocoder(this)
-            val latlng = geocoder.getFromLocationName("서울특별시 영등포구 문래로 137 (문래동금호어울림아파트)",1)
-            Log.d("TAG ", "AddressToLatLng 결과: 위도) " + latlng[0].latitude + ", 경도) " + latlng[0].longitude)
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -106,7 +90,6 @@ class AddressBySearchActivity : BaseActivity<ActivityAddressBySearchBinding>(Act
                 return false
             }
         })
-
 
     }
 

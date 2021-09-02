@@ -28,6 +28,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
     private var TAG = "**HomeFragment--->"
     val token = ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "")
 //    val userIdxFromSharedPreferences = ApplicationClass.sSharedPreferences.getInt("userIdx", -1)
+    val addressFromSharedPreferences = ApplicationClass.sSharedPreferences.getString("address", "")
+
 
     private var images = mutableListOf<String>()
 
@@ -57,28 +59,15 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             }
         }
 
-        initAdSlider()
-
-        val userIdx = arguments?.getInt("userIdx")
-        Log.d(TAG, "userIdx 값: $userIdx")
-
-//        val newAddress = arguments?.getString("newAddressToHomeFragment")
-//        Log.d(TAG, "newAddress 값: " + newAddress)
-//
-//        if(newAddress == null || newAddress == ""){
-//            binding.tvHomeAddress.text = "주소를 입력해주세요"
-//        }else{
-//            binding.tvHomeAddress.text = newAddress
-//        }
+        if(addressFromSharedPreferences == ""){
+            binding.tvHomeAddress.text = "주소를 입력해주세요"
+        }else{
+            binding.tvHomeAddress.text = addressFromSharedPreferences
+        }
 
         // 메인화면 api - 로그인 or 비로그인
-//        if(userIdx == -1)
-//            HomeService(this).getNotLoginMain()
-//        else {
-//            if (userIdx != null) {
-//                HomeService(this).getLoginMain(userIdx)
-//            }
-//        }
+        val userIdx = arguments?.getInt("userIdx")
+        Log.d(TAG, "userIdx 값: $userIdx")
 
         if(token == "" ) {
             Log.d(TAG, "토큰 값: $token")
@@ -90,7 +79,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             }
         }
 
-
+        initAdSlider()
     }
 
     private fun initAdSlider(){
@@ -147,6 +136,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             editor.putInt("RestaurantCount", 0)
             editor.putInt("RestaurantPrice", 0)
             editor.apply()
+        }
+
+        if(addressFromSharedPreferences == ""){
+            binding.tvHomeAddress.text = "주소를 입력해주세요"
+        }else{
+            binding.tvHomeAddress.text = addressFromSharedPreferences
         }
 
     }

@@ -55,7 +55,7 @@ class LogInActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(X_ACCESS_TOKEN,response.result.jwt )
             editor.putInt("userIdx", response.result.userIdx)
-            editor.apply()      //커밋을 해야 저장
+            editor.apply()
 
             val userIdx = response.result.userIdx
             Log.d(TAG, "userIdx 값: $userIdx")

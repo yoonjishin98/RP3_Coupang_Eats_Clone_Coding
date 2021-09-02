@@ -1,6 +1,7 @@
 package com.yoonji.coupangeatsproject.src.address_detail
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
@@ -25,7 +26,6 @@ class AddressDetailActivity : BaseActivity<ActivityAddressDetailBinding>(Activit
     var iRoadAddress = ""
     var iAddress = ""
     val userIdxFromSharedPreferences = ApplicationClass.sSharedPreferences.getInt("userIdx", -1)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,8 +81,11 @@ class AddressDetailActivity : BaseActivity<ActivityAddressDetailBinding>(Activit
             binding.btnAddressDetailFinish.setOnClickListener{
                 val intent = Intent(this,MainActivity::class.java)
                 intent.putExtra("changeAddress",111)
-                intent.putExtra("newAddress",iAddress)
-                Log.d(TAG, "iAddress 값: $iAddress")
+
+                val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+                editor.putString("address",iAddress )
+                editor.apply()
+
                 startActivity(intent)
             }
         }else{

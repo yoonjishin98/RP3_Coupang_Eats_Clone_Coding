@@ -1,16 +1,9 @@
 package com.yoonji.coupangeatsproject.src.address_by_map
 
-import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.*
 import android.os.Bundle
-import android.util.Log
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
@@ -19,9 +12,7 @@ import com.naver.maps.map.util.FusedLocationSource
 import com.yoonji.coupangeatsproject.R
 import com.yoonji.coupangeatsproject.config.BaseActivity
 import com.yoonji.coupangeatsproject.databinding.ActivityAddressByMapBinding
-import com.yoonji.coupangeatsproject.src.AddressDetailActivity
-import java.io.IOException
-import java.util.*
+import com.yoonji.coupangeatsproject.src.address_detail.AddressDetailActivity
 
 
 class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityAddressByMapBinding::inflate),
@@ -57,7 +48,7 @@ class AddressByMapActivity : BaseActivity<ActivityAddressByMapBinding>(ActivityA
         mapFragment.getMapAsync(this)
 
         binding.btnMapDeliver.setOnClickListener{
-            val intent = Intent(this,AddressDetailActivity::class.java)
+            val intent = Intent(this, AddressDetailActivity::class.java)
             startActivity(intent)
         }
 
