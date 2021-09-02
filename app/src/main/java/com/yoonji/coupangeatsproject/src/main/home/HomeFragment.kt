@@ -1,5 +1,6 @@
 package com.yoonji.coupangeatsproject.src.main.home
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -26,6 +27,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
 
     private var TAG = "**HomeFragment--->"
     val token = ApplicationClass.sSharedPreferences.getString(ApplicationClass.X_ACCESS_TOKEN, "")
+//    val userIdxFromSharedPreferences = ApplicationClass.sSharedPreferences.getInt("userIdx", -1)
 
     private var images = mutableListOf<String>()
 
@@ -58,14 +60,37 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         initAdSlider()
 
         val userIdx = arguments?.getInt("userIdx")
+        Log.d(TAG, "userIdx 값: $userIdx")
 
-        if(token == "")
+//        val newAddress = arguments?.getString("newAddressToHomeFragment")
+//        Log.d(TAG, "newAddress 값: " + newAddress)
+//
+//        if(newAddress == null || newAddress == ""){
+//            binding.tvHomeAddress.text = "주소를 입력해주세요"
+//        }else{
+//            binding.tvHomeAddress.text = newAddress
+//        }
+
+        // 메인화면 api - 로그인 or 비로그인
+//        if(userIdx == -1)
+//            HomeService(this).getNotLoginMain()
+//        else {
+//            if (userIdx != null) {
+//                HomeService(this).getLoginMain(userIdx)
+//            }
+//        }
+
+        if(token == "" ) {
+            Log.d(TAG, "토큰 값: $token")
             HomeService(this).getNotLoginMain()
+        }
         else {
             if (userIdx != null) {
                 HomeService(this).getLoginMain(userIdx)
             }
         }
+
+
     }
 
     private fun initAdSlider(){
@@ -77,7 +102,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
 
         binding.flipperAd.flipInterval = 2000
         binding.flipperAd.isAutoStart = true
-
     }
 
     private fun initFoodTypeRecycler() {
@@ -261,6 +285,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         Log.d(TAG, "onGetMainLoginSuccess: $response")
 
         if(response.isSuccess){
+
             // 배너광고
             for(image in response.result.bannerResult) {
                 images.apply {
@@ -381,11 +406,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
             //initAdSlider()
             initFranchaiseRecycler()
             initChooseRestaurantRecycler()
-        }else{
-            Log.d(TAG, "msg: " + response.message)
-
         }
-
+        else{
+            Log.d(TAG, "msg: " + response.message)
+        }
     }
 
     override fun onGetMainLoginFailure(message: String) {

@@ -316,12 +316,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     }
 
     override fun onPostSignUpSuccess(response: SignUpResponse) {
-        Log.d(TAG , "성공: " + response.result)
+        Log.d(TAG , "성공: " + response.message)
 
         if(response.isSuccess){
-            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
-            editor.putString(ApplicationClass.X_ACCESS_TOKEN,response.result.jwt )
-            editor.apply()      //커밋을 해야 저장
+//            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+//            editor.putString(ApplicationClass.X_ACCESS_TOKEN,response.result.jwt )
+//            editor.apply()
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

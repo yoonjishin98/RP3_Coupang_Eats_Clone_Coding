@@ -52,15 +52,16 @@ class LogInActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         //response.message?.let { Log.d(TAG, "onPostLogInSuccess: $it , " +  response.result.jwt) }
 
         if(response.isSuccess){
-            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()       //sharedPreferences를 제어할 editor를 선언
+            val editor: SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
             editor.putString(X_ACCESS_TOKEN,response.result.jwt )
+            editor.putInt("userIdx", response.result.userIdx)
             editor.apply()      //커밋을 해야 저장
 
             val userIdx = response.result.userIdx
             Log.d(TAG, "userIdx 값: $userIdx")
 
             val intent = Intent(this,MainActivity::class.java)
-            intent.putExtra("userIdx",userIdx)
+            intent.putExtra("userIdx", userIdx)
             startActivity(intent)
         }
         else{

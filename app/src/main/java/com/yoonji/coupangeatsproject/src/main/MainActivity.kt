@@ -19,28 +19,31 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     val TAG = "**MainActivity--->"
     val token = ApplicationClass.sSharedPreferences.getString(X_ACCESS_TOKEN, "")
+    val userIdxFromSharedPreferences = ApplicationClass.sSharedPreferences.getInt("userIdx", -1)
+    var newAddress = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         binding.btmNaviMain.run{
             setOnNavigationItemSelectedListener {
                 when(it.itemId){
                     R.id.menu_bottom_home ->{
-                        val userIdx = intent.getIntExtra("userIdx",-1)
+                        val userIdx = intent.getIntExtra("userIdx",userIdxFromSharedPreferences)
 
-                        if(userIdx == -1){
+                        if(token == ""){
                             changeFragment(HomeFragment())
                         }else{
-                            val bundle = Bundle()
-                            bundle.putInt("userIdx", userIdx)
                             val homeF = HomeFragment()
+                            val bundle = Bundle()
+
+                            bundle.putInt("userIdx", userIdx)
                             homeF.arguments = bundle
 
-                            val transaction = supportFragmentManager.beginTransaction()
-                            transaction.add(R.id.main_frm, homeF)
-                            transaction.commit()
+                            changeFragment(homeF)
+//                            val transaction = supportFragmentManager.beginTransaction()
+//                            transaction.add(R.id.main_frm, homeF)
+//                            transaction.commit()
                         }
                     }
                     R.id.menu_bottom_search ->{
@@ -53,7 +56,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     R.id.menu_bottom_history ->{
                         Log.d(TAG, "token 값: $token")
 
-                        if(token == ""){
+                        if(token == "" ){
                             val bottomSheet = LoginBtmSheetFragment()
                             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
                         }else
@@ -75,16 +78,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             selectedItemId = R.id.menu_bottom_home
         }
 
-        val check = intent.getIntExtra("changeAddress",0)
-        val orderDone = intent.getIntExtra("orderDone",0)
 
-        if(check == 111) {
-            showCustomToast("배달 주소가 변경되었습니다.")
-        }
-
-        if(orderDone == 222){
-            showCustomToast("주문이 완료되었습니다.")
-        }
     }
 
     private fun changeFragment(fragment: Fragment) {
@@ -97,6 +91,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onResume() {
         super.onResume()
 
+        val check = intent.getIntExtra("changeAddress",0)
+        val orderDone = intent.getIntExtra("orderDone",0)
+
+        if(check == 111) {
+            newAddress = intent.getStringExtra("newAddress").toString()
+            Log.d(TAG, "건너온 newAddress 값: $newAddress")
+
+            showCustomToast("배달 주소가 변경되었습니다.")
+        }
+
+        if(orderDone == 222){
+            showCustomToast("주문이 완료되었습니다.")
+        }
     }
 
     override fun onRestart() {
@@ -106,20 +113,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             setOnNavigationItemSelectedListener {
                 when(it.itemId){
                     R.id.menu_bottom_home ->{
-                        val userIdx = intent.getIntExtra("userIdx",-1)
-                        Log.d(TAG, "userIdx 값: $userIdx")
+                        val userIdx = intent.getIntExtra("userIdx",userIdxFromSharedPreferences)
 
-                        if(userIdx == -1){
+                        if(token == ""){
                             changeFragment(HomeFragment())
                         }else{
-                            val bundle = Bundle()
-                            bundle.putInt("userIdx", userIdx)
                             val homeF = HomeFragment()
+                            val bundle = Bundle()
+
+                            bundle.putInt("userIdx", userIdx)
                             homeF.arguments = bundle
 
-                            val transaction = supportFragmentManager.beginTransaction()
-                            transaction.add(R.id.main_frm, homeF)
-                            transaction.commit()
+                            changeFragment(homeF)
                         }
                     }
                     R.id.menu_bottom_search ->{
@@ -130,7 +135,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         startActivity(intent)
                     }
                     R.id.menu_bottom_history ->{
-                        Log.d(TAG, "token 값1: $token")
 
                         if(token == ""){
                             val bottomSheet = LoginBtmSheetFragment()
@@ -139,7 +143,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                             changeFragment(HistoryFragment())
                     }
                     R.id.menu_bottom_setting ->{
-                        Log.d(TAG, "token 값2: $token")
 
                         if(token == ""){
                             val bottomSheet = LoginBtmSheetFragment()
