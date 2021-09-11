@@ -1,0 +1,90 @@
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+
+}
+
+android {
+    compileSdkVersion 30
+
+    viewBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "com.yoonji.coupangeatsproject"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // https://github.com/ybq/Android-SpinKit
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    // https://github.com/square/retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    // https://github.com/square/okhttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+
+    // https://github.com/square/retrofit/tree/master/retrofit-converters/gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    // https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // Circular Imageview
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //수동 크기 조절 관련 라이브러리
+    implementation 'com.github.JungJongSeok:JS-Android-Utils:1.0.2'
+
+    // Bottom Sheet Dialog
+    implementation 'com.google.android.material:material:1.4.0'
+
+    //image slider
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
+
+    // 네이버 지도 SDK
+    implementation("com.naver.maps:map-sdk:3.12.0")
+
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+}

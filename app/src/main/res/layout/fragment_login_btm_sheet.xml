@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_hideable="true">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/tv_login_require_login"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="27dp"
+        android:text="@string/tv_login_description"
+        android:textColor="#858585 "
+        android:textSize="16sp" />
+
+    <android.widget.Button
+        android:id="@+id/btn_login_by_app"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_edge_round_bgd_blue"
+        android:outlineProvider="none"
+        android:text="@string/login_by_app"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <android.widget.Button
+        android:id="@+id/btn_login_by_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/button_edge_round_white"
+        android:outlineProvider="none"
+        android:text="@string/login_by_id"
+        android:textColor="#00AFFE"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="27dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_login_sign_up1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/login_question"
+            android:textColor="#48515A "
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_login_sign_up2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_question_sign_up"
+            android:textColor="#00AFFE"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:paddingStart="35dp"
+        android:paddingEnd="35dp"
+        android:text="@string/tv_login_agree"
+        android:textAlignment="center"
+        android:textColor="#959CA2"
+        android:textSize="11sp" />
+
+
+</LinearLayout>

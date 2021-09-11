@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.yoonji.coupangeatsproject">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".ApplicationClass"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CoupangEatsProject">
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="fyrgrvfmye" />
+        <meta-data
+            android:name="com.google.android.geo.API-KEY"
+            android:value="AIzaSyBBwtlJ04Qqf2XfVBM2ENscSZRxue6cbvw"/>
+
+        <activity android:name=".src.main.MainActivity">
+
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".src.sign_up.SignUpActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.main.like.LikeActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.log_in.LogInActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.address.AddressActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.address_by_map.AddressByMapActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.restaurant.RestaurantActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.add_cart.AddCartActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.order_cart.OrderCartActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".src.address_by_search.AddressBySearchActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.address_detail.AddressDetailActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".src.CategoryActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="15dp">
+
+    <ImageView
+        android:id="@+id/imgv_item_category_cheetah"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_cheetah_delivery"
+        app:layout_constraintEnd_toStartOf="@id/tv_item_category_delivery_time"
+        app:layout_constraintHorizontal_bias="0.001"
+        app:layout_constraintStart_toEndOf="@id/tv_category_name"
+        app:layout_constraintTop_toBottomOf="@+id/imgv_item_category_main" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgv_item_category_main"
+        android:layout_width="0dp"
+        android:layout_height="153dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/imgv_item_category_up"
+        app:layout_constraintHorizontal_weight="3.5"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_choose_one_o" />
+
+    <ImageView
+        android:id="@+id/imgv_item_category_up"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="3dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/imgv_item_category_main"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_choose_one_t" />
+
+    <ImageView
+        android:id="@+id/imgv_category_down"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/imgv_item_category_main"
+        app:layout_constraintTop_toBottomOf="@+id/imgv_item_category_up"
+        app:srcCompat="@drawable/img_choose_one_th" />
+
+    <TextView
+        android:id="@+id/tv_category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:text="롯데리아 영등포역사점"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/imgv_item_category_main" />
+
+    <ImageView
+        android:id="@+id/imgv_category_star"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="7dp"
+        android:src="@drawable/ic_review_star"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <TextView
+        android:id="@+id/tv_item_category_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="7dp"
+        android:text="3.0(1)"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imgv_category_star"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <ImageView
+        android:id="@+id/imgv_item_category_spot"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/ic_middle_spot"
+        app:layout_constraintStart_toEndOf="@id/tv_item_category_review"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <TextView
+        android:id="@+id/tv_item_category_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="7dp"
+        android:text="2.9"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imgv_item_category_spot"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <TextView
+        android:id="@+id/tv_item_category_km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="km"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_item_category_distance"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <ImageView
+        android:id="@+id/imgv_item_category_spot_two"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/ic_middle_spot"
+        app:layout_constraintStart_toEndOf="@id/tv_item_category_km"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <TextView
+        android:id="@+id/tv_item_category_delivery_fee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="7dp"
+        android:text="배달비 2000원"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imgv_item_category_spot_two"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_name" />
+
+    <TextView
+        android:id="@+id/tv_item_category_delivery_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="25~35분"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintTop_toBottomOf="@+id/imgv_category_down" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_item_category_coupon"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edge_round_blue_bgd_white"
+        android:drawableLeft="@drawable/ic_coupon_tag"
+        android:drawablePadding="3dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="1000원 쿠폰"
+        android:textColor="#00A7F7"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_end"
+        app:layout_constraintHorizontal_bias="0.001"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_category_delivery_fee" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="15dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
