@@ -14,7 +14,7 @@ _치타배달 여부, 쿠폰 여부, 무료배달 여부, 리뷰 별점 등에 �
 
 - 메인화면(로그인 후/회원용 API 적용: 거리값0) <br/>
 <img src="https://user-images.githubusercontent.com/44793355/133713920-400cfb42-5279-4285-b75d-3916f4bf6b6c.gif"  width="70%" height="70%"/> <br/>
-_치타배달 여부, 쿠폰 여부, 무료배달 여부 등에 따라 뷰의 visibility 조절_
+_치타배달 여부, 쿠폰 여부, 무료배달 여부,리뷰 별점 등에 따라 뷰의 visibility 조절_
 
 - 카카오 도로명 주소 API 사용 <br/>
 <img src="https://user-images.githubusercontent.com/44793355/133712867-ea143aef-17d4-48c4-9eac-ea17cd5dd945.png"  width="20%" height="20%"/> <br/>
