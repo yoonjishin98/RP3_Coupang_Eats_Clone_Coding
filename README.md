@@ -6,6 +6,8 @@
 
 #### 💨 **개발 플랫폼** : Android Studio <br/>
 #### 💨 **개발 언어** : Kotlin <br/>
+#### 💨 **서버 통신** : Retrofit2, OkHttp3를 통해 Rest API 연동 <br/>
+
 -----
 ### 👁‍🗨시연영상 <br/>
 - 메인화면(로그인 전/비회원용 API 적용: 거리값X) <br/>
