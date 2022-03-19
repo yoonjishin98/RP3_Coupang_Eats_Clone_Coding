@@ -27,7 +27,7 @@ class ApplicationClass : Application() {
     }
 
     companion object {
-        // 만들어져있는 SharedPreferences 를 사용해야합니다. 재생성하지 않도록 유념해주세요
+        // 만들어져있는 SharedPreferences를 사용해야합니다. 재생성하지 않도록 유념해주세요
         lateinit var sSharedPreferences: SharedPreferences
 
         // JWT Token Header 키 값
@@ -47,9 +47,7 @@ class ApplicationClass : Application() {
         super.onCreate()
 
         sSharedPreferences = applicationContext.getSharedPreferences("COUPANG EATS", MODE_PRIVATE)
-
         initRetrofitInstance()
-
     }
 
     // 레트로핏 인스턴스를 생성하고, 레트로핏에 각종 설정값들을 지정해줍니다.
@@ -64,7 +62,7 @@ class ApplicationClass : Application() {
             .addNetworkInterceptor(XAccessTokenInterceptor()) // JWT 자동 헤더 전송
             .build()
 
-        // sRetrofit 이라는 전역변수에 API url, 인터셉터, Gson을 넣어주고 빌드해주는 코드
+        // sRetrofit이라는 전역변수에 API url, 인터셉터, Gson을 넣어주고 빌드해주는 코드
         // 이 전역변수로 http 요청을 서버로 보내면 됩니다.
         sRetrofit = Retrofit.Builder()
             .baseUrl(API_URL)

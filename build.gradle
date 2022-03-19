@@ -19,7 +19,7 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
-        maven { url "https://jitpack.io" }      //수동 크기 조절 관련 라이브러리
+//        maven { url "https://jitpack.io" }      //수동 크기 조절 관련 라이브러리
         maven {url "https://naver.jfrog.io/artifactory/maven/"}      //네이버 지도 API 관련
     }
 }

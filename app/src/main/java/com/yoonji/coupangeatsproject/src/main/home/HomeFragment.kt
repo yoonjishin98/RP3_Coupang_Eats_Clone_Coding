@@ -21,7 +21,7 @@ import com.yoonji.coupangeatsproject.src.main.home.data.FranchaiseData
 import com.yoonji.coupangeatsproject.src.main.home.models.MainLoginResponse
 import com.yoonji.coupangeatsproject.src.main.home.models.MainResponse
 
-
+// MVP의 view에 해당
 class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home),
     HomeFragmentView {
 
@@ -143,7 +143,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind,
         }else{
             binding.tvHomeAddress.text = addressFromSharedPreferences
         }
-
     }
 
     override fun onGetMainNotLoginSuccess(response: MainResponse) {

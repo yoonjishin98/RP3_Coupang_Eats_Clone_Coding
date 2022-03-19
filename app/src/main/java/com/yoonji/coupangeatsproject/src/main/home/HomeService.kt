@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+// MVP의 presenter에 해당
 class HomeService(val view: HomeFragmentView)  {
 
     fun getNotLoginMain(){
@@ -34,8 +35,6 @@ class HomeService(val view: HomeFragmentView)  {
             override fun onFailure(call: Call<MainLoginResponse>, t: Throwable) {
                 view.onGetMainNotLoginFailure(t.message ?: "통신오류")
             }
-
-
         })
     }
 

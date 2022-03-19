@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.util.Patterns
 import android.view.MotionEvent
+import android.view.View
 import android.view.View.*
 import androidx.core.content.ContextCompat
 import com.yoonji.coupangeatsproject.ApplicationClass
@@ -24,74 +26,64 @@ import java.util.regex.Pattern
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding::inflate),SignUpActivityView {
 
     private var TAG = "**SignUpActivity--->"
-
     companion object{
         var userEmail = ""
+        var emailValidation = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        //이메일
-        binding.edtSignupEmail.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    binding.imgvSignUpCheckEmail.visibility = GONE
-                    binding.vSignUpEmailBlue.visibility = VISIBLE
-                }
+        fun checkEmail(){
+            if(Pattern.matches(emailValidation, binding.edtSignupEmail.text.toString())){
+                binding.vSignUpEmailBlue.visibility = GONE
+                binding.vSignUpEmailRed.visibility = GONE
+                binding.tvSignUpWarnEmail.visibility = GONE
+                binding.imgvSignUpCheckEmail.visibility = VISIBLE
+            } else if (binding.edtSignupEmail.text.toString() == "") {
+                binding.vSignUpEmailBlue.visibility = GONE
+                binding.vSignUpEmailRed.visibility = VISIBLE
+                binding.imgvSignUpCheckEmail.visibility = GONE
+                binding.tvSignUpWarnEmail.visibility = VISIBLE
+                binding.tvSignUpWarnEmail.text = "이메일을 입력하세요"
+            } else if (!Pattern.matches(emailValidation, binding.edtSignupEmail.text.toString())) {
+                binding.vSignUpEmailBlue.visibility = GONE
+                binding.vSignUpEmailRed.visibility = VISIBLE
+                binding.imgvSignUpCheckEmail.visibility = GONE
+                binding.tvSignUpWarnEmail.visibility = VISIBLE
+                binding.tvSignUpWarnEmail.text = "이메일을 올바르게 입력해주세요"
+            }else{
+                binding.vSignUpEmailBlue.visibility = VISIBLE
             }
+        }
 
-            v?.onTouchEvent(event) ?: true
+        /* 이메일 유효성 검사 */
+        binding.edtSignupEmail.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                if(binding.vSignUpEmailRed.visibility == VISIBLE)
+                    binding.vSignUpEmailRed.visibility = VISIBLE
+                else
+                    binding.vSignUpEmailBlue.visibility = VISIBLE
+            }else {
+                checkEmail()
+            }
         }
 
         binding.edtSignupEmail.addTextChangedListener(object : TextWatcher {
-            var emailValidation = Regex("[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}\$")
-            var check = true
-
             override fun beforeTextChanged(p0: CharSequence, start: Int, count: Int, after: Int) {
-                binding.tvSignUpWarnEmail.text = "이메일을 입력해주세요"
-            }
 
+            }
             override fun onTextChanged(p0: CharSequence, start: Int, before: Int, count: Int) {
-
-                if(check) {
-                    binding.vSignUpEmailBlue.visibility = VISIBLE
+                if(!Pattern.matches(emailValidation, binding.edtSignupEmail.text.toString()))
                     binding.imgvSignUpCheckEmail.visibility = GONE
-                }
-                if(count == 0 ) {
-                    binding.vSignUpEmailBlue.visibility = GONE
-                    binding.vSignUpEmailRed.visibility = VISIBLE
-                    binding.tvSignUpWarnEmail.visibility = VISIBLE
-                    binding.imgvSignUpCheckEmail.visibility = GONE
-
-                    check = false
-                }
             }
-
             override fun afterTextChanged(p0: Editable) {
-                if(emailValidation.matches(p0.toString()) ){
-                    binding.vSignUpEmailBlue.visibility = GONE
-                    binding.vSignUpEmailRed.visibility = GONE
-                    binding.tvSignUpWarnEmail.visibility = GONE
-                    binding.imgvSignUpCheckEmail.visibility = VISIBLE
 
-                    userEmail = p0.toString()
-
-                } else if(!emailValidation.matches(p0.toString()) && p0.isNotEmpty()){
-                    binding.vSignUpEmailRed.visibility = VISIBLE
-                    binding.tvSignUpWarnEmail.text = "이메일을 올바르게 입력해주세요"
-                    binding.imgvSignUpCheckEmail.visibility = GONE
-
-                } else if(p0.toString()==""){
-                    binding.vSignUpEmailRed.visibility = VISIBLE
-                    binding.tvSignUpWarnEmail.visibility = VISIBLE
-                }
             }
         })
 
-        //비밀번호
+        /* 비밀번호 유효성 검사 */
         binding.edtSignupPwd.setOnTouchListener { v, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
