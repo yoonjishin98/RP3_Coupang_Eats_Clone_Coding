@@ -29,6 +29,9 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     companion object{
         var userEmail = ""
         var emailValidation = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
+        var checkValid1=0
+        var checkValid2=0
+        var checkValid3=0
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -58,6 +61,13 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }
         }
 
+        fun checkPwd(){
+            if(checkValid1==1 && checkValid2==1 && checkValid3==1){
+                binding.vSignUpPwdBlue.visibility = GONE
+                binding.imgvSignUpCheckPwd.visibility = VISIBLE
+            }
+        }
+
         /* 이메일 유효성 검사 */
         binding.edtSignupEmail.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
@@ -71,22 +81,26 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         }
 
         binding.edtSignupEmail.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence, start: Int, count: Int, after: Int) {
-
-            }
+            override fun beforeTextChanged(p0: CharSequence, start: Int, count: Int, after: Int) { }
             override fun onTextChanged(p0: CharSequence, start: Int, before: Int, count: Int) {
                 if(!Pattern.matches(emailValidation, binding.edtSignupEmail.text.toString()))
                     binding.imgvSignUpCheckEmail.visibility = GONE
             }
-            override fun afterTextChanged(p0: Editable) {
-
-            }
+            override fun afterTextChanged(p0: Editable) { }
         })
 
         /* 비밀번호 유효성 검사 */
-        binding.edtSignupPwd.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
+        binding.edtSignupPwd.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                if(binding.vSignUpPwdRed.visibility == VISIBLE)
+                    binding.vSignUpPwdRed.visibility = VISIBLE
+                else if(binding.imgvSignUpCheckPwd.visibility == VISIBLE){
+                    binding.vSignUpPwdBlue.visibility = VISIBLE
+                    binding.xTwo.visibility = GONE
+                    binding.xThree.visibility = GONE
+                    binding.tvSignUpWarnPwdT.visibility = GONE
+                    binding.tvSignUpWarnPwdTh.visibility = GONE
+                }else {
                     binding.vSignUpPwdBlue.visibility = VISIBLE
                     binding.xOne.visibility = VISIBLE
                     binding.xTwo.visibility = VISIBLE
@@ -95,89 +109,95 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                     binding.tvSignUpWarnPwdT.visibility = VISIBLE
                     binding.tvSignUpWarnPwdTh.visibility = VISIBLE
                 }
-            }
-            v?.onTouchEvent(event) ?: true
+            }else
+                checkPwd()
         }
 
         binding.edtSignupPwd.addTextChangedListener(object : TextWatcher {
-            var firstCondition = Regex("^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z!@#\$%^&*])(?=.*[0-9!@#\$%^&*]).{8,20}\$\n")
-            var secondCondition = "(\\\\w)\\\\1\\\\1"
-            var check1 = false
-            var check2 = false
-            var check3 = false
-            val red = ContextCompat.getColor(applicationContext, R.color.redline)
-            val green = ContextCompat.getColor(applicationContext, R.color.greencheck)
-            val blue = ContextCompat.getColor(applicationContext, R.color.blueline)
-
             override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) { }
-
             override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-                if(p0.toString()=="") {
-                    binding.vSignUpPwdRed.visibility = INVISIBLE
-                    binding.xOne.visibility = VISIBLE
-                    binding.xTwo.visibility = VISIBLE
-                    binding.xThree.visibility = VISIBLE
-                    binding.tvSignUpWarnPwdO.visibility = VISIBLE
-                    binding.tvSignUpWarnPwdT.visibility = VISIBLE
-                    binding.tvSignUpWarnPwdTh.visibility = VISIBLE
+                val firstCondition = "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z!@#\$%^&*])(?=.*[0-9!@#\$%^&*]).{8,20}$"
+                val secondCondition = "^(?!.*(.)\\1\\1.*).*\$"
+                val red = ContextCompat.getColor(applicationContext, R.color.redline)
+                val green = ContextCompat.getColor(applicationContext, R.color.greencheck)
+
+                if(p0.isEmpty()) {     // 입력값이 없을 때
+                    binding.vSignUpPwdRed.visibility = VISIBLE
+                    binding.vSignUpPwdBlue.visibility = GONE
+                    binding.xOne.setImageResource(R.drawable.ic_finish_sign__up)
+                    binding.xTwo.setImageResource(R.drawable.ic_finish_sign__up)
+                    binding.xThree.setImageResource(R.drawable.ic_finish_sign__up)
+                    binding.xOne.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
+                    binding.xTwo.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
+                    binding.xThree.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
+                    binding.tvSignUpWarnPwdO.setTextColor(red)
+                    binding.tvSignUpWarnPwdT.setTextColor(red)
+                    binding.tvSignUpWarnPwdTh.setTextColor(red)
                 }
 
-                binding.vSignUpPwdRed.visibility = VISIBLE
-                binding.xOne.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
-                binding.xTwo.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
-                binding.xThree.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
-                binding.tvSignUpWarnPwdO.setTextColor(red)
-                binding.tvSignUpWarnPwdT.setTextColor(red)
-                binding.tvSignUpWarnPwdTh.setTextColor(red)
-                binding.xOne.visibility = VISIBLE
-                binding.xTwo.visibility = VISIBLE
-                binding.xThree.visibility = VISIBLE
-                binding.tvSignUpWarnPwdO.visibility = VISIBLE
-                binding.tvSignUpWarnPwdT.visibility = VISIBLE
-                binding.tvSignUpWarnPwdTh.visibility = VISIBLE
-
-                check3 = if(p0 != userEmail){    //세 번째 조건
-                    binding.xThree.setImageResource(R.drawable.ic_check)
-                    binding.tvSignUpWarnPwdTh.setTextColor(green)
-                    true
-                }else{
-                    false
-                }
-
-                check1 = if(!firstCondition.matches(p0)){        //첫 번째 조건
+                if(Pattern.matches(firstCondition, p0.toString())){     // 조건1. 영문/숫자/특수문자 2가지 이상 조합
                     binding.xOne.setImageResource(R.drawable.ic_check)
+                    binding.xOne.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.greencheck))
                     binding.tvSignUpWarnPwdO.setTextColor(green)
-                    true
-                }else{
-                    false
+                    checkValid1=1
+                }else if(!Pattern.matches(firstCondition, p0.toString())){
+                    binding.xOne.setImageResource(R.drawable.ic_finish_sign__up)
+                    binding.xOne.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
+                    binding.tvSignUpWarnPwdO.setTextColor(red)
+                    checkValid1=0
                 }
 
-                if(!Pattern.compile(secondCondition).matcher(p0).find()){      // 두 번째 조건
+                if(Pattern.compile(secondCondition).matcher(p0.toString()).find() && p0.toString().isNotEmpty()
+                ){     // 조건2. 3개 이상 연속되거나 동일한 문자/숫자 제외
                     binding.xTwo.setImageResource(R.drawable.ic_check)
+                    binding.xTwo.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.greencheck))
                     binding.tvSignUpWarnPwdT.setTextColor(green)
-                    check2 = true
-                }else{
-                    check2 = false
+                    checkValid2=1
+                }else if(!Pattern.compile(secondCondition).matcher(p0.toString()).find()){
+                    binding.xTwo.setImageResource(R.drawable.ic_finish_sign__up)
+                    binding.xTwo.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
+                    binding.tvSignUpWarnPwdT.setTextColor(red)
+                    checkValid2=0
                 }
 
-            }
+                if(p0.toString()!=binding.edtSignupEmail.text.toString()){     // 조건3. 아이디(이메일) 제외
+                    binding.xThree.setImageResource(R.drawable.ic_check)
+                    binding.xThree.imageTintList = ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.greencheck))
+                    binding.tvSignUpWarnPwdTh.setTextColor(green)
+                    checkValid3=1
+                }else if(p0.toString()==binding.edtSignupEmail.text.toString()) {
+                    binding.xThree.setImageResource(R.drawable.ic_finish_sign__up)
+                    binding.xThree.imageTintList =   ColorStateList.valueOf(this@SignUpActivity.getColor(R.color.redline))
+                    binding.tvSignUpWarnPwdTh.setTextColor(red)
+                    checkValid3=0
+                }
 
-            override fun afterTextChanged(p0: Editable) {
-                if(check1 && check2 && check3){
+                if(checkValid1==1 && checkValid2==1 && checkValid3==1){
+                    binding.vSignUpPwdBlue.visibility = VISIBLE
+                    binding.vSignUpPwdRed.visibility = GONE
                     binding.xOne.visibility = VISIBLE
                     binding.xTwo.visibility = GONE
                     binding.xThree.visibility = GONE
                     binding.tvSignUpWarnPwdO.text = "사용 가능한 비밀번호입니다"
-                    binding.tvSignUpWarnPwdO.setTextColor(blue)
-                    binding.tvSignUpWarnPwdO.visibility = VISIBLE
+                    binding.tvSignUpWarnPwdO.setTextColor(green)
                     binding.tvSignUpWarnPwdT.visibility = GONE
                     binding.tvSignUpWarnPwdTh.visibility = GONE
+                    binding.imgvSignUpCheckPwd.visibility = VISIBLE
+                }else{
+                    binding.vSignUpPwdRed.visibility = VISIBLE
+                    binding.vSignUpPwdBlue.visibility = GONE
+                    binding.imgvSignUpCheckPwd.visibility = GONE
+                    binding.tvSignUpWarnPwdO.text = "영문/숫자/특수문자 2가지 이상 조합(8~20자)"
+                    binding.xTwo.visibility = VISIBLE
+                    binding.tvSignUpWarnPwdT.visibility = VISIBLE
+                    binding.xThree.visibility = VISIBLE
+                    binding.tvSignUpWarnPwdTh.visibility = VISIBLE
                 }
-
-
             }
+            override fun afterTextChanged(p0: Editable) { }
         })
 
+        /* 이름 유효성검사 */
         binding.edtSignupName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable) {
                 if(binding.edtSignupName.text == null) {
@@ -188,11 +208,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
             }
             override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-//                binding.vSignUpEmailBlue.visibility = VISIBLE
-
-//                binding.tvSignUpWarnPwdO.visibility = VISIBLE
-//                binding.tvSignUpWarnPwdT.visibility = VISIBLE
-//                binding.tvSignUpWarnPwdTh.visibility = VISIBLE
             }
         })
 
@@ -206,11 +221,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
             }
             override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-//                binding.vSignUpEmailBlue.visibility = VISIBLE
-//
-//                binding.tvSignUpWarnPwdO.visibility = VISIBLE
-//                binding.tvSignUpWarnPwdT.visibility = VISIBLE
-//                binding.tvSignUpWarnPwdTh.visibility = VISIBLE
             }
         })
 
