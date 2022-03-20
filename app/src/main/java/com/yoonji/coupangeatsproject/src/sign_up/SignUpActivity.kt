@@ -68,6 +68,21 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }
         }
 
+        fun checkName(){
+            if(binding.edtSignupName.text.toString().length > 1){
+                binding.vSignUpNameBlue.visibility = GONE
+                binding.vSignUpNameRed.visibility = GONE
+                binding.tvSignUpWarnName.visibility = GONE
+                binding.imgvSignUpCheckName.visibility = VISIBLE
+            }else{
+                binding.vSignUpNameBlue.visibility = GONE
+                binding.vSignUpNameRed.visibility = VISIBLE
+                binding.imgvSignUpCheckName.visibility = GONE
+                binding.tvSignUpWarnName.visibility = VISIBLE
+                binding.tvSignUpWarnName.text = "이름을 정확히 입력하세요"
+            }
+        }
+
         /* 이메일 유효성 검사 */
         binding.edtSignupEmail.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
@@ -198,33 +213,45 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         })
 
         /* 이름 유효성검사 */
+        binding.edtSignupName.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                if(binding.vSignUpNameRed.visibility == VISIBLE)
+                    binding.vSignUpNameRed.visibility = VISIBLE
+                else
+                    binding.vSignUpNameBlue.visibility = VISIBLE
+            }else {
+                checkName()
+            }
+        }
+
         binding.edtSignupName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable) {
-                if(binding.edtSignupName.text == null) {
-
-                }
-            }
-            override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-
-            }
+            override fun afterTextChanged(p0: Editable) {  }
+            override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
+                if(binding.edtSignupName.text.toString().length<2)
+                    binding.imgvSignUpCheckName.visibility = GONE
             }
         })
+
+        /* 휴대폰 번호 유효성검사 */
+        binding.edtSignupPhoneNum.setOnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                if(binding.vSignUpNameRed.visibility == VISIBLE)
+                    binding.vSignUpNameRed.visibility = VISIBLE
+                else
+                    binding.vSignUpNameBlue.visibility = VISIBLE
+            }else {
+                checkName()
+            }
+        }
 
         binding.edtSignupPhoneNum.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable) {
-                if(binding.edtSignupPhoneNum.text == null) {
-
-                }
-            }
-            override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-
-            }
+            override fun afterTextChanged(p0: Editable) {  }
+            override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) { }
             override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
+
             }
         })
-
-
     }
 
     override fun onResume() {
@@ -245,7 +272,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         binding.imgvSignUpFinish.setOnClickListener{
             finish()
         }
-
 
         binding.checkSignUpAll.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
@@ -272,7 +298,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }else{
                 check2 = -100
             }
-
         }
         binding.checkBox3.setOnCheckedChangeListener { buttonView, isChecked ->
             if(!isChecked){
@@ -282,7 +307,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }else{
                 check2 = -100
             }
-
         }
         binding.checkBox4.setOnCheckedChangeListener { buttonView, isChecked ->
             if(!isChecked){
@@ -292,7 +316,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }else{
                 check2 = -100
             }
-
         }
         binding.checkBox5.setOnCheckedChangeListener { buttonView, isChecked ->
             if(!isChecked){
@@ -302,7 +325,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }else{
                 check2 = -100
             }
-
         }
         binding.checkBox6.setOnCheckedChangeListener { buttonView, isChecked ->
             if(!isChecked){
@@ -313,8 +335,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 check2 = -100
             }
         }
-
-
     }
 
     override fun onPostSignUpSuccess(response: SignUpResponse) {
@@ -350,5 +370,4 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     override fun onPostSignUpFailure(message: String) {
         Log.d(TAG, "오류 : $message")
     }
-
 }

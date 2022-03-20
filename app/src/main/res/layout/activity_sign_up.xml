@@ -223,7 +223,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_check" />
+                    app:srcCompat="@drawable/ic_check_blue_sign_up" />
 
                 <ImageView
                     android:id="@+id/x_one"
@@ -245,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:paddingStart="7dp"
-                    android:text="영문/숫자/특수문자 2가지 이상 조합"
+                    android:text="영문/숫자/특수문자 2가지 이상 조합(8~20자)"
                     android:textColor="#CCCCCC"
                     android:textSize="12sp"
                     android:visibility="gone"
@@ -330,7 +330,7 @@
                 <EditText
                     android:id="@+id/edt_signup_name"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="45dp"
                     android:layout_marginStart="-5dp"
                     android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_name"
@@ -343,7 +343,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgv_sign_up_three"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1" />
+                    app:layout_constraintVertical_bias="0" />
 
                 <TextView
                     android:id="@+id/tv_sign_up_warn_name"
@@ -416,7 +416,7 @@
                 <EditText
                     android:id="@+id/edt_signup_phone_num"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="45dp"
                     android:layout_marginStart="-5dp"
                     android:background="@drawable/edge_grey_empty"
                     android:hint="@string/signup_phone_num"
@@ -429,7 +429,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imgv_sign_up_four"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1" />
+                    app:layout_constraintVertical_bias="0" />
 
                 <TextView
                     android:id="@+id/tv_sign_up_warn_num"
