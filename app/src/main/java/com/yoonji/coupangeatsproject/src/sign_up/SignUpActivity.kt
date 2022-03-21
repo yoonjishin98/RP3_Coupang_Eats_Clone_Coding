@@ -83,6 +83,26 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }
         }
 
+        fun checkPhoneNum(){
+            val phoneNum = binding.edtSignupPhoneNum.text.toString()
+            val tempNum = phoneNum.chunked(3)[0]
+            val lenCheck = phoneNum.length==10 || phoneNum.length==11
+            val tempNumCheck = tempNum=="010" || tempNum=="011" || tempNum=="016" || tempNum=="017" || tempNum=="018" || tempNum=="019"
+
+            if(lenCheck && tempNumCheck){
+                binding.vSignUpNumBlue.visibility = GONE
+                binding.vSignUpNumRed.visibility = GONE
+                binding.tvSignUpWarnNum.visibility = GONE
+                binding.imgvSignUpCheckPhoneNum.visibility = VISIBLE
+            }else{
+                binding.vSignUpNumBlue.visibility = GONE
+                binding.vSignUpNumRed.visibility = VISIBLE
+                binding.imgvSignUpCheckPhoneNum.visibility = GONE
+                binding.tvSignUpWarnNum.visibility = VISIBLE
+            }
+
+        }
+
         /* 이메일 유효성 검사 */
         binding.edtSignupEmail.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
@@ -236,12 +256,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         /* 휴대폰 번호 유효성검사 */
         binding.edtSignupPhoneNum.setOnFocusChangeListener { view, hasFocus ->
             if (hasFocus) {
-                if(binding.vSignUpNameRed.visibility == VISIBLE)
-                    binding.vSignUpNameRed.visibility = VISIBLE
+                if(binding.vSignUpNumRed.visibility == VISIBLE)
+                    binding.vSignUpNumRed.visibility = VISIBLE
                 else
-                    binding.vSignUpNameBlue.visibility = VISIBLE
+                    binding.vSignUpNumBlue.visibility = VISIBLE
             }else {
-                checkName()
+                checkPhoneNum()
             }
         }
 
@@ -249,7 +269,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             override fun afterTextChanged(p0: Editable) {  }
             override fun beforeTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) { }
             override fun onTextChanged(p0: CharSequence, p1: Int, p2: Int, p3: Int) {
-
+                if(binding.edtSignupName.text.toString().length<11)
+                    binding.imgvSignUpCheckPhoneNum.visibility = GONE
             }
         })
     }
